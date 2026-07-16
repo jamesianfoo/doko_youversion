@@ -11,22 +11,11 @@
 
     <header id="top-bar">
       <div class="pill" id="reference-pill">…</div>
-      <div class="pill pill-muted" id="version-pill">…</div>
+      <button class="pill pill-muted pill-button" id="version-pill" title="Compare translations">…</button>
       <div class="top-bar-spacer"></div>
       <button id="play-audio-btn" class="icon-btn" title="Listen to this verse">🔊</button>
-      <button id="more-btn" class="icon-btn" title="More">⋯</button>
+      <button id="more-btn" class="icon-btn" title="Compare translations">⋯</button>
     </header>
-
-    <div id="more-menu" class="hidden">
-      <div class="compare-row">
-        <span class="compare-label-fixed">Compare:</span>
-        <select id="compare-language-select">
-          <option value="">Choose language…</option>
-        </select>
-        <select id="compare-version-select" class="hidden"></select>
-        <button id="close-compare-btn" class="hidden">Hide</button>
-      </div>
-    </div>
 
     <div id="memory-banner" class="hidden">
       <span>You explored <strong id="memory-word"></strong> before — tap it again any time.</span>
@@ -40,6 +29,7 @@
       </p>
 
       <div class="verse-line verse-compare hidden" id="compare-panel">
+        <button id="close-compare-btn" class="panel-close-btn" title="Close comparison">×</button>
         <div id="compare-version-title"></div>
         <div id="compare-text"></div>
       </div>
@@ -56,16 +46,31 @@
     </nav>
   </div>
 
-  <div id="explanation-sheet" class="hidden">
-    <div id="explanation-backdrop"></div>
-    <div id="explanation-card">
+  <div id="explanation-sheet" class="bottom-sheet hidden">
+    <div class="sheet-backdrop"></div>
+    <div class="sheet-card">
       <div class="sheet-handle"></div>
-      <button id="close-sheet-btn">×</button>
+      <button class="sheet-close-btn" id="close-sheet-btn">×</button>
       <div class="sheet-title-row">
         <h2 id="explanation-word"></h2>
         <button id="play-explanation-audio-btn" class="icon-btn" title="Listen to this explanation">🔊</button>
       </div>
       <p id="explanation-text">Thinking…</p>
+    </div>
+  </div>
+
+  <div id="compare-sheet" class="bottom-sheet hidden">
+    <div class="sheet-backdrop"></div>
+    <div class="sheet-card">
+      <div class="sheet-handle"></div>
+      <button class="sheet-close-btn" id="close-compare-sheet-btn">×</button>
+      <div class="sheet-header">
+        <button id="compare-back-btn" class="hidden">‹</button>
+        <h2 id="compare-sheet-title">Compare Translations</h2>
+      </div>
+
+      <div id="compare-language-list" class="picker-list"></div>
+      <div id="compare-version-list" class="picker-list hidden"></div>
     </div>
   </div>
 

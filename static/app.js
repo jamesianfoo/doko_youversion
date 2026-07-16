@@ -117,56 +117,78 @@ document.getElementById("play-explanation-audio-btn").addEventListener("click", 
   speakChinese(currentExplanationText);
 });
 
-document.getElementById("more-btn").addEventListener("click", () => {
-  document.getElementById("more-menu").classList.toggle("hidden");
-});
-
 document.getElementById("close-sheet-btn").addEventListener("click", closeSheet);
-document.getElementById("explanation-backdrop").addEventListener("click", closeSheet);
+document.querySelector("#explanation-sheet .sheet-backdrop").addEventListener("click", closeSheet);
 
-async function loadCompareLanguages() {
-  const res = await fetch("/api/compare/languages");
-  const data = await res.json();
-  const languageSelect = document.getElementById("compare-language-select");
-  for (const lang of data.languages) {
-    const opt = document.createElement("option");
-    opt.value = lang.code;
-    opt.textContent = lang.label;
-    languageSelect.appendChild(opt);
+let compareLanguagesCache = null;
+
+async function openCompareSheet() {
+  document.getElementById("compare-sheet").classList.remove("hidden");
+  showCompareScreen("language");
+  if (!compareLanguagesCache) {
+    const res = await fetch("/api/compare/languages");
+    compareLanguagesCache = (await res.json()).languages;
+  }
+  renderLanguageList(compareLanguagesCache);
+}
+
+function closeCompareSheet() {
+  document.getElementById("compare-sheet").classList.add("hidden");
+}
+
+function showCompareScreen(screen) {
+  document.getElementById("compare-language-list").classList.toggle("hidden", screen !== "language");
+  document.getElementById("compare-version-list").classList.toggle("hidden", screen !== "version");
+  document.getElementById("compare-back-btn").classList.toggle("hidden", screen === "language");
+  document.getElementById("compare-sheet-title").textContent =
+    screen === "language" ? "Compare Translations" : "Choose a version";
+}
+
+function renderLanguageList(languages) {
+  const list = document.getElementById("compare-language-list");
+  list.innerHTML = "";
+  for (const lang of languages) {
+    const row = document.createElement("button");
+    row.className = "picker-row";
+    row.innerHTML = `
+      <span class="picker-row-body"><span class="picker-row-title">${lang.label}</span></span>
+      <span class="picker-chevron">›</span>
+    `;
+    row.addEventListener("click", () => onLanguageRowClick(lang));
+    list.appendChild(row);
   }
 }
 
-async function onCompareLanguageChange() {
-  const code = document.getElementById("compare-language-select").value;
-  const versionSelect = document.getElementById("compare-version-select");
-  versionSelect.innerHTML = "";
+async function onLanguageRowClick(lang) {
+  showCompareScreen("version");
+  document.getElementById("compare-sheet-title").textContent = lang.label;
+  const list = document.getElementById("compare-version-list");
+  list.innerHTML = `<p class="picker-row-subtitle">Loading…</p>`;
 
-  if (!code) {
-    versionSelect.classList.add("hidden");
-    hideComparePanel();
-    return;
-  }
-
-  const res = await fetch(`/api/compare/versions?language=${encodeURIComponent(code)}`);
+  const res = await fetch(`/api/compare/versions?language=${encodeURIComponent(lang.code)}`);
   const data = await res.json();
-  for (const v of data.versions) {
-    const opt = document.createElement("option");
-    opt.value = v.id;
-    opt.textContent = `${v.abbreviation} — ${v.title}`;
-    versionSelect.appendChild(opt);
-  }
-  versionSelect.classList.remove("hidden");
+  renderVersionList(data.versions);
+}
 
-  if (data.versions.length > 0) {
-    await showComparePassage(data.versions[0].id);
+function renderVersionList(versions) {
+  const list = document.getElementById("compare-version-list");
+  list.innerHTML = "";
+  for (const v of versions) {
+    const row = document.createElement("button");
+    row.className = "picker-row";
+    row.innerHTML = `
+      <span class="picker-badge">${v.abbreviation}</span>
+      <span class="picker-row-body"><span class="picker-row-title">${v.title}</span></span>
+      <span class="picker-chevron">›</span>
+    `;
+    row.addEventListener("click", () => onVersionRowClick(v.id));
+    list.appendChild(row);
   }
 }
 
-async function onCompareVersionChange() {
-  const versionId = document.getElementById("compare-version-select").value;
-  if (versionId) {
-    await showComparePassage(versionId);
-  }
+async function onVersionRowClick(versionId) {
+  await showComparePassage(versionId);
+  closeCompareSheet();
 }
 
 async function showComparePassage(versionId) {
@@ -185,22 +207,17 @@ async function showComparePassage(versionId) {
   }
 
   document.getElementById("compare-panel").classList.remove("hidden");
-  document.getElementById("close-compare-btn").classList.remove("hidden");
 }
 
 function hideComparePanel() {
   document.getElementById("compare-panel").classList.add("hidden");
-  document.getElementById("close-compare-btn").classList.add("hidden");
 }
 
-document.getElementById("compare-language-select").addEventListener("change", onCompareLanguageChange);
-document.getElementById("compare-version-select").addEventListener("change", onCompareVersionChange);
-document.getElementById("close-compare-btn").addEventListener("click", () => {
-  hideComparePanel();
-  document.getElementById("compare-language-select").value = "";
-  document.getElementById("compare-version-select").classList.add("hidden");
-  document.getElementById("more-menu").classList.add("hidden");
-});
+document.getElementById("more-btn").addEventListener("click", openCompareSheet);
+document.getElementById("version-pill").addEventListener("click", openCompareSheet);
+document.getElementById("close-compare-sheet-btn").addEventListener("click", closeCompareSheet);
+document.querySelector("#compare-sheet .sheet-backdrop").addEventListener("click", closeCompareSheet);
+document.getElementById("compare-back-btn").addEventListener("click", () => showCompareScreen("language"));
+document.getElementById("close-compare-btn").addEventListener("click", hideComparePanel);
 
-loadCompareLanguages();
 loadVerse();
