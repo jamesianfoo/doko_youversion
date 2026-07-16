@@ -14,6 +14,7 @@
         <div class="pill" id="reference-pill">…</div>
         <button class="pill pill-muted pill-button" id="version-pill" title="Compare translations">…</button>
         <div class="top-bar-spacer"></div>
+        <button id="jump-to-verse-btn" class="icon-btn hidden" title="Jump to the tappable verse">📍</button>
         <button id="play-audio-btn" class="icon-btn" title="Listen to this chapter">🔊</button>
         <button id="more-btn" class="icon-btn" title="Compare translations">⋯</button>
       </header>
@@ -40,7 +41,10 @@
         <div id="compare-language-list" class="picker-list"></div>
         <div id="compare-version-list" class="picker-list hidden"></div>
         <div id="compare-result" class="hidden">
-          <div id="compare-version-title"></div>
+          <div class="compare-result-header">
+            <div id="compare-version-title"></div>
+            <button id="show-in-chapter-btn">📍 Show in chapter</button>
+          </div>
           <div id="compare-text"></div>
         </div>
       </div>

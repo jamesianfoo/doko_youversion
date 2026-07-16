@@ -1,5 +1,6 @@
 let currentVerseText = "";
 let currentExplanationText = "";
+let tappableVerseNumber = null;
 
 async function loadVerse() {
   const res = await fetch("/api/verse");
@@ -13,6 +14,16 @@ async function loadVerse() {
   renderChapter(data.verses);
   renderCopyright(data.version.copyright);
   loadMemory();
+
+  if (tappableVerseNumber !== null) {
+    document.getElementById("jump-to-verse-btn").classList.remove("hidden");
+    // Land straight on the one interactive verse instead of chapter start --
+    // it's easy to lose among 22 verses otherwise. Deferred a couple frames
+    // so the browser finishes laying out the freshly-inserted verses first;
+    // calling scrollIntoView in the same tick as the DOM insert can compute
+    // against stale (pre-layout) positions and land in the wrong place.
+    requestAnimationFrame(() => requestAnimationFrame(() => scrollToTappableVerse(false)));
+  }
 }
 
 function renderChapter(verses) {
@@ -21,6 +32,12 @@ function renderChapter(verses) {
   for (const verse of verses) {
     const p = document.createElement("p");
     p.className = "verse-line";
+    p.id = `verse-${verse.number}`;
+
+    if (verse.tappable.length > 0) {
+      p.classList.add("verse-highlight");
+      tappableVerseNumber = verse.number;
+    }
 
     const sup = document.createElement("sup");
     sup.className = "verse-number";
@@ -29,6 +46,19 @@ function renderChapter(verses) {
 
     renderVerseContent(p, verse.chars, verse.tappable);
     container.appendChild(p);
+  }
+}
+
+function scrollToTappableVerse(flash) {
+  if (tappableVerseNumber === null) return;
+  const el = document.getElementById(`verse-${tappableVerseNumber}`);
+  if (!el) return;
+  // "smooth" behavior here has been unreliable (sometimes never completes),
+  // so jump instantly and use the flash pulse for visual feedback instead.
+  el.scrollIntoView({ block: "center", behavior: "auto" });
+  if (flash) {
+    el.classList.add("verse-flash");
+    setTimeout(() => el.classList.remove("verse-flash"), 1200);
   }
 }
 
@@ -226,6 +256,8 @@ document.getElementById("more-btn").addEventListener("click", openLanguagePicker
 document.getElementById("version-pill").addEventListener("click", openLanguagePicker);
 document.getElementById("compare-back-btn").addEventListener("click", () => showCompareState("language"));
 document.getElementById("compare-change-btn").addEventListener("click", openLanguagePicker);
+document.getElementById("jump-to-verse-btn").addEventListener("click", () => scrollToTappableVerse(true));
+document.getElementById("show-in-chapter-btn").addEventListener("click", () => scrollToTappableVerse(true));
 
 async function loadDefaultCompare() {
   const res = await fetch("/api/compare/languages");

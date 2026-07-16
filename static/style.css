@@ -154,6 +154,30 @@ ruby rt {
   background: var(--accent-soft);
 }
 
+/* The one verse with a tappable word gets its own background so it's easy
+   to relocate again after scrolling away in a long chapter. */
+.verse-highlight {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 0.6rem 0.75rem 0.6rem 0.6rem;
+  margin-left: -0.6rem;
+}
+
+@keyframes verse-flash-pulse {
+  0%,
+  100% {
+    background: var(--accent-soft);
+  }
+  50% {
+    background: rgba(215, 162, 76, 0.4);
+  }
+}
+
+.verse-flash {
+  animation: verse-flash-pulse 0.6s ease-in-out 2;
+}
+
 #copyright-footer {
   margin-top: 1.5rem;
   text-align: center;
@@ -220,12 +244,35 @@ ruby rt {
   padding: 1rem 0;
 }
 
+.compare-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
 #compare-version-title {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--accent);
-  margin-bottom: 0.6rem;
+}
+
+#show-in-chapter-btn {
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid var(--divider);
+  border-radius: 999px;
+  color: var(--ink-dim);
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+}
+
+#show-in-chapter-btn:hover {
+  color: var(--ink);
+  border-color: var(--accent);
 }
 
 #compare-text {
