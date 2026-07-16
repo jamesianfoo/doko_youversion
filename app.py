@@ -13,6 +13,7 @@ from api_clients import (
     COMPARE_LANGUAGES,
     ENGLISH_VERSION_ID,
     explain_word,
+    get_chapter,
     get_passage,
     get_version_meta,
     list_versions,
@@ -29,11 +30,12 @@ def index():
 
 MEMORY_PATH = os.path.join(os.path.dirname(__file__), "memory.json")
 
-# MVP scope: one curated demo verse and its tappable word(s). Real text is
-# fetched live from the API every time -- only the reference + which word(s)
-# are tappable are hardcoded, because Chinese word segmentation is out of
-# scope for this MVP.
+# MVP scope: one curated demo chapter, with one verse in it tappable. Real
+# text for every verse is fetched live from the API every time -- only the
+# reference + which word(s) are tappable are hardcoded, because Chinese word
+# segmentation is out of scope for this MVP.
 DEMO_VERSE = {"usfm": "EPH.2.8", "tappable_words": ["恩典"]}
+DEMO_CHAPTER = {"book": "EPH", "chapter": 2, "verse_count": 22, "tappable_verse_number": 8}
 
 
 def _load_memory():
@@ -59,20 +61,32 @@ def _find_tappable_spans(chinese_text, words):
 
 @app.route("/api/verse")
 def api_verse():
-    passage = get_passage(CHINESE_VERSION_ID, DEMO_VERSE["usfm"])
+    chapter = get_chapter(
+        CHINESE_VERSION_ID, DEMO_CHAPTER["book"], DEMO_CHAPTER["chapter"], DEMO_CHAPTER["verse_count"]
+    )
     meta = get_version_meta(CHINESE_VERSION_ID)
-    chinese_text = passage["content"]
-    chars = to_pinyin(chinese_text)
-    tappable = _find_tappable_spans(chinese_text, DEMO_VERSE["tappable_words"])
-    verse_number = DEMO_VERSE["usfm"].split(".")[-1]
+
+    verses = []
+    full_text_parts = []
+    for v in chapter["verses"]:
+        tappable = []
+        if v["number"] == DEMO_CHAPTER["tappable_verse_number"]:
+            tappable = _find_tappable_spans(v["text"], DEMO_VERSE["tappable_words"])
+        verses.append(
+            {
+                "number": v["number"],
+                "chars": to_pinyin(v["text"]),
+                "raw_text": v["text"],
+                "tappable": tappable,
+            }
+        )
+        full_text_parts.append(v["text"])
+
     return jsonify(
         {
-            "usfm": DEMO_VERSE["usfm"],
-            "reference": passage["reference"],
-            "verse_number": verse_number,
-            "chars": chars,
-            "tappable": tappable,
-            "raw_text": chinese_text,
+            "reference": chapter["reference"],
+            "verses": verses,
+            "raw_text": " ".join(full_text_parts),
             "version": meta,
         }
     )

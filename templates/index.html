@@ -9,41 +9,42 @@
 <body>
   <div id="phone-frame">
 
-    <header id="top-bar">
-      <div class="pill" id="reference-pill">…</div>
-      <button class="pill pill-muted pill-button" id="version-pill" title="Compare translations">…</button>
-      <div class="top-bar-spacer"></div>
-      <button id="play-audio-btn" class="icon-btn" title="Listen to this verse">🔊</button>
-      <button id="more-btn" class="icon-btn" title="Compare translations">⋯</button>
-    </header>
+    <div id="top-pane">
+      <header id="top-bar">
+        <div class="pill" id="reference-pill">…</div>
+        <button class="pill pill-muted pill-button" id="version-pill" title="Compare translations">…</button>
+        <div class="top-bar-spacer"></div>
+        <button id="play-audio-btn" class="icon-btn" title="Listen to this chapter">🔊</button>
+        <button id="more-btn" class="icon-btn" title="Compare translations">⋯</button>
+      </header>
 
-    <div id="memory-banner" class="hidden">
-      <span>You explored <strong id="memory-word"></strong> before — tap it again any time.</span>
-    </div>
-
-    <main id="verse-scroll">
-      <p id="verse-loading">Loading today's verse…</p>
-
-      <p class="verse-line" id="verse-chinese-line">
-        <sup id="verse-number"></sup><span id="verse-chinese"></span>
-      </p>
-
-      <div class="verse-line verse-compare hidden" id="compare-panel">
-        <button id="close-compare-btn" class="panel-close-btn" title="Close comparison">×</button>
-        <div id="compare-version-title"></div>
-        <div id="compare-text"></div>
+      <div id="memory-banner" class="hidden">
+        <span>You explored <strong id="memory-word"></strong> before — tap it again any time.</span>
       </div>
 
-      <footer id="copyright-footer"></footer>
-    </main>
+      <main id="verse-scroll">
+        <p id="verse-loading">Loading today's chapter…</p>
+        <div id="verse-chapter"></div>
+        <footer id="copyright-footer"></footer>
+      </main>
+    </div>
 
-    <nav id="bottom-nav" title="Demo only — single screen MVP">
-      <div class="nav-item active"><span class="nav-icon">📖</span><span>Bible</span></div>
-      <div class="nav-item"><span class="nav-icon">🏠</span><span>Home</span></div>
-      <div class="nav-item"><span class="nav-icon">✅</span><span>Plans</span></div>
-      <div class="nav-item"><span class="nav-icon">🔍</span><span>Discover</span></div>
-      <div class="nav-item"><span class="nav-icon">👤</span><span>You</span></div>
-    </nav>
+    <div id="bottom-pane">
+      <div id="compare-header">
+        <button id="compare-back-btn" class="hidden">‹</button>
+        <div id="compare-header-title">Compare Translations</div>
+        <button id="compare-change-btn" class="hidden">Change ›</button>
+      </div>
+
+      <div id="compare-body">
+        <div id="compare-language-list" class="picker-list"></div>
+        <div id="compare-version-list" class="picker-list hidden"></div>
+        <div id="compare-result" class="hidden">
+          <div id="compare-version-title"></div>
+          <div id="compare-text"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="explanation-sheet" class="bottom-sheet hidden">
@@ -56,21 +57,6 @@
         <button id="play-explanation-audio-btn" class="icon-btn" title="Listen to this explanation">🔊</button>
       </div>
       <p id="explanation-text">Thinking…</p>
-    </div>
-  </div>
-
-  <div id="compare-sheet" class="bottom-sheet hidden">
-    <div class="sheet-backdrop"></div>
-    <div class="sheet-card">
-      <div class="sheet-handle"></div>
-      <button class="sheet-close-btn" id="close-compare-sheet-btn">×</button>
-      <div class="sheet-header">
-        <button id="compare-back-btn" class="hidden">‹</button>
-        <h2 id="compare-sheet-title">Compare Translations</h2>
-      </div>
-
-      <div id="compare-language-list" class="picker-list"></div>
-      <div id="compare-version-list" class="picker-list hidden"></div>
     </div>
   </div>
 

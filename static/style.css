@@ -12,6 +12,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
   background: #0b1119;
@@ -19,26 +24,36 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  overflow: hidden;
 }
 
 #phone-frame {
   width: 100%;
   max-width: 480px;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--bg);
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 
-/* Top bar */
+/* Top pane: today's chapter -- 65% of screen height */
+#top-pane {
+  flex: 0 0 65%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 #top-bar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.9rem 1rem;
   border-bottom: 1px solid var(--divider);
+  flex-shrink: 0;
 }
 
 .pill {
@@ -92,34 +107,37 @@ body {
   padding: 0.6rem 1rem;
   font-size: 0.85rem;
   color: var(--ink);
+  flex-shrink: 0;
 }
 
 #memory-banner strong {
   color: var(--accent);
 }
 
-/* Verse content */
+/* Chapter content (scrolls within the fixed top pane) */
 #verse-scroll {
   flex: 1;
-  padding: 1.75rem 1.25rem 2rem;
+  min-height: 0;
+  padding: 1.5rem 1.25rem 2rem;
   overflow-y: auto;
 }
 
 .verse-line {
-  font-size: 1.55rem;
-  line-height: 2.5;
-  margin: 0 0 1.25rem;
+  font-size: 1.4rem;
+  line-height: 2.3;
+  margin: 0 0 0.9rem;
 }
 
-#verse-number {
-  font-size: 0.75rem;
+.verse-number {
+  font-size: 0.7rem;
   color: var(--ink-dim);
-  margin-right: 0.15rem;
+  margin-right: 0.2rem;
   top: -0.6em;
+  position: relative;
 }
 
 ruby rt {
-  font-size: 0.58rem;
+  font-size: 0.55rem;
   color: var(--ink-dim);
   font-weight: 400;
 }
@@ -136,43 +154,8 @@ ruby rt {
   background: var(--accent-soft);
 }
 
-.verse-compare {
-  position: relative;
-  color: var(--ink-dim);
-  font-size: 1.2rem;
-  padding: 1.25rem 2rem 0 0;
-  margin-top: 1rem;
-  border-top: 1px solid var(--divider);
-}
-
-.panel-close-btn {
-  position: absolute;
-  top: 1.1rem;
-  right: 0;
-  background: none;
-  border: none;
-  color: var(--ink-dim);
-  font-size: 1.3rem;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0.2rem;
-}
-
-#compare-version-title {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-  margin-bottom: 0.4rem;
-  font-style: normal;
-}
-
-#compare-text {
-  font-style: italic;
-}
-
 #copyright-footer {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   text-align: center;
   font-size: 0.7rem;
   line-height: 1.6;
@@ -181,33 +164,83 @@ ruby rt {
   white-space: pre-line;
 }
 
-/* Bottom nav (decorative, matches real app chrome) */
-#bottom-nav {
-  display: flex;
-  border-top: 1px solid var(--divider);
-  padding: 0.6rem 0.25rem calc(0.6rem + env(safe-area-inset-bottom));
-  cursor: default;
-}
-
-.nav-item {
-  flex: 1;
+/* Bottom pane: translation comparison -- remaining 35% of screen height */
+#bottom-pane {
+  flex: 0 0 35%;
+  min-height: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--divider);
+}
+
+#compare-header {
+  display: flex;
   align-items: center;
-  gap: 0.15rem;
-  font-size: 0.68rem;
-  color: var(--ink-dim);
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--divider);
+  flex-shrink: 0;
 }
 
-.nav-item .nav-icon {
-  font-size: 1.15rem;
+#compare-back-btn {
+  background: none;
+  border: none;
+  color: var(--ink);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0.3rem 0 0;
 }
 
-.nav-item.active {
+#compare-header-title {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+#compare-change-btn {
+  background: none;
+  border: none;
   color: var(--accent);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.2rem 0.3rem;
 }
 
-/* Bottom sheets (shared by word explanation + compare picker) */
+#compare-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 1rem;
+}
+
+#compare-result {
+  padding: 1rem 0;
+}
+
+#compare-version-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+#compare-text {
+  font-style: italic;
+  color: var(--ink-dim);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+#compare-text ruby rt {
+  font-style: normal;
+}
+
+/* Bottom sheet (word explanation only -- the compare picker lives in the
+   fixed bottom pane above, not a modal) */
 .bottom-sheet {
   position: fixed;
   inset: 0;
@@ -281,29 +314,7 @@ ruby rt {
   font-weight: 400;
 }
 
-/* Compare picker sheet -- language list, then version list */
-.sheet-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0 0 1rem;
-}
-
-#compare-back-btn {
-  background: none;
-  border: none;
-  color: var(--ink);
-  font-size: 1.6rem;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0 0.4rem 0 0;
-}
-
-#compare-sheet-title {
-  margin: 0;
-  font-size: 1.1rem;
-}
-
+/* Picker rows -- shared by the language list and version list screens */
 .picker-list {
   display: flex;
   flex-direction: column;

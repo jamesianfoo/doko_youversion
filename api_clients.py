@@ -4,6 +4,7 @@ Kaggle notebook, so both demonstrate the exact same real API calls.
 """
 import os
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 import pykakasi
 import requests
@@ -56,6 +57,43 @@ def get_passage(version_id, reference):
     )
     resp.raise_for_status()
     return resp.json()  # {"id", "content", "reference"}
+
+
+_chapter_cache = {}
+
+
+def get_chapter(version_id, book, chapter, verse_count):
+    """Fetch a full chapter as real per-verse text.
+
+    The chapter-level passage endpoint (e.g. 'EPH.2') returns all verses
+    concatenated into one plain-text blob with no verse boundaries or
+    numbers -- unusable for numbering verses or scoping a tappable word to
+    one specific verse (the same word can recur elsewhere in the chapter).
+    So this fetches each verse individually instead, in parallel since it's
+    pure network I/O, and caches the assembled result since Bible text for
+    a given version/chapter never changes.
+    """
+    cache_key = (version_id, book, chapter)
+    if cache_key in _chapter_cache:
+        return _chapter_cache[cache_key]
+
+    def fetch_verse(verse_number):
+        passage = get_passage(version_id, f"{book}.{chapter}.{verse_number}")
+        return {"number": verse_number, "text": passage["content"]}
+
+    def fetch_chapter_reference():
+        return get_passage(version_id, f"{book}.{chapter}")["reference"]
+
+    with ThreadPoolExecutor(max_workers=9) as pool:
+        verse_futures = [pool.submit(fetch_verse, n) for n in range(1, verse_count + 1)]
+        reference_future = pool.submit(fetch_chapter_reference)
+        result = {
+            "reference": reference_future.result(),
+            "verses": [f.result() for f in verse_futures],
+        }
+
+    _chapter_cache[cache_key] = result
+    return result
 
 
 _versions_by_language_cache = {}

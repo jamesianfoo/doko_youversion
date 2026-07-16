@@ -9,17 +9,33 @@ async function loadVerse() {
   document.getElementById("verse-loading").classList.add("hidden");
   document.getElementById("reference-pill").textContent = data.reference;
   document.getElementById("version-pill").textContent = data.version.abbreviation;
-  document.getElementById("verse-number").textContent = data.verse_number;
 
-  renderChinese(data.chars, data.tappable);
+  renderChapter(data.verses);
   renderCopyright(data.version.copyright);
   loadMemory();
 }
 
-function renderChinese(chars, tappableSpans) {
-  const container = document.getElementById("verse-chinese");
+function renderChapter(verses) {
+  const container = document.getElementById("verse-chapter");
   container.innerHTML = "";
+  for (const verse of verses) {
+    const p = document.createElement("p");
+    p.className = "verse-line";
 
+    const sup = document.createElement("sup");
+    sup.className = "verse-number";
+    sup.textContent = verse.number;
+    p.appendChild(sup);
+
+    renderVerseContent(p, verse.chars, verse.tappable);
+    container.appendChild(p);
+  }
+}
+
+// Appends pinyin-annotated characters into `container`, wrapping any
+// tappable span (only the demo's one tappable verse has these) in a
+// clickable element that triggers the word-explanation lookup.
+function renderVerseContent(container, chars, tappableSpans) {
   let i = 0;
   while (i < chars.length) {
     const span = tappableSpans.find((s) => s.start === i);
@@ -53,8 +69,7 @@ function renderRuby(charObj) {
 }
 
 // Renders a plain (non-tappable) run of pinyin-annotated characters into a
-// container -- used for both the verse's non-tappable spans and the full
-// word-explanation text.
+// container -- used for the word-explanation text and compare passages.
 function renderRubyText(container, chars) {
   container.innerHTML = "";
   for (const charObj of chars) {
@@ -120,28 +135,28 @@ document.getElementById("play-explanation-audio-btn").addEventListener("click", 
 document.getElementById("close-sheet-btn").addEventListener("click", closeSheet);
 document.querySelector("#explanation-sheet .sheet-backdrop").addEventListener("click", closeSheet);
 
+// --- Compare pane: a persistent bottom pane (not a modal), so it never
+// blocks clicks to the top pane. Three states: 'language', 'version',
+// 'result' -- toggled by showing/hiding the matching #compare-* element.
 let compareLanguagesCache = null;
 
-async function openCompareSheet() {
-  document.getElementById("compare-sheet").classList.remove("hidden");
-  showCompareScreen("language");
+function showCompareState(state, headerTitle) {
+  document.getElementById("compare-language-list").classList.toggle("hidden", state !== "language");
+  document.getElementById("compare-version-list").classList.toggle("hidden", state !== "version");
+  document.getElementById("compare-result").classList.toggle("hidden", state !== "result");
+  document.getElementById("compare-back-btn").classList.toggle("hidden", state !== "version");
+  document.getElementById("compare-change-btn").classList.toggle("hidden", state !== "result");
+  document.getElementById("compare-header-title").textContent =
+    headerTitle || (state === "version" ? "Choose a version" : "Compare Translations");
+}
+
+async function openLanguagePicker() {
+  showCompareState("language");
   if (!compareLanguagesCache) {
     const res = await fetch("/api/compare/languages");
     compareLanguagesCache = (await res.json()).languages;
   }
   renderLanguageList(compareLanguagesCache);
-}
-
-function closeCompareSheet() {
-  document.getElementById("compare-sheet").classList.add("hidden");
-}
-
-function showCompareScreen(screen) {
-  document.getElementById("compare-language-list").classList.toggle("hidden", screen !== "language");
-  document.getElementById("compare-version-list").classList.toggle("hidden", screen !== "version");
-  document.getElementById("compare-back-btn").classList.toggle("hidden", screen === "language");
-  document.getElementById("compare-sheet-title").textContent =
-    screen === "language" ? "Compare Translations" : "Choose a version";
 }
 
 function renderLanguageList(languages) {
@@ -160,8 +175,7 @@ function renderLanguageList(languages) {
 }
 
 async function onLanguageRowClick(lang) {
-  showCompareScreen("version");
-  document.getElementById("compare-sheet-title").textContent = lang.label;
+  showCompareState("version", lang.label);
   const list = document.getElementById("compare-version-list");
   list.innerHTML = `<p class="picker-row-subtitle">Loading…</p>`;
 
@@ -188,7 +202,6 @@ function renderVersionList(versions) {
 
 async function onVersionRowClick(versionId) {
   await showComparePassage(versionId);
-  closeCompareSheet();
 }
 
 async function showComparePassage(versionId) {
@@ -206,18 +219,20 @@ async function showComparePassage(versionId) {
     textEl.textContent = data.text;
   }
 
-  document.getElementById("compare-panel").classList.remove("hidden");
+  showCompareState("result");
 }
 
-function hideComparePanel() {
-  document.getElementById("compare-panel").classList.add("hidden");
-}
+document.getElementById("more-btn").addEventListener("click", openLanguagePicker);
+document.getElementById("version-pill").addEventListener("click", openLanguagePicker);
+document.getElementById("compare-back-btn").addEventListener("click", () => showCompareState("language"));
+document.getElementById("compare-change-btn").addEventListener("click", openLanguagePicker);
 
-document.getElementById("more-btn").addEventListener("click", openCompareSheet);
-document.getElementById("version-pill").addEventListener("click", openCompareSheet);
-document.getElementById("close-compare-sheet-btn").addEventListener("click", closeCompareSheet);
-document.querySelector("#compare-sheet .sheet-backdrop").addEventListener("click", closeCompareSheet);
-document.getElementById("compare-back-btn").addEventListener("click", () => showCompareScreen("language"));
-document.getElementById("close-compare-btn").addEventListener("click", hideComparePanel);
+async function loadDefaultCompare() {
+  const res = await fetch("/api/compare/languages");
+  const data = await res.json();
+  compareLanguagesCache = data.languages;
+  await showComparePassage(data.default_version_id);
+}
 
 loadVerse();
+loadDefaultCompare();
