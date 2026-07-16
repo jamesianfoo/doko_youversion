@@ -120,12 +120,16 @@ def api_compare_passage():
     version_id = request.args.get("version_id", type=int)
     if not version_id:
         return jsonify({"error": "version_id query param required"}), 400
-    passage = get_passage(version_id, DEMO_VERSE["usfm"])
+    # Any verse in the chapter can be compared, not just the fixed demo verse
+    # -- tapping a different verse in the primary pane re-targets this.
+    verse_number = request.args.get("verse", type=int) or DEMO_CHAPTER["tappable_verse_number"]
+    usfm = f"{DEMO_CHAPTER['book']}.{DEMO_CHAPTER['chapter']}.{verse_number}"
+    passage = get_passage(version_id, usfm)
     meta = get_version_meta(version_id)
     return jsonify(
         {
             "reference": passage["reference"],
-            "verse_number": DEMO_CHAPTER["tappable_verse_number"],
+            "verse_number": verse_number,
             "text": passage["content"],
             "chars": annotate_reading(passage["content"], meta.get("language_tag")),
             "version": meta,

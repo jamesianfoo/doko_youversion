@@ -3,7 +3,13 @@ let currentExplanationText = "";
 let currentPrimaryVersionId = null;
 let currentPrimaryLanguageTag = null;
 let currentReference = "";
-let featuredVerseNumber = null;
+// The verse currently highlighted and shown in the Compare pane. Starts
+// null (defaults to the chapter's is_featured verse on first render) but,
+// once a user taps a different verse, persists across primary-language
+// switches and compare-version changes -- it's "which verse", independent
+// of which script/version happens to be displaying it.
+let selectedVerseNumber = null;
+let currentCompareVersionId = null;
 
 const SPEECH_LANG_MAP = { zh: "zh-CN", en: "en-US", ja: "ja-JP", es: "es-ES", fr: "fr-FR" };
 
@@ -20,39 +26,32 @@ async function loadVerse(versionId) {
   document.getElementById("reference-pill").textContent = data.reference;
   document.getElementById("version-pill").textContent = data.version.abbreviation;
 
-  // Reset before rendering; renderChapter sets this from each verse's
-  // is_featured flag, which is true in every language (the tappable word
-  // itself is Mandarin-only, but the featured verse is still the featured
-  // verse regardless of which language is showing).
-  featuredVerseNumber = null;
-  document.getElementById("jump-to-verse-btn").classList.add("hidden");
-
   renderChapter(data.verses);
   renderCopyright(data.version.copyright);
   loadMemory();
 
-  if (featuredVerseNumber !== null) {
-    document.getElementById("jump-to-verse-btn").classList.remove("hidden");
-    // Land straight on the featured verse instead of chapter start -- it's
-    // easy to lose among 22 verses otherwise. Deferred a couple frames so
-    // the browser finishes laying out the freshly-inserted verses first;
-    // calling scrollIntoView in the same tick as the DOM insert can compute
-    // against stale (pre-layout) positions and land in the wrong place.
-    requestAnimationFrame(() => requestAnimationFrame(() => scrollToFeaturedVerse(false)));
-  }
+  document.getElementById("jump-to-verse-btn").classList.remove("hidden");
+  // Land straight on the selected verse instead of chapter start -- it's
+  // easy to lose among 22 verses otherwise. Deferred a couple frames so
+  // the browser finishes laying out the freshly-inserted verses first;
+  // calling scrollIntoView in the same tick as the DOM insert can compute
+  // against stale (pre-layout) positions and land in the wrong place.
+  requestAnimationFrame(() => requestAnimationFrame(() => scrollToSelectedVerse(false)));
 }
 
 function renderChapter(verses) {
   const container = document.getElementById("verse-chapter");
   container.innerHTML = "";
+
+  let defaultVerseNumber = null;
   for (const verse of verses) {
     const p = document.createElement("p");
     p.className = "verse-line";
     p.id = `verse-${verse.number}`;
+    p.addEventListener("click", () => onVerseSelect(verse.number));
 
     if (verse.is_featured) {
-      p.classList.add("verse-highlight");
-      featuredVerseNumber = verse.number;
+      defaultVerseNumber = verse.number;
     }
 
     const sup = document.createElement("sup");
@@ -63,11 +62,34 @@ function renderChapter(verses) {
     renderVerseContent(p, verse.chars, verse.tappable);
     container.appendChild(p);
   }
+
+  // Re-rendering (e.g. switching primary language) rebuilds every <p> fresh,
+  // so the highlight has to be re-applied to whichever verse is selected --
+  // only fall back to the chapter's default featured verse on first load.
+  if (selectedVerseNumber === null) {
+    selectedVerseNumber = defaultVerseNumber;
+  }
+  const selectedEl = document.getElementById(`verse-${selectedVerseNumber}`);
+  if (selectedEl) selectedEl.classList.add("verse-highlight");
 }
 
-function scrollToFeaturedVerse(flash) {
-  if (featuredVerseNumber === null) return;
-  const el = document.getElementById(`verse-${featuredVerseNumber}`);
+function onVerseSelect(verseNumber) {
+  if (verseNumber === selectedVerseNumber) return;
+  const prevEl = document.getElementById(`verse-${selectedVerseNumber}`);
+  if (prevEl) prevEl.classList.remove("verse-highlight");
+
+  selectedVerseNumber = verseNumber;
+  const newEl = document.getElementById(`verse-${verseNumber}`);
+  if (newEl) newEl.classList.add("verse-highlight");
+
+  if (currentCompareVersionId !== null) {
+    showComparePassage(currentCompareVersionId);
+  }
+}
+
+function scrollToSelectedVerse(flash) {
+  if (selectedVerseNumber === null) return;
+  const el = document.getElementById(`verse-${selectedVerseNumber}`);
   if (!el) return;
   // "smooth" behavior here has been unreliable (sometimes never completes),
   // so jump instantly and use the flash pulse for visual feedback instead.
@@ -258,8 +280,12 @@ async function onLanguageRowClick(lang) {
   renderVersionRows(list, data.versions, (v) => showComparePassage(v.id));
 }
 
-async function showComparePassage(versionId) {
-  const res = await fetch(`/api/compare/passage?version_id=${encodeURIComponent(versionId)}`);
+async function showComparePassage(versionId, verseNumber) {
+  verseNumber = verseNumber || selectedVerseNumber;
+  currentCompareVersionId = versionId;
+  const res = await fetch(
+    `/api/compare/passage?version_id=${encodeURIComponent(versionId)}&verse=${encodeURIComponent(verseNumber)}`
+  );
   const data = await res.json();
   document.getElementById("compare-version-title").textContent = `${data.version.abbreviation} — ${data.version.title}`;
 
@@ -279,8 +305,8 @@ async function showComparePassage(versionId) {
 document.getElementById("more-btn").addEventListener("click", openLanguagePicker);
 document.getElementById("compare-back-btn").addEventListener("click", () => showCompareState("language"));
 document.getElementById("compare-change-btn").addEventListener("click", openLanguagePicker);
-document.getElementById("jump-to-verse-btn").addEventListener("click", () => scrollToFeaturedVerse(true));
-document.getElementById("show-in-chapter-btn").addEventListener("click", () => scrollToFeaturedVerse(true));
+document.getElementById("jump-to-verse-btn").addEventListener("click", () => scrollToSelectedVerse(true));
+document.getElementById("show-in-chapter-btn").addEventListener("click", () => scrollToSelectedVerse(true));
 
 // --- Primary-language picker (top pane): a modal sheet, since the top pane
 // itself has no room to spare for a persistent picker. Picking a new

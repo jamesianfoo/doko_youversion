@@ -126,6 +126,13 @@ body {
   font-size: 1.4rem;
   line-height: 2.3;
   margin: 0 0 0.9rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.verse-line:hover:not(.verse-highlight) {
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .verse-number {
