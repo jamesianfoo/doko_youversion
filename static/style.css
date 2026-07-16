@@ -84,7 +84,21 @@ body {
   justify-content: flex-end;
 }
 
-#more-menu button {
+.compare-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.compare-label-fixed {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+}
+
+#more-menu button,
+#more-menu select {
   background: var(--bg-elevated);
   color: var(--ink);
   border: 1px solid var(--divider);
@@ -92,6 +106,10 @@ body {
   padding: 0.5rem 0.9rem;
   font-size: 0.85rem;
   cursor: pointer;
+}
+
+#more-menu select {
+  max-width: 11rem;
 }
 
 /* Memory banner */
@@ -145,12 +163,24 @@ ruby rt {
   background: var(--accent-soft);
 }
 
-.verse-english {
-  font-style: italic;
+.verse-compare {
   color: var(--ink-dim);
   font-size: 1.2rem;
   padding-top: 1rem;
   border-top: 1px solid var(--divider);
+}
+
+#compare-version-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+  font-style: normal;
+}
+
+#compare-text {
+  font-style: italic;
 }
 
 #copyright-footer {

@@ -18,7 +18,14 @@
     </header>
 
     <div id="more-menu" class="hidden">
-      <button id="reveal-english-btn">Compare: <span id="english-version-label">English</span></button>
+      <div class="compare-row">
+        <span class="compare-label-fixed">Compare:</span>
+        <select id="compare-language-select">
+          <option value="">Choose language…</option>
+        </select>
+        <select id="compare-version-select" class="hidden"></select>
+        <button id="close-compare-btn" class="hidden">Hide</button>
+      </div>
     </div>
 
     <div id="memory-banner" class="hidden">
@@ -32,7 +39,10 @@
         <sup id="verse-number"></sup><span id="verse-chinese"></span>
       </p>
 
-      <p class="verse-line verse-english hidden" id="verse-english"></p>
+      <div class="verse-line verse-compare hidden" id="compare-panel">
+        <div id="compare-version-title"></div>
+        <div id="compare-text"></div>
+      </div>
 
       <footer id="copyright-footer"></footer>
     </main>

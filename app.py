@@ -10,10 +10,12 @@ from flask import Flask, jsonify, render_template, request
 
 from api_clients import (
     CHINESE_VERSION_ID,
+    COMPARE_LANGUAGES,
     ENGLISH_VERSION_ID,
     explain_word,
     get_passage,
     get_version_meta,
+    list_versions,
     to_pinyin,
 )
 
@@ -75,10 +77,26 @@ def api_verse():
     )
 
 
-@app.route("/api/english")
-def api_english():
-    passage = get_passage(ENGLISH_VERSION_ID, DEMO_VERSE["usfm"])
-    meta = get_version_meta(ENGLISH_VERSION_ID)
+@app.route("/api/compare/languages")
+def api_compare_languages():
+    return jsonify({"languages": COMPARE_LANGUAGES, "default_version_id": ENGLISH_VERSION_ID})
+
+
+@app.route("/api/compare/versions")
+def api_compare_versions():
+    language = request.args.get("language")
+    if not language:
+        return jsonify({"error": "language query param required"}), 400
+    return jsonify({"versions": list_versions(language)})
+
+
+@app.route("/api/compare/passage")
+def api_compare_passage():
+    version_id = request.args.get("version_id", type=int)
+    if not version_id:
+        return jsonify({"error": "version_id query param required"}), 400
+    passage = get_passage(version_id, DEMO_VERSE["usfm"])
+    meta = get_version_meta(version_id)
     return jsonify(
         {
             "reference": passage["reference"],

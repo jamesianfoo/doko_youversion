@@ -124,24 +124,73 @@ document.getElementById("more-btn").addEventListener("click", () => {
 document.getElementById("close-sheet-btn").addEventListener("click", closeSheet);
 document.getElementById("explanation-backdrop").addEventListener("click", closeSheet);
 
-document.getElementById("reveal-english-btn").addEventListener("click", async (e) => {
-  const englishEl = document.getElementById("verse-english");
-  const isHidden = englishEl.classList.contains("hidden");
+async function loadCompareLanguages() {
+  const res = await fetch("/api/compare/languages");
+  const data = await res.json();
+  const languageSelect = document.getElementById("compare-language-select");
+  for (const lang of data.languages) {
+    const opt = document.createElement("option");
+    opt.value = lang.code;
+    opt.textContent = lang.label;
+    languageSelect.appendChild(opt);
+  }
+}
 
-  if (!isHidden) {
-    englishEl.classList.add("hidden");
-    document.getElementById("more-menu").classList.add("hidden");
+async function onCompareLanguageChange() {
+  const code = document.getElementById("compare-language-select").value;
+  const versionSelect = document.getElementById("compare-version-select");
+  versionSelect.innerHTML = "";
+
+  if (!code) {
+    versionSelect.classList.add("hidden");
+    hideComparePanel();
     return;
   }
 
-  if (!englishEl.textContent) {
-    const res = await fetch("/api/english");
-    const data = await res.json();
-    englishEl.textContent = data.text;
-    document.getElementById("english-version-label").textContent = data.version.abbreviation;
+  const res = await fetch(`/api/compare/versions?language=${encodeURIComponent(code)}`);
+  const data = await res.json();
+  for (const v of data.versions) {
+    const opt = document.createElement("option");
+    opt.value = v.id;
+    opt.textContent = `${v.abbreviation} — ${v.title}`;
+    versionSelect.appendChild(opt);
   }
-  englishEl.classList.remove("hidden");
+  versionSelect.classList.remove("hidden");
+
+  if (data.versions.length > 0) {
+    await showComparePassage(data.versions[0].id);
+  }
+}
+
+async function onCompareVersionChange() {
+  const versionId = document.getElementById("compare-version-select").value;
+  if (versionId) {
+    await showComparePassage(versionId);
+  }
+}
+
+async function showComparePassage(versionId) {
+  const res = await fetch(`/api/compare/passage?version_id=${encodeURIComponent(versionId)}`);
+  const data = await res.json();
+  document.getElementById("compare-version-title").textContent = `${data.version.abbreviation} — ${data.version.title}`;
+  document.getElementById("compare-text").textContent = data.text;
+  document.getElementById("compare-panel").classList.remove("hidden");
+  document.getElementById("close-compare-btn").classList.remove("hidden");
+}
+
+function hideComparePanel() {
+  document.getElementById("compare-panel").classList.add("hidden");
+  document.getElementById("close-compare-btn").classList.add("hidden");
+}
+
+document.getElementById("compare-language-select").addEventListener("change", onCompareLanguageChange);
+document.getElementById("compare-version-select").addEventListener("change", onCompareVersionChange);
+document.getElementById("close-compare-btn").addEventListener("click", () => {
+  hideComparePanel();
+  document.getElementById("compare-language-select").value = "";
+  document.getElementById("compare-version-select").classList.add("hidden");
   document.getElementById("more-menu").classList.add("hidden");
 });
 
+loadCompareLanguages();
 loadVerse();

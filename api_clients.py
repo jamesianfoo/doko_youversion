@@ -27,6 +27,18 @@ GLOO_RESPONSES_URL = "https://platform.ai.gloo.com/ai/v1/responses"
 CHINESE_VERSION_ID = 43   # CSBS
 ENGLISH_VERSION_ID = 3034  # BSB
 
+# Curated languages offered in the "Compare" picker. Each is a real ISO
+# 639-3 code confirmed (scripts/probe_youversion.py) to have at least one
+# version actually licensed and fetchable for this app key -- not just
+# present in the wider discovery catalog (see CHINESE/ENGLISH_VERSION_ID
+# comment above for why "discoverable" isn't the same as "usable").
+COMPARE_LANGUAGES = [
+    {"code": "eng", "label": "English"},
+    {"code": "jpn", "label": "Japanese"},
+    {"code": "spa", "label": "Spanish"},
+    {"code": "fra", "label": "French"},
+]
+
 _gloo_token = None
 _gloo_token_expires_at = 0
 
@@ -41,6 +53,40 @@ def get_passage(version_id, reference):
     )
     resp.raise_for_status()
     return resp.json()  # {"id", "content", "reference"}
+
+
+_versions_by_language_cache = {}
+
+
+def list_versions(language_code):
+    """List Bible versions actually licensed for this app key in a language.
+
+    Deliberately omits all_available=true: that flag surfaces YouVersion's
+    full discovery catalog, including versions this app key isn't licensed
+    to fetch passages from (they 403). This only returns versions real
+    enough to actually display.
+    """
+    if language_code in _versions_by_language_cache:
+        return _versions_by_language_cache[language_code]
+    resp = requests.get(
+        f"{YVP_BASE_URL}/bibles",
+        headers={"X-YVP-App-Key": YVP_APP_KEY},
+        params={"language_ranges[]": language_code},
+        timeout=15,
+    )
+    resp.raise_for_status()
+    versions = []
+    if resp.status_code == 200 and resp.text.strip():
+        for v in resp.json().get("data", []):
+            versions.append(
+                {
+                    "id": v.get("id"),
+                    "abbreviation": v.get("localized_abbreviation") or v.get("abbreviation"),
+                    "title": v.get("localized_title") or v.get("title"),
+                }
+            )
+    _versions_by_language_cache[language_code] = versions
+    return versions
 
 
 _version_meta_cache = {}
