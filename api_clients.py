@@ -43,6 +43,29 @@ def get_passage(version_id, reference):
     return resp.json()  # {"id", "content", "reference"}
 
 
+_version_meta_cache = {}
+
+
+def get_version_meta(version_id):
+    """Fetch version metadata (abbreviation, title, copyright notice)."""
+    if version_id in _version_meta_cache:
+        return _version_meta_cache[version_id]
+    resp = requests.get(
+        f"{YVP_BASE_URL}/bibles/{version_id}",
+        headers={"X-YVP-App-Key": YVP_APP_KEY},
+        timeout=15,
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    meta = {
+        "abbreviation": data.get("localized_abbreviation") or data.get("abbreviation"),
+        "title": data.get("localized_title") or data.get("title"),
+        "copyright": data.get("copyright"),
+    }
+    _version_meta_cache[version_id] = meta
+    return meta
+
+
 def to_pinyin(chinese_text):
     """Pair each non-punctuation character with its tone-marked pinyin syllable."""
     syllables = pinyin(chinese_text, style=Style.TONE, errors="ignore")

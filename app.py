@@ -13,6 +13,7 @@ from api_clients import (
     ENGLISH_VERSION_ID,
     explain_word,
     get_passage,
+    get_version_meta,
     to_pinyin,
 )
 
@@ -56,16 +57,20 @@ def _find_tappable_spans(chinese_text, words):
 @app.route("/api/verse")
 def api_verse():
     passage = get_passage(CHINESE_VERSION_ID, DEMO_VERSE["usfm"])
+    meta = get_version_meta(CHINESE_VERSION_ID)
     chinese_text = passage["content"]
     chars = to_pinyin(chinese_text)
     tappable = _find_tappable_spans(chinese_text, DEMO_VERSE["tappable_words"])
+    verse_number = DEMO_VERSE["usfm"].split(".")[-1]
     return jsonify(
         {
             "usfm": DEMO_VERSE["usfm"],
             "reference": passage["reference"],
+            "verse_number": verse_number,
             "chars": chars,
             "tappable": tappable,
             "raw_text": chinese_text,
+            "version": meta,
         }
     )
 
@@ -73,7 +78,14 @@ def api_verse():
 @app.route("/api/english")
 def api_english():
     passage = get_passage(ENGLISH_VERSION_ID, DEMO_VERSE["usfm"])
-    return jsonify({"reference": passage["reference"], "text": passage["content"]})
+    meta = get_version_meta(ENGLISH_VERSION_ID)
+    return jsonify(
+        {
+            "reference": passage["reference"],
+            "text": passage["content"],
+            "version": meta,
+        }
+    )
 
 
 @app.route("/api/explain", methods=["POST"])

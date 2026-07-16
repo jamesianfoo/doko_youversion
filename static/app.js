@@ -6,8 +6,12 @@ async function loadVerse() {
   currentVerseText = data.raw_text;
 
   document.getElementById("verse-loading").classList.add("hidden");
-  document.getElementById("verse-reference").textContent = data.reference;
+  document.getElementById("reference-pill").textContent = data.reference;
+  document.getElementById("version-pill").textContent = data.version.abbreviation;
+  document.getElementById("verse-number").textContent = data.verse_number;
+
   renderChinese(data.chars, data.tappable);
+  renderCopyright(data.version.copyright);
   loadMemory();
 }
 
@@ -47,12 +51,16 @@ function renderRuby(charObj) {
   return ruby;
 }
 
+function renderCopyright(copyrightText) {
+  document.getElementById("copyright-footer").textContent = copyrightText || "";
+}
+
 async function onWordTap(word, wrapperEl) {
   document.querySelectorAll(".tappable").forEach((el) => el.classList.remove("active"));
   wrapperEl.classList.add("active");
 
-  const panel = document.getElementById("explanation-panel");
-  panel.classList.remove("hidden");
+  const sheet = document.getElementById("explanation-sheet");
+  sheet.classList.remove("hidden");
   document.getElementById("explanation-word").textContent = word;
   document.getElementById("explanation-text").textContent = "Thinking…";
 
@@ -65,6 +73,10 @@ async function onWordTap(word, wrapperEl) {
   document.getElementById("explanation-text").textContent = data.explanation;
 }
 
+function closeSheet() {
+  document.getElementById("explanation-sheet").classList.add("hidden");
+}
+
 async function loadMemory() {
   const res = await fetch("/api/memory");
   const data = await res.json();
@@ -72,7 +84,7 @@ async function loadMemory() {
   if (priorTaps.length > 1) {
     const previous = priorTaps[priorTaps.length - 2];
     document.getElementById("memory-word").textContent = previous.word;
-    document.getElementById("memory-panel").classList.remove("hidden");
+    document.getElementById("memory-banner").classList.remove("hidden");
   }
 }
 
@@ -84,20 +96,31 @@ document.getElementById("play-audio-btn").addEventListener("click", () => {
   speechSynthesis.speak(utterance);
 });
 
+document.getElementById("more-btn").addEventListener("click", () => {
+  document.getElementById("more-menu").classList.toggle("hidden");
+});
+
+document.getElementById("close-sheet-btn").addEventListener("click", closeSheet);
+document.getElementById("explanation-backdrop").addEventListener("click", closeSheet);
+
 document.getElementById("reveal-english-btn").addEventListener("click", async (e) => {
   const englishEl = document.getElementById("verse-english");
-  if (!englishEl.classList.contains("hidden")) {
+  const isHidden = englishEl.classList.contains("hidden");
+
+  if (!isHidden) {
     englishEl.classList.add("hidden");
-    e.target.textContent = "Show English (BSB)";
+    document.getElementById("more-menu").classList.add("hidden");
     return;
   }
+
   if (!englishEl.textContent) {
     const res = await fetch("/api/english");
     const data = await res.json();
     englishEl.textContent = data.text;
+    document.getElementById("english-version-label").textContent = data.version.abbreviation;
   }
   englishEl.classList.remove("hidden");
-  e.target.textContent = "Hide English";
+  document.getElementById("more-menu").classList.add("hidden");
 });
 
 loadVerse();

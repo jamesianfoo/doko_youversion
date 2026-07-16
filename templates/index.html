@@ -7,31 +7,54 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
-  <main>
-    <h1>同行 <span class="subtitle">Dōkō — walking together</span></h1>
+  <div id="phone-frame">
 
-    <div id="verse-card">
-      <p id="verse-loading">Loading today's verse…</p>
-      <p id="verse-chinese" class="verse-line"></p>
-      <p id="verse-reference"></p>
+    <header id="top-bar">
+      <div class="pill" id="reference-pill">…</div>
+      <div class="pill pill-muted" id="version-pill">…</div>
+      <div class="top-bar-spacer"></div>
+      <button id="play-audio-btn" class="icon-btn" title="Listen to this verse">🔊</button>
+      <button id="more-btn" class="icon-btn" title="More">⋯</button>
+    </header>
 
-      <div class="controls">
-        <button id="play-audio-btn" title="Play Chinese audio">🔊 Listen</button>
-        <button id="reveal-english-btn">Show English (BSB)</button>
-      </div>
-
-      <p id="verse-english" class="verse-line hidden"></p>
+    <div id="more-menu" class="hidden">
+      <button id="reveal-english-btn">Compare: <span id="english-version-label">English</span></button>
     </div>
 
-    <div id="explanation-panel" class="hidden">
+    <div id="memory-banner" class="hidden">
+      <span>You explored <strong id="memory-word"></strong> before — tap it again any time.</span>
+    </div>
+
+    <main id="verse-scroll">
+      <p id="verse-loading">Loading today's verse…</p>
+
+      <p class="verse-line" id="verse-chinese-line">
+        <sup id="verse-number"></sup><span id="verse-chinese"></span>
+      </p>
+
+      <p class="verse-line verse-english hidden" id="verse-english"></p>
+
+      <footer id="copyright-footer"></footer>
+    </main>
+
+    <nav id="bottom-nav" title="Demo only — single screen MVP">
+      <div class="nav-item active"><span class="nav-icon">📖</span><span>Bible</span></div>
+      <div class="nav-item"><span class="nav-icon">🏠</span><span>Home</span></div>
+      <div class="nav-item"><span class="nav-icon">✅</span><span>Plans</span></div>
+      <div class="nav-item"><span class="nav-icon">🔍</span><span>Discover</span></div>
+      <div class="nav-item"><span class="nav-icon">👤</span><span>You</span></div>
+    </nav>
+  </div>
+
+  <div id="explanation-sheet" class="hidden">
+    <div id="explanation-backdrop"></div>
+    <div id="explanation-card">
+      <div class="sheet-handle"></div>
+      <button id="close-sheet-btn">×</button>
       <h2 id="explanation-word"></h2>
       <p id="explanation-text">Thinking…</p>
     </div>
-
-    <div id="memory-panel" class="hidden">
-      <p>You explored <strong id="memory-word"></strong> before — tap it again any time.</p>
-    </div>
-  </main>
+  </div>
 
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
