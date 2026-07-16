@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dōkō (同行) — Walking Together Through Scripture</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main>
+    <h1>同行 <span class="subtitle">Dōkō — walking together</span></h1>
+
+    <div id="verse-card">
+      <p id="verse-loading">Loading today's verse…</p>
+      <p id="verse-chinese" class="verse-line"></p>
+      <p id="verse-reference"></p>
+
+      <div class="controls">
+        <button id="play-audio-btn" title="Play Chinese audio">🔊 Listen</button>
+        <button id="reveal-english-btn">Show English (BSB)</button>
+      </div>
+
+      <p id="verse-english" class="verse-line hidden"></p>
+    </div>
+
+    <div id="explanation-panel" class="hidden">
+      <h2 id="explanation-word"></h2>
+      <p id="explanation-text">Thinking…</p>
+    </div>
+
+    <div id="memory-panel" class="hidden">
+      <p>You explored <strong id="memory-word"></strong> before — tap it again any time.</p>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

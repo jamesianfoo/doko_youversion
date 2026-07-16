@@ -1,0 +1,95 @@
+:root {
+  color-scheme: light dark;
+  --ink: #2b2420;
+  --paper: #faf6ef;
+  --accent: #a8452f;
+}
+
+body {
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 400;
+  opacity: 0.65;
+}
+
+#verse-card {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.verse-line {
+  font-size: 1.5rem;
+  line-height: 2.4;
+}
+
+ruby rt {
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+
+.tappable {
+  cursor: pointer;
+  border-bottom: 2px dotted var(--accent);
+  padding: 0 1px;
+}
+
+.tappable:hover,
+.tappable.active {
+  background: rgba(168, 69, 47, 0.15);
+  border-radius: 4px;
+}
+
+.controls {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+button {
+  font-size: 0.9rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: white;
+  cursor: pointer;
+}
+
+#verse-reference {
+  opacity: 0.6;
+  font-size: 0.85rem;
+}
+
+#verse-english {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+#explanation-panel,
+#memory-panel {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(168, 69, 47, 0.08);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+}
+
+.hidden {
+  display: none;
+}
