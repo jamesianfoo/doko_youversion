@@ -106,7 +106,13 @@ def api_explain():
     )
     _save_memory(entries)
 
-    return jsonify({"word": word, "explanation": explanation})
+    return jsonify(
+        {
+            "word": word,
+            "explanation": explanation,
+            "explanation_chars": to_pinyin(explanation),
+        }
+    )
 
 
 @app.route("/api/memory")

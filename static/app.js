@@ -1,4 +1,5 @@
 let currentVerseText = "";
+let currentExplanationText = "";
 
 async function loadVerse() {
   const res = await fetch("/api/verse");
@@ -51,14 +52,33 @@ function renderRuby(charObj) {
   return ruby;
 }
 
+// Renders a plain (non-tappable) run of pinyin-annotated characters into a
+// container -- used for both the verse's non-tappable spans and the full
+// word-explanation text.
+function renderRubyText(container, chars) {
+  container.innerHTML = "";
+  for (const charObj of chars) {
+    container.appendChild(renderRuby(charObj));
+  }
+}
+
 function renderCopyright(copyrightText) {
   document.getElementById("copyright-footer").textContent = copyrightText || "";
+}
+
+function speakChinese(text) {
+  if (!text) return;
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "zh-CN";
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utterance);
 }
 
 async function onWordTap(word, wrapperEl) {
   document.querySelectorAll(".tappable").forEach((el) => el.classList.remove("active"));
   wrapperEl.classList.add("active");
 
+  currentExplanationText = "";
   const sheet = document.getElementById("explanation-sheet");
   sheet.classList.remove("hidden");
   document.getElementById("explanation-word").textContent = word;
@@ -70,7 +90,8 @@ async function onWordTap(word, wrapperEl) {
     body: JSON.stringify({ word, verse_text: currentVerseText }),
   });
   const data = await res.json();
-  document.getElementById("explanation-text").textContent = data.explanation;
+  currentExplanationText = data.explanation;
+  renderRubyText(document.getElementById("explanation-text"), data.explanation_chars);
 }
 
 function closeSheet() {
@@ -89,11 +110,11 @@ async function loadMemory() {
 }
 
 document.getElementById("play-audio-btn").addEventListener("click", () => {
-  if (!currentVerseText) return;
-  const utterance = new SpeechSynthesisUtterance(currentVerseText);
-  utterance.lang = "zh-CN";
-  speechSynthesis.cancel();
-  speechSynthesis.speak(utterance);
+  speakChinese(currentVerseText);
+});
+
+document.getElementById("play-explanation-audio-btn").addEventListener("click", () => {
+  speakChinese(currentExplanationText);
 });
 
 document.getElementById("more-btn").addEventListener("click", () => {
