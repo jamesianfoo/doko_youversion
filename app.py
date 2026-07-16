@@ -12,12 +12,12 @@ from api_clients import (
     CHINESE_VERSION_ID,
     COMPARE_LANGUAGES,
     ENGLISH_VERSION_ID,
+    annotate_reading,
     explain_word,
     get_chapter,
     get_passage,
     get_version_meta,
     list_versions,
-    to_furigana,
     to_pinyin,
 )
 
@@ -61,21 +61,26 @@ def _find_tappable_spans(chinese_text, words):
 
 @app.route("/api/verse")
 def api_verse():
-    chapter = get_chapter(
-        CHINESE_VERSION_ID, DEMO_CHAPTER["book"], DEMO_CHAPTER["chapter"], DEMO_CHAPTER["verse_count"]
-    )
-    meta = get_version_meta(CHINESE_VERSION_ID)
+    # Primary pane defaults to the Mandarin demo chapter, but a learner whose
+    # primary language is English (Mandarin as the "side-kick" secondary) can
+    # point this at any licensed version via ?version_id=.
+    version_id = request.args.get("version_id", type=int) or CHINESE_VERSION_ID
+    chapter = get_chapter(version_id, DEMO_CHAPTER["book"], DEMO_CHAPTER["chapter"], DEMO_CHAPTER["verse_count"])
+    meta = get_version_meta(version_id)
 
     verses = []
     full_text_parts = []
     for v in chapter["verses"]:
+        # The tappable word is Mandarin-specific (it's a Mandarin vocabulary
+        # lookup demo), so this is naturally a no-op when v["text"] isn't
+        # Chinese -- "恩典" just won't be found in another language's text.
         tappable = []
         if v["number"] == DEMO_CHAPTER["tappable_verse_number"]:
             tappable = _find_tappable_spans(v["text"], DEMO_VERSE["tappable_words"])
         verses.append(
             {
                 "number": v["number"],
-                "chars": to_pinyin(v["text"]),
+                "chars": annotate_reading(v["text"], meta.get("language_tag")),
                 "raw_text": v["text"],
                 "tappable": tappable,
             }
@@ -84,6 +89,7 @@ def api_verse():
 
     return jsonify(
         {
+            "version_id": version_id,
             "reference": chapter["reference"],
             "verses": verses,
             "raw_text": " ".join(full_text_parts),
@@ -112,16 +118,14 @@ def api_compare_passage():
         return jsonify({"error": "version_id query param required"}), 400
     passage = get_passage(version_id, DEMO_VERSE["usfm"])
     meta = get_version_meta(version_id)
-    response = {
-        "reference": passage["reference"],
-        "text": passage["content"],
-        "version": meta,
-    }
-    # Furigana is the Japanese equivalent of the verse's pinyin ruby text --
-    # only worth computing for Japanese, so other languages get plain text.
-    if meta.get("language_tag") == "ja":
-        response["chars"] = to_furigana(passage["content"])
-    return jsonify(response)
+    return jsonify(
+        {
+            "reference": passage["reference"],
+            "text": passage["content"],
+            "chars": annotate_reading(passage["content"], meta.get("language_tag")),
+            "version": meta,
+        }
+    )
 
 
 @app.route("/api/explain", methods=["POST"])

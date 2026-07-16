@@ -1,15 +1,27 @@
 let currentVerseText = "";
 let currentExplanationText = "";
+let currentPrimaryVersionId = null;
+let currentPrimaryLanguageTag = null;
 let tappableVerseNumber = null;
 
-async function loadVerse() {
-  const res = await fetch("/api/verse");
+const SPEECH_LANG_MAP = { zh: "zh-CN", en: "en-US", ja: "ja-JP", es: "es-ES", fr: "fr-FR" };
+
+async function loadVerse(versionId) {
+  const url = versionId ? `/api/verse?version_id=${encodeURIComponent(versionId)}` : "/api/verse";
+  const res = await fetch(url);
   const data = await res.json();
   currentVerseText = data.raw_text;
+  currentPrimaryVersionId = data.version_id;
+  currentPrimaryLanguageTag = data.version.language_tag;
 
   document.getElementById("verse-loading").classList.add("hidden");
   document.getElementById("reference-pill").textContent = data.reference;
   document.getElementById("version-pill").textContent = data.version.abbreviation;
+
+  // Reset before rendering -- a different primary language may have no
+  // tappable word at all, and renderChapter only sets this when it finds one.
+  tappableVerseNumber = null;
+  document.getElementById("jump-to-verse-btn").classList.add("hidden");
 
   renderChapter(data.verses);
   renderCopyright(data.version.copyright);
@@ -62,9 +74,10 @@ function scrollToTappableVerse(flash) {
   }
 }
 
-// Appends pinyin-annotated characters into `container`, wrapping any
-// tappable span (only the demo's one tappable verse has these) in a
-// clickable element that triggers the word-explanation lookup.
+// Appends pinyin/furigana-annotated characters into `container`, wrapping
+// any tappable span (only the demo's one tappable verse has these, and only
+// when the primary language is Mandarin) in a clickable element that
+// triggers the word-explanation lookup.
 function renderVerseContent(container, chars, tappableSpans) {
   let i = 0;
   while (i < chars.length) {
@@ -98,7 +111,7 @@ function renderRuby(charObj) {
   return ruby;
 }
 
-// Renders a plain (non-tappable) run of pinyin-annotated characters into a
+// Renders a plain (non-tappable) run of reading-annotated characters into a
 // container -- used for the word-explanation text and compare passages.
 function renderRubyText(container, chars) {
   container.innerHTML = "";
@@ -111,10 +124,10 @@ function renderCopyright(copyrightText) {
   document.getElementById("copyright-footer").textContent = copyrightText || "";
 }
 
-function speakChinese(text) {
+function speak(text, languageTag) {
   if (!text) return;
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "zh-CN";
+  utterance.lang = SPEECH_LANG_MAP[languageTag] || languageTag || "en-US";
   speechSynthesis.cancel();
   speechSynthesis.speak(utterance);
 }
@@ -155,21 +168,67 @@ async function loadMemory() {
 }
 
 document.getElementById("play-audio-btn").addEventListener("click", () => {
-  speakChinese(currentVerseText);
+  speak(currentVerseText, currentPrimaryLanguageTag);
 });
 
 document.getElementById("play-explanation-audio-btn").addEventListener("click", () => {
-  speakChinese(currentExplanationText);
+  // The word-explanation feature only ever explains Mandarin vocabulary,
+  // regardless of which language the primary pane is currently showing.
+  speak(currentExplanationText, "zh");
 });
 
 document.getElementById("close-sheet-btn").addEventListener("click", closeSheet);
 document.querySelector("#explanation-sheet .sheet-backdrop").addEventListener("click", closeSheet);
 
-// --- Compare pane: a persistent bottom pane (not a modal), so it never
-// blocks clicks to the top pane. Three states: 'language', 'version',
-// 'result' -- toggled by showing/hiding the matching #compare-* element.
-let compareLanguagesCache = null;
+// --- Shared row renderers for both the primary-language and compare
+// pickers -- same list UI (language list -> version list), just wired to
+// different onSelect callbacks and different target containers.
+let languagesResponseCache = null;
 
+async function getLanguagesResponse() {
+  if (!languagesResponseCache) {
+    const res = await fetch("/api/compare/languages");
+    languagesResponseCache = await res.json();
+  }
+  return languagesResponseCache;
+}
+
+async function getLanguages() {
+  return (await getLanguagesResponse()).languages;
+}
+
+function renderLanguageRows(containerEl, languages, onSelect) {
+  containerEl.innerHTML = "";
+  for (const lang of languages) {
+    const row = document.createElement("button");
+    row.className = "picker-row";
+    row.innerHTML = `
+      <span class="picker-row-body"><span class="picker-row-title">${lang.label}</span></span>
+      <span class="picker-chevron">›</span>
+    `;
+    row.addEventListener("click", () => onSelect(lang));
+    containerEl.appendChild(row);
+  }
+}
+
+function renderVersionRows(containerEl, versions, onSelect) {
+  containerEl.innerHTML = "";
+  for (const v of versions) {
+    const row = document.createElement("button");
+    row.className = "picker-row";
+    row.innerHTML = `
+      <span class="picker-badge">${v.abbreviation}</span>
+      <span class="picker-row-body"><span class="picker-row-title">${v.title}</span></span>
+      <span class="picker-chevron">›</span>
+    `;
+    row.addEventListener("click", () => onSelect(v));
+    containerEl.appendChild(row);
+  }
+}
+
+// --- Compare pane (secondary language): a persistent bottom pane, not a
+// modal, so it never blocks clicks to the top pane. Three states:
+// 'language', 'version', 'result'.
 function showCompareState(state, headerTitle) {
   document.getElementById("compare-language-list").classList.toggle("hidden", state !== "language");
   document.getElementById("compare-version-list").classList.toggle("hidden", state !== "version");
@@ -182,87 +241,87 @@ function showCompareState(state, headerTitle) {
 
 async function openLanguagePicker() {
   showCompareState("language");
-  if (!compareLanguagesCache) {
-    const res = await fetch("/api/compare/languages");
-    compareLanguagesCache = (await res.json()).languages;
-  }
-  renderLanguageList(compareLanguagesCache);
-}
-
-function renderLanguageList(languages) {
-  const list = document.getElementById("compare-language-list");
-  list.innerHTML = "";
-  for (const lang of languages) {
-    const row = document.createElement("button");
-    row.className = "picker-row";
-    row.innerHTML = `
-      <span class="picker-row-body"><span class="picker-row-title">${lang.label}</span></span>
-      <span class="picker-chevron">›</span>
-    `;
-    row.addEventListener("click", () => onLanguageRowClick(lang));
-    list.appendChild(row);
-  }
+  const languages = await getLanguages();
+  renderLanguageRows(document.getElementById("compare-language-list"), languages, onLanguageRowClick);
 }
 
 async function onLanguageRowClick(lang) {
   showCompareState("version", lang.label);
   const list = document.getElementById("compare-version-list");
   list.innerHTML = `<p class="picker-row-subtitle">Loading…</p>`;
-
   const res = await fetch(`/api/compare/versions?language=${encodeURIComponent(lang.code)}`);
   const data = await res.json();
-  renderVersionList(data.versions);
-}
-
-function renderVersionList(versions) {
-  const list = document.getElementById("compare-version-list");
-  list.innerHTML = "";
-  for (const v of versions) {
-    const row = document.createElement("button");
-    row.className = "picker-row";
-    row.innerHTML = `
-      <span class="picker-badge">${v.abbreviation}</span>
-      <span class="picker-row-body"><span class="picker-row-title">${v.title}</span></span>
-      <span class="picker-chevron">›</span>
-    `;
-    row.addEventListener("click", () => onVersionRowClick(v.id));
-    list.appendChild(row);
-  }
-}
-
-async function onVersionRowClick(versionId) {
-  await showComparePassage(versionId);
+  renderVersionRows(list, data.versions, (v) => showComparePassage(v.id));
 }
 
 async function showComparePassage(versionId) {
   const res = await fetch(`/api/compare/passage?version_id=${encodeURIComponent(versionId)}`);
   const data = await res.json();
   document.getElementById("compare-version-title").textContent = `${data.version.abbreviation} — ${data.version.title}`;
-
-  const textEl = document.getElementById("compare-text");
-  if (data.chars) {
-    // e.g. Japanese furigana -- same {char, pinyin} shape and ruby renderer
-    // as the Chinese verse/explanation text, just a different reading system.
-    renderRubyText(textEl, data.chars);
-  } else {
-    textEl.innerHTML = "";
-    textEl.textContent = data.text;
-  }
-
+  renderRubyText(document.getElementById("compare-text"), data.chars);
   showCompareState("result");
 }
 
 document.getElementById("more-btn").addEventListener("click", openLanguagePicker);
-document.getElementById("version-pill").addEventListener("click", openLanguagePicker);
 document.getElementById("compare-back-btn").addEventListener("click", () => showCompareState("language"));
 document.getElementById("compare-change-btn").addEventListener("click", openLanguagePicker);
 document.getElementById("jump-to-verse-btn").addEventListener("click", () => scrollToTappableVerse(true));
 document.getElementById("show-in-chapter-btn").addEventListener("click", () => scrollToTappableVerse(true));
 
-async function loadDefaultCompare() {
-  const res = await fetch("/api/compare/languages");
+// --- Primary-language picker (top pane): a modal sheet, since the top pane
+// itself has no room to spare for a persistent picker. Picking a new
+// primary swaps whatever was previously primary into the compare pane --
+// e.g. picking English/BSB as primary moves Mandarin/CSBS into "Compare",
+// for a learner whose primary language is English and Mandarin is the
+// side-kick, instead of only working the other way around.
+function showPrimaryPickerState(state, headerTitle) {
+  document.getElementById("primary-language-list").classList.toggle("hidden", state !== "language");
+  document.getElementById("primary-version-list").classList.toggle("hidden", state !== "version");
+  document.getElementById("primary-back-btn").classList.toggle("hidden", state !== "version");
+  document.getElementById("primary-sheet-title").textContent =
+    headerTitle || (state === "version" ? "Choose a version" : "Reading Language");
+}
+
+async function openPrimaryPicker() {
+  document.getElementById("primary-picker-sheet").classList.remove("hidden");
+  showPrimaryPickerState("language");
+  const languages = await getLanguages();
+  renderLanguageRows(document.getElementById("primary-language-list"), languages, onPrimaryLanguageRowClick);
+}
+
+function closePrimaryPicker() {
+  document.getElementById("primary-picker-sheet").classList.add("hidden");
+}
+
+async function onPrimaryLanguageRowClick(lang) {
+  showPrimaryPickerState("version", lang.label);
+  const list = document.getElementById("primary-version-list");
+  list.innerHTML = `<p class="picker-row-subtitle">Loading…</p>`;
+  const res = await fetch(`/api/compare/versions?language=${encodeURIComponent(lang.code)}`);
   const data = await res.json();
-  compareLanguagesCache = data.languages;
+  renderVersionRows(list, data.versions, (v) => onPrimaryVersionRowClick(v.id));
+}
+
+async function onPrimaryVersionRowClick(versionId) {
+  if (versionId === currentPrimaryVersionId) {
+    closePrimaryPicker();
+    return;
+  }
+  const previousPrimaryVersionId = currentPrimaryVersionId;
+  await loadVerse(versionId);
+  if (previousPrimaryVersionId !== null) {
+    await showComparePassage(previousPrimaryVersionId);
+  }
+  closePrimaryPicker();
+}
+
+document.getElementById("version-pill").addEventListener("click", openPrimaryPicker);
+document.getElementById("close-primary-sheet-btn").addEventListener("click", closePrimaryPicker);
+document.querySelector("#primary-picker-sheet .sheet-backdrop").addEventListener("click", closePrimaryPicker);
+document.getElementById("primary-back-btn").addEventListener("click", () => showPrimaryPickerState("language"));
+
+async function loadDefaultCompare() {
+  const data = await getLanguagesResponse();
   await showComparePassage(data.default_version_id);
 }
 

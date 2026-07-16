@@ -12,7 +12,7 @@
     <div id="top-pane">
       <header id="top-bar">
         <div class="pill" id="reference-pill">…</div>
-        <button class="pill pill-muted pill-button" id="version-pill" title="Compare translations">…</button>
+        <button class="pill pill-muted pill-button" id="version-pill" title="Change the primary reading language">…</button>
         <div class="top-bar-spacer"></div>
         <button id="jump-to-verse-btn" class="icon-btn hidden" title="Jump to the tappable verse">📍</button>
         <button id="play-audio-btn" class="icon-btn" title="Listen to this chapter">🔊</button>
@@ -61,6 +61,21 @@
         <button id="play-explanation-audio-btn" class="icon-btn" title="Listen to this explanation">🔊</button>
       </div>
       <p id="explanation-text">Thinking…</p>
+    </div>
+  </div>
+
+  <div id="primary-picker-sheet" class="bottom-sheet hidden">
+    <div class="sheet-backdrop"></div>
+    <div class="sheet-card">
+      <div class="sheet-handle"></div>
+      <button class="sheet-close-btn" id="close-primary-sheet-btn">×</button>
+      <div class="sheet-header">
+        <button id="primary-back-btn" class="hidden">‹</button>
+        <h2 id="primary-sheet-title">Reading Language</h2>
+      </div>
+
+      <div id="primary-language-list" class="picker-list"></div>
+      <div id="primary-version-list" class="picker-list hidden"></div>
     </div>
   </div>
 

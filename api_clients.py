@@ -31,12 +31,16 @@ GLOO_RESPONSES_URL = "https://platform.ai.gloo.com/ai/v1/responses"
 CHINESE_VERSION_ID = 43   # CSBS
 ENGLISH_VERSION_ID = 3034  # BSB
 
-# Curated languages offered in the "Compare" picker. Each is a real ISO
-# 639-3 code confirmed (scripts/probe_youversion.py) to have at least one
-# version actually licensed and fetchable for this app key -- not just
+# Curated languages offered in both the primary (top pane) and compare
+# (bottom pane) pickers -- either can hold any of these, so a learner whose
+# primary language is English and secondary is Mandarin works the same way
+# as the default Mandarin-primary/English-secondary pairing. Each is a real
+# ISO 639-3 code confirmed (scripts/probe_youversion.py) to have at least
+# one version actually licensed and fetchable for this app key -- not just
 # present in the wider discovery catalog (see CHINESE/ENGLISH_VERSION_ID
 # comment above for why "discoverable" isn't the same as "usable").
 COMPARE_LANGUAGES = [
+    {"code": "zho", "label": "Chinese"},
     {"code": "eng", "label": "English"},
     {"code": "jpn", "label": "Japanese"},
     {"code": "spa", "label": "Spanish"},
@@ -185,6 +189,28 @@ def to_furigana(japanese_text):
         reading = token["hira"]
         result.append({"char": orig, "pinyin": reading if reading != orig else None})
     return result
+
+
+def plain_chars(text):
+    """Same {char, pinyin} shape as to_pinyin/to_furigana but with no
+    reading annotation -- lets the frontend's ruby renderer handle every
+    language uniformly even when that language has no ruby convention.
+    """
+    return [{"char": ch, "pinyin": None} for ch in text]
+
+
+def annotate_reading(text, language_tag):
+    """Ruby-text reading aid for whichever language is showing, or plain
+    (unannotated) characters if the language has no such convention (e.g.
+    English/Spanish/French) -- same dispatch whether the language ends up
+    in the primary pane or the compare pane, since either can hold any
+    language now.
+    """
+    if language_tag in ("zh", "zho", "cmn"):
+        return to_pinyin(text)
+    if language_tag == "ja":
+        return to_furigana(text)
+    return plain_chars(text)
 
 
 def _get_gloo_token():
