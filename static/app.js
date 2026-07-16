@@ -173,7 +173,17 @@ async function showComparePassage(versionId) {
   const res = await fetch(`/api/compare/passage?version_id=${encodeURIComponent(versionId)}`);
   const data = await res.json();
   document.getElementById("compare-version-title").textContent = `${data.version.abbreviation} — ${data.version.title}`;
-  document.getElementById("compare-text").textContent = data.text;
+
+  const textEl = document.getElementById("compare-text");
+  if (data.chars) {
+    // e.g. Japanese furigana -- same {char, pinyin} shape and ruby renderer
+    // as the Chinese verse/explanation text, just a different reading system.
+    renderRubyText(textEl, data.chars);
+  } else {
+    textEl.innerHTML = "";
+    textEl.textContent = data.text;
+  }
+
   document.getElementById("compare-panel").classList.remove("hidden");
   document.getElementById("close-compare-btn").classList.remove("hidden");
 }

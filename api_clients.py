@@ -5,9 +5,12 @@ Kaggle notebook, so both demonstrate the exact same real API calls.
 import os
 import time
 
+import pykakasi
 import requests
 from dotenv import load_dotenv
 from pypinyin import pinyin, Style
+
+_kks = pykakasi.kakasi()
 
 load_dotenv()
 
@@ -107,6 +110,7 @@ def get_version_meta(version_id):
         "abbreviation": data.get("localized_abbreviation") or data.get("abbreviation"),
         "title": data.get("localized_title") or data.get("title"),
         "copyright": data.get("copyright"),
+        "language_tag": data.get("language_tag"),
     }
     _version_meta_cache[version_id] = meta
     return meta
@@ -129,6 +133,20 @@ def to_pinyin(chinese_text):
 
 def _is_chinese_char(ch):
     return "一" <= ch <= "鿿"
+
+
+def to_furigana(japanese_text):
+    """Pair each kanji run with its hiragana reading (furigana), same {char,
+    pinyin} shape as to_pinyin so the frontend's ruby-text renderer works
+    unchanged for both languages. Tokens that are already kana/punctuation
+    (no kanji) get pinyin=None, since furigana is never shown over them.
+    """
+    result = []
+    for token in _kks.convert(japanese_text):
+        orig = token["orig"]
+        reading = token["hira"]
+        result.append({"char": orig, "pinyin": reading if reading != orig else None})
+    return result
 
 
 def _get_gloo_token():

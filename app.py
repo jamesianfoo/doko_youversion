@@ -16,6 +16,7 @@ from api_clients import (
     get_passage,
     get_version_meta,
     list_versions,
+    to_furigana,
     to_pinyin,
 )
 
@@ -97,13 +98,16 @@ def api_compare_passage():
         return jsonify({"error": "version_id query param required"}), 400
     passage = get_passage(version_id, DEMO_VERSE["usfm"])
     meta = get_version_meta(version_id)
-    return jsonify(
-        {
-            "reference": passage["reference"],
-            "text": passage["content"],
-            "version": meta,
-        }
-    )
+    response = {
+        "reference": passage["reference"],
+        "text": passage["content"],
+        "version": meta,
+    }
+    # Furigana is the Japanese equivalent of the verse's pinyin ruby text --
+    # only worth computing for Japanese, so other languages get plain text.
+    if meta.get("language_tag") == "ja":
+        response["chars"] = to_furigana(passage["content"])
+    return jsonify(response)
 
 
 @app.route("/api/explain", methods=["POST"])
