@@ -2,7 +2,8 @@ let currentVerseText = "";
 let currentExplanationText = "";
 let currentPrimaryVersionId = null;
 let currentPrimaryLanguageTag = null;
-let tappableVerseNumber = null;
+let currentReference = "";
+let featuredVerseNumber = null;
 
 const SPEECH_LANG_MAP = { zh: "zh-CN", en: "en-US", ja: "ja-JP", es: "es-ES", fr: "fr-FR" };
 
@@ -13,28 +14,31 @@ async function loadVerse(versionId) {
   currentVerseText = data.raw_text;
   currentPrimaryVersionId = data.version_id;
   currentPrimaryLanguageTag = data.version.language_tag;
+  currentReference = data.reference;
 
   document.getElementById("verse-loading").classList.add("hidden");
   document.getElementById("reference-pill").textContent = data.reference;
   document.getElementById("version-pill").textContent = data.version.abbreviation;
 
-  // Reset before rendering -- a different primary language may have no
-  // tappable word at all, and renderChapter only sets this when it finds one.
-  tappableVerseNumber = null;
+  // Reset before rendering; renderChapter sets this from each verse's
+  // is_featured flag, which is true in every language (the tappable word
+  // itself is Mandarin-only, but the featured verse is still the featured
+  // verse regardless of which language is showing).
+  featuredVerseNumber = null;
   document.getElementById("jump-to-verse-btn").classList.add("hidden");
 
   renderChapter(data.verses);
   renderCopyright(data.version.copyright);
   loadMemory();
 
-  if (tappableVerseNumber !== null) {
+  if (featuredVerseNumber !== null) {
     document.getElementById("jump-to-verse-btn").classList.remove("hidden");
-    // Land straight on the one interactive verse instead of chapter start --
-    // it's easy to lose among 22 verses otherwise. Deferred a couple frames
-    // so the browser finishes laying out the freshly-inserted verses first;
+    // Land straight on the featured verse instead of chapter start -- it's
+    // easy to lose among 22 verses otherwise. Deferred a couple frames so
+    // the browser finishes laying out the freshly-inserted verses first;
     // calling scrollIntoView in the same tick as the DOM insert can compute
     // against stale (pre-layout) positions and land in the wrong place.
-    requestAnimationFrame(() => requestAnimationFrame(() => scrollToTappableVerse(false)));
+    requestAnimationFrame(() => requestAnimationFrame(() => scrollToFeaturedVerse(false)));
   }
 }
 
@@ -46,9 +50,9 @@ function renderChapter(verses) {
     p.className = "verse-line";
     p.id = `verse-${verse.number}`;
 
-    if (verse.tappable.length > 0) {
+    if (verse.is_featured) {
       p.classList.add("verse-highlight");
-      tappableVerseNumber = verse.number;
+      featuredVerseNumber = verse.number;
     }
 
     const sup = document.createElement("sup");
@@ -61,9 +65,9 @@ function renderChapter(verses) {
   }
 }
 
-function scrollToTappableVerse(flash) {
-  if (tappableVerseNumber === null) return;
-  const el = document.getElementById(`verse-${tappableVerseNumber}`);
+function scrollToFeaturedVerse(flash) {
+  if (featuredVerseNumber === null) return;
+  const el = document.getElementById(`verse-${featuredVerseNumber}`);
   if (!el) return;
   // "smooth" behavior here has been unreliable (sometimes never completes),
   // so jump instantly and use the flash pulse for visual feedback instead.
@@ -236,7 +240,7 @@ function showCompareState(state, headerTitle) {
   document.getElementById("compare-back-btn").classList.toggle("hidden", state !== "version");
   document.getElementById("compare-change-btn").classList.toggle("hidden", state !== "result");
   document.getElementById("compare-header-title").textContent =
-    headerTitle || (state === "version" ? "Choose a version" : "Compare Translations");
+    headerTitle || (state === "version" ? "Choose a version" : `Compare ${currentReference}`);
 }
 
 async function openLanguagePicker() {
@@ -258,15 +262,25 @@ async function showComparePassage(versionId) {
   const res = await fetch(`/api/compare/passage?version_id=${encodeURIComponent(versionId)}`);
   const data = await res.json();
   document.getElementById("compare-version-title").textContent = `${data.version.abbreviation} — ${data.version.title}`;
-  renderRubyText(document.getElementById("compare-text"), data.chars);
+
+  const textEl = document.getElementById("compare-text");
+  textEl.innerHTML = "";
+  const sup = document.createElement("sup");
+  sup.className = "verse-number";
+  sup.textContent = data.verse_number;
+  textEl.appendChild(sup);
+  for (const charObj of data.chars) {
+    textEl.appendChild(renderRuby(charObj));
+  }
+
   showCompareState("result");
 }
 
 document.getElementById("more-btn").addEventListener("click", openLanguagePicker);
 document.getElementById("compare-back-btn").addEventListener("click", () => showCompareState("language"));
 document.getElementById("compare-change-btn").addEventListener("click", openLanguagePicker);
-document.getElementById("jump-to-verse-btn").addEventListener("click", () => scrollToTappableVerse(true));
-document.getElementById("show-in-chapter-btn").addEventListener("click", () => scrollToTappableVerse(true));
+document.getElementById("jump-to-verse-btn").addEventListener("click", () => scrollToFeaturedVerse(true));
+document.getElementById("show-in-chapter-btn").addEventListener("click", () => scrollToFeaturedVerse(true));
 
 // --- Primary-language picker (top pane): a modal sheet, since the top pane
 // itself has no room to spare for a persistent picker. Picking a new
@@ -325,5 +339,9 @@ async function loadDefaultCompare() {
   await showComparePassage(data.default_version_id);
 }
 
-loadVerse();
-loadDefaultCompare();
+// Sequenced (not parallel): showComparePassage's default header title reads
+// currentReference, which loadVerse is what sets.
+(async () => {
+  await loadVerse();
+  await loadDefaultCompare();
+})();

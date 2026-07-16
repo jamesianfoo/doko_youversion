@@ -71,11 +71,14 @@ def api_verse():
     verses = []
     full_text_parts = []
     for v in chapter["verses"]:
-        # The tappable word is Mandarin-specific (it's a Mandarin vocabulary
-        # lookup demo), so this is naturally a no-op when v["text"] isn't
-        # Chinese -- "恩典" just won't be found in another language's text.
+        is_featured = v["number"] == DEMO_CHAPTER["tappable_verse_number"]
+        # The tappable word itself is Mandarin-specific (it's a Mandarin
+        # vocabulary lookup demo), so this is naturally empty when v["text"]
+        # isn't Chinese -- "恩典" just won't be found in another language's
+        # text. is_featured stays true regardless of language, though, so the
+        # featured verse is still highlighted and jump-to-able either way.
         tappable = []
-        if v["number"] == DEMO_CHAPTER["tappable_verse_number"]:
+        if is_featured:
             tappable = _find_tappable_spans(v["text"], DEMO_VERSE["tappable_words"])
         verses.append(
             {
@@ -83,6 +86,7 @@ def api_verse():
                 "chars": annotate_reading(v["text"], meta.get("language_tag")),
                 "raw_text": v["text"],
                 "tappable": tappable,
+                "is_featured": is_featured,
             }
         )
         full_text_parts.append(v["text"])
@@ -121,6 +125,7 @@ def api_compare_passage():
     return jsonify(
         {
             "reference": passage["reference"],
+            "verse_number": DEMO_CHAPTER["tappable_verse_number"],
             "text": passage["content"],
             "chars": annotate_reading(passage["content"], meta.get("language_tag")),
             "version": meta,
