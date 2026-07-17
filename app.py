@@ -18,7 +18,6 @@ from api_clients import (
     get_passage,
     get_version_meta,
     list_versions,
-    to_pinyin,
 )
 
 app = Flask(__name__)
@@ -30,11 +29,10 @@ def index():
 
 MEMORY_PATH = os.path.join(os.path.dirname(__file__), "memory.json")
 
-# MVP scope: one curated demo chapter, with one verse in it tappable. Real
-# text for every verse is fetched live from the API every time -- only the
-# reference + which word(s) are tappable are hardcoded, because Chinese word
-# segmentation is out of scope for this MVP.
-DEMO_VERSE = {"usfm": "EPH.2.8", "tappable_words": ["恩典"]}
+# MVP scope: one curated demo chapter. Every word in every verse (and in the
+# Compare pane) is tappable -- the frontend segments words client-side via
+# Intl.Segmenter, which handles Chinese/Japanese word boundaries without any
+# server-side NLP library, so there's no hardcoded word list here anymore.
 DEMO_CHAPTER = {"book": "EPH", "chapter": 2, "verse_count": 22, "tappable_verse_number": 8}
 
 
@@ -50,15 +48,6 @@ def _save_memory(entries):
         json.dump(entries, f, ensure_ascii=False, indent=2)
 
 
-def _find_tappable_spans(chinese_text, words):
-    spans = []
-    for word in words:
-        idx = chinese_text.find(word)
-        if idx != -1:
-            spans.append({"word": word, "start": idx, "end": idx + len(word)})
-    return spans
-
-
 @app.route("/api/verse")
 def api_verse():
     # Primary pane defaults to the Mandarin demo chapter, but a learner whose
@@ -71,22 +60,12 @@ def api_verse():
     verses = []
     full_text_parts = []
     for v in chapter["verses"]:
-        is_featured = v["number"] == DEMO_CHAPTER["tappable_verse_number"]
-        # The tappable word itself is Mandarin-specific (it's a Mandarin
-        # vocabulary lookup demo), so this is naturally empty when v["text"]
-        # isn't Chinese -- "恩典" just won't be found in another language's
-        # text. is_featured stays true regardless of language, though, so the
-        # featured verse is still highlighted and jump-to-able either way.
-        tappable = []
-        if is_featured:
-            tappable = _find_tappable_spans(v["text"], DEMO_VERSE["tappable_words"])
         verses.append(
             {
                 "number": v["number"],
                 "chars": annotate_reading(v["text"], meta.get("language_tag")),
                 "raw_text": v["text"],
-                "tappable": tappable,
-                "is_featured": is_featured,
+                "is_featured": v["number"] == DEMO_CHAPTER["tappable_verse_number"],
             }
         )
         full_text_parts.append(v["text"])
@@ -142,14 +121,16 @@ def api_explain():
     body = request.get_json(force=True)
     word = body["word"]
     verse_text = body["verse_text"]
+    language_tag = body.get("language_tag")
+    verse_ref = body.get("verse_ref", f"{DEMO_CHAPTER['book']}.{DEMO_CHAPTER['chapter']}")
 
-    explanation = explain_word(word, verse_text)
+    explanation = explain_word(word, verse_text, language_tag)
 
     entries = _load_memory()
     entries.append(
         {
             "word": word,
-            "verse_ref": DEMO_VERSE["usfm"],
+            "verse_ref": verse_ref,
             "timestamp": time.time(),
         }
     )
@@ -159,7 +140,7 @@ def api_explain():
         {
             "word": word,
             "explanation": explanation,
-            "explanation_chars": to_pinyin(explanation),
+            "explanation_chars": annotate_reading(explanation, language_tag),
         }
     )
 

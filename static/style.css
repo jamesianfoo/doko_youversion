@@ -149,9 +149,11 @@ ruby rt {
   font-weight: 400;
 }
 
+/* Every word is tappable now, so no permanent underline (that would mark up
+   the entire chapter) -- feedback shows only on hover/tap, same as how a
+   real reading app's tap-to-look-up feels. */
 .tappable {
   cursor: pointer;
-  border-bottom: 2px dotted var(--accent);
   padding: 0 1px;
   border-radius: 3px;
 }

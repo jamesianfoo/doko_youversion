@@ -1,5 +1,6 @@
 let currentVerseText = "";
 let currentExplanationText = "";
+let currentExplanationLanguageTag = null;
 let currentPrimaryVersionId = null;
 let currentPrimaryLanguageTag = null;
 let currentReference = "";
@@ -12,6 +13,9 @@ let selectedVerseNumber = null;
 let currentCompareVersionId = null;
 
 const SPEECH_LANG_MAP = { zh: "zh-CN", en: "en-US", ja: "ja-JP", es: "es-ES", fr: "fr-FR" };
+// Matches app.py's DEMO_CHAPTER (book/chapter) -- used only to build a
+// verse_ref string for the memory log, not for any actual API fetch.
+const DEMO_CHAPTER_REF = "EPH.2";
 
 async function loadVerse(versionId) {
   const url = versionId ? `/api/verse?version_id=${encodeURIComponent(versionId)}` : "/api/verse";
@@ -59,7 +63,7 @@ function renderChapter(verses) {
     sup.textContent = verse.number;
     p.appendChild(sup);
 
-    renderVerseContent(p, verse.chars, verse.tappable);
+    renderTappableText(p, verse.chars, verse.raw_text, currentPrimaryLanguageTag, verse.number);
     container.appendChild(p);
   }
 
@@ -100,28 +104,46 @@ function scrollToSelectedVerse(flash) {
   }
 }
 
-// Appends pinyin/furigana-annotated characters into `container`, wrapping
-// any tappable span (only the demo's one tappable verse has these, and only
-// when the primary language is Mandarin) in a clickable element that
-// triggers the word-explanation lookup.
-function renderVerseContent(container, chars, tappableSpans) {
-  let i = 0;
-  while (i < chars.length) {
-    const span = tappableSpans.find((s) => s.start === i);
-    if (span) {
+// Splits `text` into word/non-word segments using the browser's built-in
+// Unicode word-segmentation (handles Chinese/Japanese word boundaries with
+// no spaces, and Latin-script words, with no server-side NLP library
+// needed). Falls back to treating the whole string as one non-word segment
+// on browsers without Intl.Segmenter (Safari <17, older Firefox) -- the
+// verse just renders without tap-to-explain in that case, degrading
+// gracefully rather than breaking.
+function segmentWords(text, languageTag) {
+  if (typeof Intl === "undefined" || typeof Intl.Segmenter !== "function") {
+    return [{ segment: text, isWordLike: false }];
+  }
+  const segmenter = new Intl.Segmenter(languageTag || "en", { granularity: "word" });
+  return Array.from(segmenter.segment(text));
+}
+
+// Appends reading-annotated (pinyin/furigana/plain) characters into
+// `container`, wrapping each word-like segment (per segmentWords) in a
+// clickable element that looks up that exact word/phrase via Gloo, grounded
+// in `verseText`. Any word in any verse works now, in any of the app's
+// languages -- not just one hardcoded demo word.
+function renderTappableText(container, chars, text, languageTag, verseNumber) {
+  const segments = segmentWords(text, languageTag);
+  let charIndex = 0;
+  for (const seg of segments) {
+    const segChars = chars.slice(charIndex, charIndex + seg.segment.length);
+    if (seg.isWordLike) {
       const wrapper = document.createElement("span");
       wrapper.className = "tappable";
-      wrapper.dataset.word = span.word;
-      for (let j = span.start; j < span.end; j++) {
-        wrapper.appendChild(renderRuby(chars[j]));
+      wrapper.dataset.word = seg.segment;
+      for (const charObj of segChars) {
+        wrapper.appendChild(renderRuby(charObj));
       }
-      wrapper.addEventListener("click", () => onWordTap(span.word, wrapper));
+      wrapper.addEventListener("click", () => onWordTap(seg.segment, wrapper, text, languageTag, verseNumber));
       container.appendChild(wrapper);
-      i = span.end;
     } else {
-      container.appendChild(renderRuby(chars[i]));
-      i++;
+      for (const charObj of segChars) {
+        container.appendChild(renderRuby(charObj));
+      }
     }
+    charIndex += seg.segment.length;
   }
 }
 
@@ -158,11 +180,12 @@ function speak(text, languageTag) {
   speechSynthesis.speak(utterance);
 }
 
-async function onWordTap(word, wrapperEl) {
+async function onWordTap(word, wrapperEl, verseText, languageTag, verseNumber) {
   document.querySelectorAll(".tappable").forEach((el) => el.classList.remove("active"));
   wrapperEl.classList.add("active");
 
   currentExplanationText = "";
+  currentExplanationLanguageTag = languageTag;
   const sheet = document.getElementById("explanation-sheet");
   sheet.classList.remove("hidden");
   document.getElementById("explanation-word").textContent = word;
@@ -171,7 +194,12 @@ async function onWordTap(word, wrapperEl) {
   const res = await fetch("/api/explain", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ word, verse_text: currentVerseText }),
+    body: JSON.stringify({
+      word,
+      verse_text: verseText,
+      language_tag: languageTag,
+      verse_ref: `${DEMO_CHAPTER_REF}.${verseNumber}`,
+    }),
   });
   const data = await res.json();
   currentExplanationText = data.explanation;
@@ -198,9 +226,10 @@ document.getElementById("play-audio-btn").addEventListener("click", () => {
 });
 
 document.getElementById("play-explanation-audio-btn").addEventListener("click", () => {
-  // The word-explanation feature only ever explains Mandarin vocabulary,
-  // regardless of which language the primary pane is currently showing.
-  speak(currentExplanationText, "zh");
+  // Speaks in whichever language the tapped word itself was in, not
+  // necessarily the primary pane's current language (e.g. tapping a word in
+  // the Compare pane while primary is Chinese).
+  speak(currentExplanationText, currentExplanationLanguageTag);
 });
 
 document.getElementById("close-sheet-btn").addEventListener("click", closeSheet);
@@ -295,9 +324,9 @@ async function showComparePassage(versionId, verseNumber) {
   sup.className = "verse-number";
   sup.textContent = data.verse_number;
   textEl.appendChild(sup);
-  for (const charObj of data.chars) {
-    textEl.appendChild(renderRuby(charObj));
-  }
+  // Same tappable-word rendering as the primary pane -- any word in the
+  // Compare pane's text can be tapped for its own Gloo explanation too.
+  renderTappableText(textEl, data.chars, data.text, data.version.language_tag, data.verse_number);
 
   showCompareState("result");
 }

@@ -232,8 +232,26 @@ def _get_gloo_token():
     return _gloo_token
 
 
-def explain_word(word, verse_text):
-    """Ask Gloo to explain a word/phrase in plain language, grounded in the verse."""
+_LANGUAGE_NAMES = {
+    "zh": "Mandarin Chinese",
+    "ja": "Japanese",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+}
+
+
+def explain_word(word, verse_text, language_tag=None):
+    """Ask Gloo to explain a word/phrase in plain language, grounded in the
+    verse -- in whatever language the word itself is in (immersion, same as
+    the reading aid), not always English/Mandarin. Any word in any verse can
+    reach this now (the frontend segments words client-side), so the prompt
+    can no longer assume Mandarin.
+    """
+    language_name = _LANGUAGE_NAMES.get(language_tag)
+    learning_clause = f"learning {language_name}" if language_name else "learning this language"
+    response_clause = f"Respond entirely in {language_name}." if language_name else "Respond in the same language as the verse."
+
     token = _get_gloo_token()
     resp = requests.post(
         GLOO_RESPONSES_URL,
@@ -245,11 +263,11 @@ def explain_word(word, verse_text):
             "model": "gloo-openai-gpt-5-mini",
             "instructions": (
                 "You are a gentle language-and-faith companion helping someone "
-                "learning Mandarin understand a single word from a Bible verse "
-                "they are reading. Explain the word's meaning in plain, "
-                "encouraging language, grounded in how it is used in this "
-                "specific verse -- not a dictionary definition. Keep it to "
-                "2-4 short sentences."
+                f"{learning_clause} understand a single word or short phrase "
+                "from a Bible verse they are reading. Explain its meaning in "
+                "plain, encouraging language, grounded in how it is used in "
+                "this specific verse -- not a dictionary definition. Keep it "
+                f"to 2-4 short sentences. {response_clause}"
             ),
             "input": [
                 {
