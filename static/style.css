@@ -114,6 +114,15 @@ body {
   color: var(--accent);
 }
 
+.memory-word-tap {
+  cursor: pointer;
+  border-bottom: 1px dotted var(--accent);
+}
+
+.memory-word-tap:hover {
+  opacity: 0.8;
+}
+
 /* Chapter content (scrolls within the fixed top pane) */
 #verse-scroll {
   flex: 1;

@@ -123,6 +123,7 @@ def api_explain():
     verse_text = body["verse_text"]
     language_tag = body.get("language_tag")
     verse_ref = body.get("verse_ref", f"{DEMO_CHAPTER['book']}.{DEMO_CHAPTER['chapter']}")
+    verse_number = body.get("verse_number")
 
     explanation = explain_word(word, verse_text, language_tag)
 
@@ -131,6 +132,9 @@ def api_explain():
         {
             "word": word,
             "verse_ref": verse_ref,
+            "verse_number": verse_number,
+            "verse_text": verse_text,
+            "language_tag": language_tag,
             "timestamp": time.time(),
         }
     )
@@ -148,6 +152,13 @@ def api_explain():
 @app.route("/api/memory")
 def api_memory():
     entries = _load_memory()
+    # Memory is scoped to whichever language is currently primary -- a word
+    # tapped in Japanese showing up while Chinese is now primary is both
+    # confusing to read and impossible to act on (no matching tappable span
+    # exists in the current chapter render to jump back to).
+    language_tag = request.args.get("language_tag")
+    if language_tag:
+        entries = [e for e in entries if e.get("language_tag") == language_tag]
     return jsonify({"entries": entries[-10:]})
 
 

@@ -182,7 +182,7 @@ function speak(text, languageTag) {
 
 async function onWordTap(word, wrapperEl, verseText, languageTag, verseNumber) {
   document.querySelectorAll(".tappable").forEach((el) => el.classList.remove("active"));
-  wrapperEl.classList.add("active");
+  if (wrapperEl) wrapperEl.classList.add("active");
 
   currentExplanationText = "";
   currentExplanationLanguageTag = languageTag;
@@ -199,6 +199,7 @@ async function onWordTap(word, wrapperEl, verseText, languageTag, verseNumber) {
       verse_text: verseText,
       language_tag: languageTag,
       verse_ref: `${DEMO_CHAPTER_REF}.${verseNumber}`,
+      verse_number: verseNumber,
     }),
   });
   const data = await res.json();
@@ -210,16 +211,40 @@ function closeSheet() {
   document.getElementById("explanation-sheet").classList.add("hidden");
 }
 
+// The memory entry currently shown in the banner -- kept around so clicking
+// it can replay the exact same lookup (right verse, right language).
+let memoryBannerEntry = null;
+
 async function loadMemory() {
-  const res = await fetch("/api/memory");
+  const res = await fetch(`/api/memory?language_tag=${encodeURIComponent(currentPrimaryLanguageTag)}`);
   const data = await res.json();
   const priorTaps = data.entries.filter((e) => e.word !== undefined);
+  const banner = document.getElementById("memory-banner");
+
   if (priorTaps.length > 1) {
-    const previous = priorTaps[priorTaps.length - 2];
-    document.getElementById("memory-word").textContent = previous.word;
-    document.getElementById("memory-banner").classList.remove("hidden");
+    memoryBannerEntry = priorTaps[priorTaps.length - 2];
+    document.getElementById("memory-word").textContent = memoryBannerEntry.word;
+    banner.classList.remove("hidden");
+  } else {
+    // Nothing explored yet in *this* language -- don't show a leftover
+    // banner from before a primary-language switch.
+    memoryBannerEntry = null;
+    banner.classList.add("hidden");
   }
 }
+
+async function onMemoryWordClick() {
+  if (!memoryBannerEntry) return;
+  const entry = memoryBannerEntry;
+  onVerseSelect(entry.verse_number);
+  scrollToSelectedVerse(true);
+  const wrapperEl = document.querySelector(
+    `#verse-${entry.verse_number} .tappable[data-word="${CSS.escape(entry.word)}"]`
+  );
+  await onWordTap(entry.word, wrapperEl, entry.verse_text, entry.language_tag, entry.verse_number);
+}
+
+document.getElementById("memory-word").addEventListener("click", onMemoryWordClick);
 
 document.getElementById("play-audio-btn").addEventListener("click", () => {
   speak(currentVerseText, currentPrimaryLanguageTag);
