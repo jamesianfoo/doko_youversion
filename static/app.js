@@ -222,6 +222,11 @@ async function onWordTap(word, wrapperEl, verseText, languageTag, verseNumber) {
   const data = await res.json();
   currentExplanationText = data.explanation;
   renderRubyText(document.getElementById("explanation-text"), data.explanation_chars);
+
+  // Refresh the memory banner now that this tap is part of the history --
+  // it was previously only loaded once per page/language load, so it kept
+  // showing the same word no matter how many new words got tapped after.
+  loadMemory();
 }
 
 function closeSheet() {
@@ -250,18 +255,39 @@ async function loadMemory() {
   }
 }
 
-async function onMemoryWordClick() {
+function findMemoryWrapperEl(entry) {
+  return document.querySelector(`#verse-${entry.verse_number} .tappable[data-word="${CSS.escape(entry.word)}"]`);
+}
+
+// "Find": jump to the word without opening its explanation -- the verse
+// highlight alone can be hard to spot the exact word within (several words
+// share that same background tint), so this also flashes the word's own
+// span specifically.
+function onMemoryFindClick() {
   if (!memoryBannerEntry) return;
   const entry = memoryBannerEntry;
   onVerseSelect(entry.verse_number);
   scrollToSelectedVerse(true);
-  const wrapperEl = document.querySelector(
-    `#verse-${entry.verse_number} .tappable[data-word="${CSS.escape(entry.word)}"]`
-  );
+  const wrapperEl = findMemoryWrapperEl(entry);
+  if (wrapperEl) {
+    wrapperEl.classList.add("verse-flash");
+    setTimeout(() => wrapperEl.classList.remove("verse-flash"), 1200);
+  }
+}
+
+// "Definition": full replay, including a fresh Gloo call in the
+// explanation sheet (same as tapping the word itself).
+async function onMemoryDefinitionClick() {
+  if (!memoryBannerEntry) return;
+  const entry = memoryBannerEntry;
+  onVerseSelect(entry.verse_number);
+  scrollToSelectedVerse(true);
+  const wrapperEl = findMemoryWrapperEl(entry);
   await onWordTap(entry.word, wrapperEl, entry.verse_text, entry.language_tag, entry.verse_number);
 }
 
-document.getElementById("memory-word").addEventListener("click", onMemoryWordClick);
+document.getElementById("memory-find-btn").addEventListener("click", onMemoryFindClick);
+document.getElementById("memory-definition-btn").addEventListener("click", onMemoryDefinitionClick);
 
 document.getElementById("play-audio-btn").addEventListener("click", () => {
   document.getElementById("audio-player-bar").classList.toggle("hidden");
