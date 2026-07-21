@@ -38,13 +38,16 @@ body {
   overflow: hidden;
 }
 
-/* Top pane: today's chapter -- 65% of screen height */
+/* Top pane: today's chapter -- 65% of the space left after the bottom nav's
+   fixed height (flex-grow ratio against a shared flex-basis of 0, so the
+   nav bar's own height doesn't get folded into the 65/35 percentage math) */
 #top-pane {
-  flex: 0 0 65%;
+  flex: 65 1 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 }
 
 #top-bar {
@@ -131,23 +134,31 @@ body {
   overflow-y: auto;
 }
 
-.verse-line {
-  font-size: 1.4rem;
-  line-height: 2.3;
-  margin: 0 0 0.9rem;
+/* One <p> per real paragraph break (from the translation's own HTML
+   markup -- verses flow continuously within it, exactly like the real
+   app, instead of one boxed block per verse). */
+.paragraph {
+  font-size: 1.15rem;
+  line-height: 2.1;
+  margin: 0 0 1.1rem;
+}
+
+/* Each verse is an inline span within its paragraph -- tappable/selectable,
+   but never boxed, since a paragraph can hold several verses side by side. */
+.verse-inline {
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 4px;
   transition: background 0.15s ease;
 }
 
-.verse-line:hover:not(.verse-highlight) {
+.verse-inline:hover:not(.verse-highlight) {
   background: rgba(255, 255, 255, 0.04);
 }
 
 .verse-number {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--ink-dim);
-  margin-right: 0.2rem;
+  margin-right: 0.15rem;
   top: -0.6em;
   position: relative;
 }
@@ -172,14 +183,13 @@ ruby rt {
   background: var(--accent-soft);
 }
 
-/* The one verse with a tappable word gets its own background so it's easy
-   to relocate again after scrolling away in a long chapter. */
+/* The selected verse gets an inline highlight (like a text marker), not a
+   boxed card -- several verses can share one paragraph, so boxing a whole
+   block would bleed into its neighbors. */
 .verse-highlight {
   background: var(--accent-soft);
-  border-left: 3px solid var(--accent);
-  border-radius: 0 8px 8px 0;
-  padding: 0.6rem 0.75rem 0.6rem 0.6rem;
-  margin-left: -0.6rem;
+  box-shadow: 0 0 0 2px var(--accent-soft);
+  border-radius: 4px;
 }
 
 @keyframes verse-flash-pulse {
@@ -206,15 +216,92 @@ ruby rt {
   white-space: pre-line;
 }
 
-/* Bottom pane: translation comparison -- remaining 35% of screen height */
+/* Bottom pane: translation comparison -- 35% of the space left after the
+   bottom nav's fixed height (see #top-pane comment for the flex-grow math) */
 #bottom-pane {
-  flex: 0 0 35%;
+  flex: 35 1 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: var(--bg-elevated);
   border-top: 1px solid var(--divider);
+}
+
+/* Bottom nav (decorative, matches the real app's chrome) */
+#bottom-nav {
+  flex-shrink: 0;
+  display: flex;
+  border-top: 1px solid var(--divider);
+  padding: 0.6rem 0.25rem calc(0.6rem + env(safe-area-inset-bottom));
+  cursor: default;
+  background: var(--bg);
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  font-size: 0.68rem;
+  color: var(--ink-dim);
+}
+
+.nav-item .nav-icon {
+  font-size: 1.15rem;
+}
+
+.nav-item.active {
+  color: var(--accent);
+}
+
+/* Floating audio player -- overlays the bottom of the chapter text, toggled
+   by the top bar's speaker icon, matching the real app's expandable mini
+   player instead of a plain icon-only button. */
+#audio-player-bar {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: rgba(20, 29, 43, 0.88);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--divider);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.audio-player-chevron {
+  background: none;
+  border: none;
+  color: var(--ink-dim);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.audio-player-play {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-elevated);
+  color: var(--ink);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audio-player-play:hover {
+  background: #24344a;
 }
 
 #compare-header {

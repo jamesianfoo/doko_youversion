@@ -33,7 +33,7 @@ MEMORY_PATH = os.path.join(os.path.dirname(__file__), "memory.json")
 # Compare pane) is tappable -- the frontend segments words client-side via
 # Intl.Segmenter, which handles Chinese/Japanese word boundaries without any
 # server-side NLP library, so there's no hardcoded word list here anymore.
-DEMO_CHAPTER = {"book": "EPH", "chapter": 2, "verse_count": 22, "tappable_verse_number": 8}
+DEMO_CHAPTER = {"book": "EPH", "chapter": 2, "tappable_verse_number": 8}
 
 
 def _load_memory():
@@ -54,27 +54,30 @@ def api_verse():
     # primary language is English (Mandarin as the "side-kick" secondary) can
     # point this at any licensed version via ?version_id=.
     version_id = request.args.get("version_id", type=int) or CHINESE_VERSION_ID
-    chapter = get_chapter(version_id, DEMO_CHAPTER["book"], DEMO_CHAPTER["chapter"], DEMO_CHAPTER["verse_count"])
+    chapter = get_chapter(version_id, DEMO_CHAPTER["book"], DEMO_CHAPTER["chapter"])
     meta = get_version_meta(version_id)
 
-    verses = []
+    paragraphs = []
     full_text_parts = []
-    for v in chapter["verses"]:
-        verses.append(
-            {
-                "number": v["number"],
-                "chars": annotate_reading(v["text"], meta.get("language_tag")),
-                "raw_text": v["text"],
-                "is_featured": v["number"] == DEMO_CHAPTER["tappable_verse_number"],
-            }
-        )
-        full_text_parts.append(v["text"])
+    for para in chapter["paragraphs"]:
+        verses = []
+        for v in para:
+            verses.append(
+                {
+                    "number": v["number"],
+                    "chars": annotate_reading(v["text"], meta.get("language_tag")),
+                    "raw_text": v["text"],
+                    "is_featured": v["number"] == DEMO_CHAPTER["tappable_verse_number"],
+                }
+            )
+            full_text_parts.append(v["text"])
+        paragraphs.append(verses)
 
     return jsonify(
         {
             "version_id": version_id,
             "reference": chapter["reference"],
-            "verses": verses,
+            "paragraphs": paragraphs,
             "raw_text": " ".join(full_text_parts),
             "version": meta,
         }

@@ -30,7 +30,7 @@ async function loadVerse(versionId) {
   document.getElementById("reference-pill").textContent = data.reference;
   document.getElementById("version-pill").textContent = data.version.abbreviation;
 
-  renderChapter(data.verses);
+  renderChapter(data.paragraphs);
   renderCopyright(data.version.copyright);
   loadMemory();
 
@@ -43,33 +43,46 @@ async function loadVerse(versionId) {
   requestAnimationFrame(() => requestAnimationFrame(() => scrollToSelectedVerse(false)));
 }
 
-function renderChapter(verses) {
+// Renders real paragraphs (from the translation's own HTML structure, see
+// api_clients._ChapterHTMLParser) as continuous flowing text -- each verse
+// is an inline, individually tappable/selectable span within its paragraph,
+// not a separate boxed block. Matches how the actual app reads.
+function renderChapter(paragraphs) {
   const container = document.getElementById("verse-chapter");
   container.innerHTML = "";
 
   let defaultVerseNumber = null;
-  for (const verse of verses) {
+  for (const paragraph of paragraphs) {
     const p = document.createElement("p");
-    p.className = "verse-line";
-    p.id = `verse-${verse.number}`;
-    p.addEventListener("click", () => onVerseSelect(verse.number));
+    p.className = "paragraph";
 
-    if (verse.is_featured) {
-      defaultVerseNumber = verse.number;
-    }
+    paragraph.forEach((verse, i) => {
+      const span = document.createElement("span");
+      span.className = "verse-inline";
+      span.id = `verse-${verse.number}`;
+      span.addEventListener("click", () => onVerseSelect(verse.number));
 
-    const sup = document.createElement("sup");
-    sup.className = "verse-number";
-    sup.textContent = verse.number;
-    p.appendChild(sup);
+      if (verse.is_featured) {
+        defaultVerseNumber = verse.number;
+      }
 
-    renderTappableText(p, verse.chars, verse.raw_text, currentPrimaryLanguageTag, verse.number);
+      const sup = document.createElement("sup");
+      sup.className = "verse-number";
+      sup.textContent = verse.number;
+      span.appendChild(sup);
+
+      renderTappableText(span, verse.chars, verse.raw_text, currentPrimaryLanguageTag, verse.number);
+      p.appendChild(span);
+      if (i < paragraph.length - 1) p.appendChild(document.createTextNode(" "));
+    });
+
     container.appendChild(p);
   }
 
-  // Re-rendering (e.g. switching primary language) rebuilds every <p> fresh,
-  // so the highlight has to be re-applied to whichever verse is selected --
-  // only fall back to the chapter's default featured verse on first load.
+  // Re-rendering (e.g. switching primary language) rebuilds every span
+  // fresh, so the highlight has to be re-applied to whichever verse is
+  // selected -- only fall back to the chapter's default featured verse on
+  // first load.
   if (selectedVerseNumber === null) {
     selectedVerseNumber = defaultVerseNumber;
   }
@@ -247,6 +260,10 @@ async function onMemoryWordClick() {
 document.getElementById("memory-word").addEventListener("click", onMemoryWordClick);
 
 document.getElementById("play-audio-btn").addEventListener("click", () => {
+  document.getElementById("audio-player-bar").classList.toggle("hidden");
+});
+
+document.getElementById("audio-play-btn").addEventListener("click", () => {
   speak(currentVerseText, currentPrimaryLanguageTag);
 });
 

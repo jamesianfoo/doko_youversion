@@ -4,7 +4,7 @@ Kaggle notebook, so both demonstrate the exact same real API calls.
 """
 import os
 import time
-from concurrent.futures import ThreadPoolExecutor
+from html.parser import HTMLParser
 
 import pykakasi
 import requests
@@ -51,51 +51,88 @@ _gloo_token = None
 _gloo_token_expires_at = 0
 
 
-def get_passage(version_id, reference):
-    """Fetch plain-text Bible passage content. reference is USFM, e.g. 'JHN.3.16'."""
+def get_passage(version_id, reference, fmt="text"):
+    """Fetch a Bible passage. reference is USFM, e.g. 'JHN.3.16' or 'EPH.2'."""
     resp = requests.get(
         f"{YVP_BASE_URL}/bibles/{version_id}/passages/{reference}",
         headers={"X-YVP-App-Key": YVP_APP_KEY},
-        params={"format": "text"},
+        params={"format": fmt},
         timeout=15,
     )
     resp.raise_for_status()
     return resp.json()  # {"id", "content", "reference"}
 
 
+class _ChapterHTMLParser(HTMLParser):
+    """Parses YouVersion's format=html chapter markup into real paragraphs.
+
+    The markup looks like:
+      <div><div class="p">
+        <span class="yv-v" v="1"></span><span class="yv-vlbl">1</span>text...
+        <span class="yv-v" v="2"></span><span class="yv-vlbl">2</span>text...
+      </div><div class="p"> ... next paragraph ... </div></div>
+
+    div.p marks a real paragraph break (as the translation actually printed
+    it -- verses 1-10 might be one paragraph, 11 the start of the next);
+    yv-v marks where a verse starts (its "v" attribute is the verse number);
+    yv-vlbl is just the human-visible number label repeated as text, which
+    isn't part of the verse's actual content and gets skipped. Other inline
+    spans (e.g. "nd" for small-caps, "pn" for proper nouns) are stylistic
+    only -- their text is kept as part of the verse.
+    """
+
+    def __init__(self):
+        super().__init__()
+        self.paragraphs = []
+        self._current_verse = None
+        self._skip_data = False
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        classes = attrs.get("class", "").split()
+        if tag == "div" and "p" in classes:
+            self.paragraphs.append([])
+        elif tag == "span" and "yv-v" in classes and "v" in attrs:
+            verse = {"number": int(attrs["v"]), "text": ""}
+            if self.paragraphs:
+                self.paragraphs[-1].append(verse)
+            self._current_verse = verse
+        elif tag == "span" and "yv-vlbl" in classes:
+            self._skip_data = True
+
+    def handle_endtag(self, tag):
+        if tag == "span":
+            self._skip_data = False
+
+    def handle_data(self, data):
+        if self._skip_data:
+            return
+        if self._current_verse is not None:
+            self._current_verse["text"] += data
+
+
 _chapter_cache = {}
 
 
-def get_chapter(version_id, book, chapter, verse_count):
-    """Fetch a full chapter as real per-verse text.
+def get_chapter(version_id, book, chapter):
+    """Fetch a full chapter as real paragraphs of real verses.
 
-    The chapter-level passage endpoint (e.g. 'EPH.2') returns all verses
-    concatenated into one plain-text blob with no verse boundaries or
-    numbers -- unusable for numbering verses or scoping a tappable word to
-    one specific verse (the same word can recur elsewhere in the chapter).
-    So this fetches each verse individually instead, in parallel since it's
-    pure network I/O, and caches the assembled result since Bible text for
+    One API call (format=html), parsed for actual paragraph breaks and verse
+    boundaries -- rather than one call per verse. Cached since Bible text for
     a given version/chapter never changes.
     """
     cache_key = (version_id, book, chapter)
     if cache_key in _chapter_cache:
         return _chapter_cache[cache_key]
 
-    def fetch_verse(verse_number):
-        passage = get_passage(version_id, f"{book}.{chapter}.{verse_number}")
-        return {"number": verse_number, "text": passage["content"]}
+    passage = get_passage(version_id, f"{book}.{chapter}", fmt="html")
+    parser = _ChapterHTMLParser()
+    parser.feed(passage["content"])
+    for paragraph in parser.paragraphs:
+        for verse in paragraph:
+            verse["text"] = verse["text"].strip()
 
-    def fetch_chapter_reference():
-        return get_passage(version_id, f"{book}.{chapter}")["reference"]
-
-    with ThreadPoolExecutor(max_workers=9) as pool:
-        verse_futures = [pool.submit(fetch_verse, n) for n in range(1, verse_count + 1)]
-        reference_future = pool.submit(fetch_chapter_reference)
-        result = {
-            "reference": reference_future.result(),
-            "verses": [f.result() for f in verse_futures],
-        }
-
+    result = {"reference": passage["reference"], "paragraphs": parser.paragraphs}
     _chapter_cache[cache_key] = result
     return result
 

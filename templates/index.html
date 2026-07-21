@@ -16,6 +16,7 @@
         <div class="top-bar-spacer"></div>
         <button id="jump-to-verse-btn" class="icon-btn hidden" title="Jump to the selected verse">📍</button>
         <button id="play-audio-btn" class="icon-btn" title="Listen to this chapter">🔊</button>
+        <button id="search-btn" class="icon-btn" title="Search (not part of this demo)">🔍</button>
         <button id="more-btn" class="icon-btn" title="Compare translations">⋯</button>
       </header>
 
@@ -28,6 +29,12 @@
         <div id="verse-chapter"></div>
         <footer id="copyright-footer"></footer>
       </main>
+
+      <div id="audio-player-bar" class="hidden">
+        <button id="audio-prev-btn" class="audio-player-chevron" disabled>‹</button>
+        <button id="audio-play-btn" class="audio-player-play">▶</button>
+        <button id="audio-next-btn" class="audio-player-chevron" disabled>›</button>
+      </div>
     </div>
 
     <div id="bottom-pane">
@@ -49,6 +56,14 @@
         </div>
       </div>
     </div>
+
+    <nav id="bottom-nav" title="Demo only — single screen MVP">
+      <div class="nav-item"><span class="nav-icon">🏠</span><span>Home</span></div>
+      <div class="nav-item active"><span class="nav-icon">📖</span><span>Bible</span></div>
+      <div class="nav-item"><span class="nav-icon">✅</span><span>Plans</span></div>
+      <div class="nav-item"><span class="nav-icon">🔍</span><span>Discover</span></div>
+      <div class="nav-item"><span class="nav-icon">👤</span><span>You</span></div>
+    </nav>
   </div>
 
   <div id="explanation-sheet" class="bottom-sheet hidden">
