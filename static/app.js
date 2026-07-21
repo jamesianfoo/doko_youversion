@@ -16,6 +16,7 @@ let currentReference = "";
 // of which script/version happens to be displaying it.
 let selectedVerseNumber = null;
 let currentCompareVersionId = null;
+let currentCompareLanguageTag = null;
 
 const SPEECH_LANG_MAP = { zh: "zh-CN", en: "en-US", ja: "ja-JP", es: "es-ES", fr: "fr-FR" };
 // Matches app.py's DEMO_CHAPTER (book/chapter) -- used only to build a
@@ -424,6 +425,8 @@ async function showComparePassage(versionId, verseNumber) {
   currentCompareVersionId = versionId;
   document.getElementById("bottom-pane").classList.remove("collapsed");
 
+  document.getElementById("greek-toggle-btn").classList.add("hidden");
+
   const cacheKey = `${versionId}_${verseNumber}`;
   let data = compareCache[cacheKey];
   if (!data) {
@@ -435,6 +438,8 @@ async function showComparePassage(versionId, verseNumber) {
   }
 
   document.getElementById("compare-version-title").textContent = `${data.version.abbreviation} — ${data.version.title}`;
+  currentCompareLanguageTag = data.version.language_tag;
+  updateGreekVisibility();
 
   const textEl = document.getElementById("compare-text");
   textEl.innerHTML = "";
@@ -469,8 +474,25 @@ document.getElementById("show-in-chapter-btn").addEventListener("click", () => s
 // collapsible extension of the comparison itself, not a separate modal --
 // it's a way of comparing against the original language, same as comparing
 // against another translation.
+//
+// Only offered when Compare is showing English: that's the pairing this
+// was actually built for (English vs. Greek/Hebrew). Showing it underneath
+// a Chinese or Japanese comparison read as confusing rather than useful --
+// there's no claim here that these Greek words align word-for-word to any
+// particular translation's phrasing anyway (see the in-sheet note), so
+// surfacing it under every language added confusion without adding value.
 let greekSectionExpanded = false;
 const greekWordsCache = {};
+
+function updateGreekVisibility() {
+  const isEnglish = currentCompareLanguageTag === "en";
+  document.getElementById("greek-toggle-btn").classList.toggle("hidden", !isEnglish);
+  if (!isEnglish) {
+    greekSectionExpanded = false;
+    document.getElementById("greek-section").classList.add("hidden");
+    document.getElementById("greek-toggle-btn").classList.remove("expanded");
+  }
+}
 
 async function loadGreekWords(verseNumber) {
   const list = document.getElementById("greek-word-list");
