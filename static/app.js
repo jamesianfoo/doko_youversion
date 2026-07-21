@@ -319,6 +319,18 @@ async function onMemoryDefinitionClick() {
 document.getElementById("memory-find-btn").addEventListener("click", onMemoryFindClick);
 document.getElementById("memory-definition-btn").addEventListener("click", onMemoryDefinitionClick);
 
+let showReadingAid = true;
+
+function toggleReadingAid() {
+  showReadingAid = !showReadingAid;
+  document.body.classList.toggle("reading-aid-hidden", !showReadingAid);
+  const btn = document.getElementById("ruby-toggle-btn");
+  btn.classList.toggle("active", showReadingAid);
+  btn.title = showReadingAid ? "Hide Pinyin & Furigana" : "Show Pinyin & Furigana";
+}
+
+document.getElementById("ruby-toggle-btn").addEventListener("click", toggleReadingAid);
+
 document.getElementById("play-audio-btn").addEventListener("click", () => {
   document.getElementById("audio-player-bar").classList.toggle("hidden");
 });

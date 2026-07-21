@@ -94,6 +94,31 @@ body {
   background: var(--bg-elevated);
 }
 
+.icon-btn.active {
+  color: var(--accent);
+}
+
+/* Toggling this off hides every pinyin/furigana annotation at once --
+   renderRuby() always builds the <rt>, so this is a pure CSS flip rather
+   than needing to re-render the chapter, compare pane, and explanation
+   sheet from scratch. Line-heights were tuned to leave room for the
+   ruby text above the line, so they're tightened back up when it's gone. */
+body.reading-aid-hidden ruby rt {
+  display: none;
+}
+
+body.reading-aid-hidden .paragraph {
+  line-height: 1.6;
+}
+
+body.reading-aid-hidden #compare-text {
+  line-height: 1.6;
+}
+
+body.reading-aid-hidden #explanation-text {
+  line-height: 1.6;
+}
+
 .pill-button {
   cursor: pointer;
   font-family: inherit;
