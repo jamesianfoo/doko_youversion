@@ -55,10 +55,17 @@
         <div id="compare-result" class="hidden">
           <div class="compare-result-header">
             <div id="compare-version-title"></div>
-            <button id="greek-btn" title="See the exact word the author actually wrote, before any translation">𝕬 See the original words</button>
             <button id="show-in-chapter-btn">📍 Show in chapter</button>
           </div>
           <div id="compare-text"></div>
+
+          <button id="greek-toggle-btn" title="See the exact word the author actually wrote, before any translation">
+            𝕬 See the original words <span class="greek-toggle-chevron">⌄</span>
+          </button>
+          <div id="greek-section" class="hidden">
+            <p class="greek-section-note">Chinese, Japanese, English -- every version you've been comparing all comes from this: the exact Greek words the author wrote, nearly 2,000 years before any of those translations existed. Word order follows the original Greek, so it won't line up 1-for-1 with the text above.</p>
+            <div id="greek-word-list"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -116,19 +123,6 @@
 
       <div id="primary-language-list" class="picker-list"></div>
       <div id="primary-version-list" class="picker-list hidden"></div>
-    </div>
-  </div>
-
-  <div id="greek-sheet" class="bottom-sheet hidden">
-    <div class="sheet-backdrop"></div>
-    <div class="sheet-card">
-      <div class="sheet-handle"></div>
-      <button class="sheet-close-btn" id="close-greek-sheet-btn">×</button>
-      <div class="sheet-title-row">
-        <h2 id="greek-sheet-title">Original Greek</h2>
-      </div>
-      <p class="greek-sheet-note">Chinese, Japanese, English -- every version you've been comparing all comes from this: the exact Greek words the author wrote, nearly 2,000 years before any of those translations existed. Word order follows the original Greek, so it won't line up 1-for-1 with the text above.</p>
-      <div id="greek-word-list"></div>
     </div>
   </div>
 

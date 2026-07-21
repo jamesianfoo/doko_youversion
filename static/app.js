@@ -447,6 +447,10 @@ async function showComparePassage(versionId, verseNumber) {
   renderTappableText(textEl, data.chars, data.text, data.version.language_tag, data.verse_number);
 
   showCompareState("result");
+  // Greek data depends only on the verse, not which translation/language is
+  // being compared -- keep it in sync with whatever verse is now showing,
+  // but only bother re-fetching if the section is actually open.
+  refreshGreekSectionIfExpanded(data.verse_number);
 }
 
 document.getElementById("more-btn").addEventListener("click", openLanguagePicker);
@@ -458,20 +462,42 @@ document.getElementById("compare-close-btn").addEventListener("click", () => {
 document.getElementById("jump-to-verse-btn").addEventListener("click", () => scrollToSelectedVerse(true));
 document.getElementById("show-in-chapter-btn").addEventListener("click", () => scrollToSelectedVerse(true));
 
-// --- Original Greek sheet: real Strong's-tagged word data (see
-// data/README.md), bundled locally for this one demo chapter -- not a live
-// API call, and not AI-generated (a wrong Strong's number or
-// transliteration would be an easy, embarrassing thing to get caught
-// fabricating).
-async function openGreekSheet() {
-  document.getElementById("greek-sheet").classList.remove("hidden");
-  document.getElementById("greek-sheet-title").textContent = `Original Greek — Verse ${selectedVerseNumber}`;
+// --- Original Greek: real Strong's-tagged word data (see data/README.md),
+// bundled locally for this one demo chapter -- not a live API call, and not
+// AI-generated (a wrong Strong's number or transliteration would be an
+// easy, embarrassing thing to get caught fabricating). Shown as an inline,
+// collapsible extension of the comparison itself, not a separate modal --
+// it's a way of comparing against the original language, same as comparing
+// against another translation.
+let greekSectionExpanded = false;
+const greekWordsCache = {};
+
+async function loadGreekWords(verseNumber) {
   const list = document.getElementById("greek-word-list");
   list.innerHTML = `<p class="picker-row-subtitle">Loading…</p>`;
 
-  const res = await fetch(`/api/original-language?verse=${encodeURIComponent(selectedVerseNumber)}`);
-  const data = await res.json();
+  let data = greekWordsCache[verseNumber];
+  if (!data) {
+    const res = await fetch(`/api/original-language?verse=${encodeURIComponent(verseNumber)}`);
+    data = await res.json();
+    greekWordsCache[verseNumber] = data;
+  }
   renderGreekWords(list, data.words);
+}
+
+function toggleGreekSection() {
+  greekSectionExpanded = !greekSectionExpanded;
+  document.getElementById("greek-section").classList.toggle("hidden", !greekSectionExpanded);
+  document.getElementById("greek-toggle-btn").classList.toggle("expanded", greekSectionExpanded);
+  if (greekSectionExpanded) {
+    loadGreekWords(selectedVerseNumber);
+  }
+}
+
+function refreshGreekSectionIfExpanded(verseNumber) {
+  if (greekSectionExpanded) {
+    loadGreekWords(verseNumber);
+  }
 }
 
 function renderGreekWords(container, words) {
@@ -505,13 +531,7 @@ function renderGreekWords(container, words) {
   }
 }
 
-function closeGreekSheet() {
-  document.getElementById("greek-sheet").classList.add("hidden");
-}
-
-document.getElementById("greek-btn").addEventListener("click", openGreekSheet);
-document.getElementById("close-greek-sheet-btn").addEventListener("click", closeGreekSheet);
-document.querySelector("#greek-sheet .sheet-backdrop").addEventListener("click", closeGreekSheet);
+document.getElementById("greek-toggle-btn").addEventListener("click", toggleGreekSection);
 
 // --- Primary-language picker (top pane): a modal sheet, since the top pane
 // itself has no room to spare for a persistent picker. Picking a new
