@@ -91,16 +91,20 @@ function renderChapter(paragraphs) {
 }
 
 function onVerseSelect(verseNumber) {
-  if (verseNumber === selectedVerseNumber) return;
-  const prevEl = document.getElementById(`verse-${selectedVerseNumber}`);
-  if (prevEl) prevEl.classList.remove("verse-highlight");
+  // Tapping a word/verse also re-opens a closed Compare panel (from cache,
+  // see showComparePassage), so this can't early-return just because the
+  // verse didn't change -- only the highlight-move step is skippable.
+  if (verseNumber !== selectedVerseNumber) {
+    const prevEl = document.getElementById(`verse-${selectedVerseNumber}`);
+    if (prevEl) prevEl.classList.remove("verse-highlight");
 
-  selectedVerseNumber = verseNumber;
-  const newEl = document.getElementById(`verse-${verseNumber}`);
-  if (newEl) newEl.classList.add("verse-highlight");
+    selectedVerseNumber = verseNumber;
+    const newEl = document.getElementById(`verse-${verseNumber}`);
+    if (newEl) newEl.classList.add("verse-highlight");
+  }
 
   if (currentCompareVersionId !== null) {
-    showComparePassage(currentCompareVersionId);
+    showComparePassage(currentCompareVersionId, verseNumber);
   }
 }
 
@@ -351,13 +355,26 @@ async function onLanguageRowClick(lang) {
   renderVersionRows(list, data.versions, (v) => showComparePassage(v.id));
 }
 
+// Cached by "<versionId>_<verseNumber>" so re-opening a closed Compare
+// panel (by tapping a word/verse again) redisplays instantly instead of
+// re-fetching -- the same version+verse pair never changes once fetched.
+const compareCache = {};
+
 async function showComparePassage(versionId, verseNumber) {
   verseNumber = verseNumber || selectedVerseNumber;
   currentCompareVersionId = versionId;
-  const res = await fetch(
-    `/api/compare/passage?version_id=${encodeURIComponent(versionId)}&verse=${encodeURIComponent(verseNumber)}`
-  );
-  const data = await res.json();
+  document.getElementById("bottom-pane").classList.remove("collapsed");
+
+  const cacheKey = `${versionId}_${verseNumber}`;
+  let data = compareCache[cacheKey];
+  if (!data) {
+    const res = await fetch(
+      `/api/compare/passage?version_id=${encodeURIComponent(versionId)}&verse=${encodeURIComponent(verseNumber)}`
+    );
+    data = await res.json();
+    compareCache[cacheKey] = data;
+  }
+
   document.getElementById("compare-version-title").textContent = `${data.version.abbreviation} — ${data.version.title}`;
 
   const textEl = document.getElementById("compare-text");
@@ -376,6 +393,9 @@ async function showComparePassage(versionId, verseNumber) {
 document.getElementById("more-btn").addEventListener("click", openLanguagePicker);
 document.getElementById("compare-back-btn").addEventListener("click", () => showCompareState("language"));
 document.getElementById("compare-change-btn").addEventListener("click", openLanguagePicker);
+document.getElementById("compare-close-btn").addEventListener("click", () => {
+  document.getElementById("bottom-pane").classList.add("collapsed");
+});
 document.getElementById("jump-to-verse-btn").addEventListener("click", () => scrollToSelectedVerse(true));
 document.getElementById("show-in-chapter-btn").addEventListener("click", () => scrollToSelectedVerse(true));
 
