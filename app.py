@@ -127,21 +127,27 @@ def api_explain():
     language_tag = body.get("language_tag")
     verse_ref = body.get("verse_ref", f"{DEMO_CHAPTER['book']}.{DEMO_CHAPTER['chapter']}")
     verse_number = body.get("verse_number")
+    level = body.get("level", "native")
+    skip_memory = body.get("skip_memory", False)
 
-    explanation = explain_word(word, verse_text, language_tag)
+    explanation = explain_word(word, verse_text, language_tag, level)
 
-    entries = _load_memory()
-    entries.append(
-        {
-            "word": word,
-            "verse_ref": verse_ref,
-            "verse_number": verse_number,
-            "verse_text": verse_text,
-            "language_tag": language_tag,
-            "timestamp": time.time(),
-        }
-    )
-    _save_memory(entries)
+    # Re-explaining the same word at a different depth isn't a new
+    # exploration event -- only a genuine first lookup gets logged, so the
+    # memory banner never ends up referencing the word currently on screen.
+    if not skip_memory:
+        entries = _load_memory()
+        entries.append(
+            {
+                "word": word,
+                "verse_ref": verse_ref,
+                "verse_number": verse_number,
+                "verse_text": verse_text,
+                "language_tag": language_tag,
+                "timestamp": time.time(),
+            }
+        )
+        _save_memory(entries)
 
     return jsonify(
         {

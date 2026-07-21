@@ -518,6 +518,30 @@ ruby rt {
   flex: 1;
 }
 
+.level-toggle {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0 0 1rem;
+}
+
+.level-btn {
+  flex: 1;
+  background: var(--bg-elevated);
+  border: 1px solid var(--divider);
+  color: var(--ink-dim);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.level-btn.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 #explanation-text {
   margin: 0;
   line-height: 2.4;

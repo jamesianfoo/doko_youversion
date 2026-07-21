@@ -278,16 +278,37 @@ _LANGUAGE_NAMES = {
 }
 
 
-def explain_word(word, verse_text, language_tag=None):
+_LEVEL_INSTRUCTIONS = {
+    "beginner": (
+        "Use only simple, everyday vocabulary and short, basic sentences -- "
+        "as if explaining to someone who just started learning this language "
+        "(roughly HSK 1-2 for Chinese, JLPT N5 for Japanese, or plain simple "
+        "wording for other languages). Avoid idioms, complex grammar, and "
+        "advanced vocabulary. 1-2 short sentences maximum."
+    ),
+    "native": (
+        "Write naturally, the way you would for a fluent or native speaker. "
+        "2-4 short sentences."
+    ),
+}
+
+
+def explain_word(word, verse_text, language_tag=None, level="native"):
     """Ask Gloo to explain a word/phrase in plain language, grounded in the
     verse -- in whatever language the word itself is in (immersion, same as
     the reading aid), not always English/Mandarin. Any word in any verse can
     reach this now (the frontend segments words client-side), so the prompt
     can no longer assume Mandarin.
+
+    `level` ("beginner" or "native") controls how simple the explanation's
+    own language is -- independent of which language it's written in, since
+    a true beginner in that language still needs a beginner-level
+    explanation, not native-level fluent prose.
     """
     language_name = _LANGUAGE_NAMES.get(language_tag)
     learning_clause = f"learning {language_name}" if language_name else "learning this language"
     response_clause = f"Respond entirely in {language_name}." if language_name else "Respond in the same language as the verse."
+    level_clause = _LEVEL_INSTRUCTIONS.get(level, _LEVEL_INSTRUCTIONS["native"])
 
     token = _get_gloo_token()
     resp = requests.post(
@@ -303,8 +324,8 @@ def explain_word(word, verse_text, language_tag=None):
                 f"{learning_clause} understand a single word or short phrase "
                 "from a Bible verse they are reading. Explain its meaning in "
                 "plain, encouraging language, grounded in how it is used in "
-                "this specific verse -- not a dictionary definition. Keep it "
-                f"to 2-4 short sentences. {response_clause}"
+                "this specific verse -- not a dictionary definition. "
+                f"{level_clause} {response_clause}"
             ),
             "input": [
                 {

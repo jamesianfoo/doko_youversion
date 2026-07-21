@@ -1,6 +1,11 @@
 let currentVerseText = "";
 let currentExplanationText = "";
 let currentExplanationLanguageTag = null;
+// The word/verse currently open in the explanation sheet -- kept around so
+// toggling Beginner/Native can re-fetch at the new depth without needing a
+// fresh tap on the word itself.
+let currentExplanationContext = null;
+let currentExplanationLevel = "native";
 let currentPrimaryVersionId = null;
 let currentPrimaryLanguageTag = null;
 let currentReference = "";
@@ -201,32 +206,56 @@ async function onWordTap(word, wrapperEl, verseText, languageTag, verseNumber) {
   document.querySelectorAll(".tappable").forEach((el) => el.classList.remove("active"));
   if (wrapperEl) wrapperEl.classList.add("active");
 
-  currentExplanationText = "";
+  currentExplanationContext = { word, verseText, languageTag, verseNumber };
   currentExplanationLanguageTag = languageTag;
   const sheet = document.getElementById("explanation-sheet");
   sheet.classList.remove("hidden");
   document.getElementById("explanation-word").textContent = word;
+
+  await fetchExplanation({ skipMemory: false });
+}
+
+// Fetches (or re-fetches) the explanation for whatever's in
+// currentExplanationContext, at currentExplanationLevel. Shared by a fresh
+// word tap and by toggling Beginner/Native on the word already open --
+// skipMemory is true for the latter, since re-explaining the same word at a
+// different depth isn't a new exploration event.
+async function fetchExplanation({ skipMemory }) {
+  const ctx = currentExplanationContext;
   document.getElementById("explanation-text").textContent = "Thinking…";
 
   const res = await fetch("/api/explain", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      word,
-      verse_text: verseText,
-      language_tag: languageTag,
-      verse_ref: `${DEMO_CHAPTER_REF}.${verseNumber}`,
-      verse_number: verseNumber,
+      word: ctx.word,
+      verse_text: ctx.verseText,
+      language_tag: ctx.languageTag,
+      verse_ref: `${DEMO_CHAPTER_REF}.${ctx.verseNumber}`,
+      verse_number: ctx.verseNumber,
+      level: currentExplanationLevel,
+      skip_memory: skipMemory,
     }),
   });
   const data = await res.json();
   currentExplanationText = data.explanation;
   renderRubyText(document.getElementById("explanation-text"), data.explanation_chars);
 
-  // Refresh the memory banner now that this tap is part of the history --
-  // it was previously only loaded once per page/language load, so it kept
-  // showing the same word no matter how many new words got tapped after.
-  loadMemory();
+  if (!skipMemory) {
+    // Refresh the memory banner now that this tap is part of the history --
+    // it was previously only loaded once per page/language load, so it kept
+    // showing the same word no matter how many new words got tapped after.
+    loadMemory();
+  }
+}
+
+function onLevelToggle(level) {
+  if (level === currentExplanationLevel || !currentExplanationContext) return;
+  currentExplanationLevel = level;
+  document.querySelectorAll(".level-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.level === level);
+  });
+  fetchExplanation({ skipMemory: true });
 }
 
 function closeSheet() {
@@ -306,6 +335,10 @@ document.getElementById("play-explanation-audio-btn").addEventListener("click", 
 
 document.getElementById("close-sheet-btn").addEventListener("click", closeSheet);
 document.querySelector("#explanation-sheet .sheet-backdrop").addEventListener("click", closeSheet);
+
+document.querySelectorAll(".level-btn").forEach((btn) => {
+  btn.addEventListener("click", () => onLevelToggle(btn.dataset.level));
+});
 
 // --- Shared row renderers for both the primary-language and compare
 // pickers -- same list UI (language list -> version list), just wired to
