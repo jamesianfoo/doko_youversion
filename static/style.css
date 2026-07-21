@@ -394,6 +394,7 @@ ruby rt {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
+  flex-wrap: wrap;
   margin-bottom: 0.6rem;
 }
 
@@ -402,8 +403,10 @@ ruby rt {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--accent);
+  flex: 1;
 }
 
+#greek-btn,
 #show-in-chapter-btn {
   flex-shrink: 0;
   background: none;
@@ -415,6 +418,7 @@ ruby rt {
   cursor: pointer;
 }
 
+#greek-btn:hover,
 #show-in-chapter-btn:hover {
   color: var(--ink);
   border-color: var(--accent);
@@ -621,6 +625,67 @@ ruby rt {
   color: var(--ink-dim);
   font-size: 1.2rem;
   flex-shrink: 0;
+}
+
+/* Original Greek sheet */
+.greek-sheet-note {
+  font-size: 0.8rem;
+  color: var(--ink-dim);
+  margin: 0 0 1rem;
+}
+
+.greek-word-row {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.greek-word-row:last-child {
+  border-bottom: none;
+}
+
+.greek-word-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+
+.greek-script {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.greek-translit {
+  font-style: italic;
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+}
+
+.greek-strongs {
+  margin-left: auto;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 6px;
+  padding: 0.15rem 0.4rem;
+  flex-shrink: 0;
+}
+
+.greek-gloss {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+  margin: 0 0 0.3rem;
+}
+
+.greek-definition {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
 }
 
 .hidden {

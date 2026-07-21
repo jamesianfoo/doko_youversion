@@ -19,6 +19,7 @@ from api_clients import (
     get_version_meta,
     list_versions,
 )
+from greek_data import get_verse_words
 
 app = Flask(__name__)
 
@@ -117,6 +118,14 @@ def api_compare_passage():
             "version": meta,
         }
     )
+
+
+@app.route("/api/original-language")
+def api_original_language():
+    # Real Strong's-tagged Greek data, bundled for this one demo chapter --
+    # see data/README.md. Not a live API call, and not AI-generated.
+    verse_number = request.args.get("verse", type=int) or DEMO_CHAPTER["tappable_verse_number"]
+    return jsonify({"verse_number": verse_number, "words": get_verse_words(verse_number)})
 
 
 @app.route("/api/explain", methods=["POST"])

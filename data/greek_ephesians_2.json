@@ -1,0 +1,2946 @@
+{
+  "book": "Ephesians",
+  "chapter": 2,
+  "verses": {
+    "1": [
+      {
+        "greek": "ὑμᾶς",
+        "translit": "Humas",
+        "strongs": "G5209",
+        "gloss": "you",
+        "definition": "you (as the objective of a verb or preposition)",
+        "kjv_usage": "ye, you (+ -ward), your (+ own)"
+      },
+      {
+        "greek": "ὄντας",
+        "translit": "Ontas",
+        "strongs": "G5607",
+        "gloss": "hath he quickened who were",
+        "definition": "being",
+        "kjv_usage": "be, come, have"
+      },
+      {
+        "greek": "νεκροὺς",
+        "translit": "Nekrous",
+        "strongs": "G3498",
+        "gloss": "dead",
+        "definition": "dead (literally or figuratively; also as noun)",
+        "kjv_usage": "dead"
+      },
+      {
+        "greek": "τοῖς",
+        "translit": "Tois",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "παραπτώμασιν",
+        "translit": "Paraptōmasin",
+        "strongs": "G3900",
+        "gloss": "in trespasses",
+        "definition": "a side-slip (lapse or deviation), i.e., (unintentional) error or (wilful) transgression",
+        "kjv_usage": "fall, fault, offence, sin, trespass"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "And",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "And",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "ταῖς",
+        "translit": "Tais",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἁμαρτίαις",
+        "translit": "Hamartiais",
+        "strongs": "G266",
+        "gloss": "sins",
+        "definition": "a sin (properly abstract)",
+        "kjv_usage": "offence, sin(-ful)"
+      }
+    ],
+    "2": [
+      {
+        "greek": "αἷς",
+        "translit": "Ais",
+        "strongs": "G3739",
+        "gloss": "",
+        "definition": "the relatively (sometimes demonstrative) pronoun, who, which, what, that",
+        "kjv_usage": "one, (an-, the) other, some, that, what, which, who(-m, -se), etc"
+      },
+      {
+        "greek": "ποτε",
+        "translit": "Pote",
+        "strongs": "G4218",
+        "gloss": "in time past",
+        "definition": "indefinite adverb, at some time, ever",
+        "kjv_usage": "afore-(any) (some-)time(-s), at length (the last), (+ n-)ever, in the old time, in time past, once, when"
+      },
+      {
+        "greek": "περιεπατήσατε",
+        "translit": "Periepatēsate",
+        "strongs": "G4043",
+        "gloss": "ye walked",
+        "definition": "to tread all around, i.e., walk at large (especially as proof of ability); figuratively, to live, deport oneself, follow (as a companion or votary)",
+        "kjv_usage": "go, be occupied with, walk (about)"
+      },
+      {
+        "greek": "τὸν",
+        "translit": "Ton",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "αἰῶνα",
+        "translit": "Aiōna",
+        "strongs": "G165",
+        "gloss": "the course",
+        "definition": "properly, an age; by extension, perpetuity (also past); by implication, the world; specially (jewish) a messianic period (present or future)",
+        "kjv_usage": "age, course, eternal, (for) ever(-more), (n-)ever, (beginning of the , while the) world (began, without end)"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "κόσμου",
+        "translit": "Kosmou",
+        "strongs": "G2889",
+        "gloss": "world",
+        "definition": "orderly arrangement, i.e., decoration; by implication, the world (including its inhabitants, literally or figuratively (morally))",
+        "kjv_usage": "adorning, world"
+      },
+      {
+        "greek": "τούτου",
+        "translit": "Toutou",
+        "strongs": "G5127",
+        "gloss": "of this",
+        "definition": "of (from or concerning) this (person or thing)",
+        "kjv_usage": "here(-by), him, it, + such manner of, that, thence(-forth), thereabout, this, thus"
+      },
+      {
+        "greek": "κατὰ",
+        "translit": "Kata",
+        "strongs": "G2596",
+        "gloss": "according to",
+        "definition": "(prepositionally) down (in place or time), in varied relations (according to the case (genitive, dative or accusative) with which it is joined)",
+        "kjv_usage": "about, according as (to), after, against, (when they were) X alone, among, and, X apart, (even, like) as (concerning, pertaining to touching), X aside, at, before, beyond, by, to the charge of, charitably, concerning, + covered, day, daily, down, every, (+ far more) exceeding, X more excellent, for, from...to, godly, in(-asmuch, -to) (divers, every, respect of), ...by, after the manner of, + by any means, beyond (out of) measure, X mightily, more, X natural, of (up-)on (X part), out (of every), over against, (+ your) X own, + particularly, so, through(-oughout, -oughout every), thus, (un-)to(-gether, -ward), X uttermost, where(-by), with"
+      },
+      {
+        "greek": "κατὰ",
+        "translit": "Kata",
+        "strongs": "G2596",
+        "gloss": "according to",
+        "definition": "(prepositionally) down (in place or time), in varied relations (according to the case (genitive, dative or accusative) with which it is joined)",
+        "kjv_usage": "about, according as (to), after, against, (when they were) X alone, among, and, X apart, (even, like) as (concerning, pertaining to touching), X aside, at, before, beyond, by, to the charge of, charitably, concerning, + covered, day, daily, down, every, (+ far more) exceeding, X more excellent, for, from...to, godly, in(-asmuch, -to) (divers, every, respect of), ...by, after the manner of, + by any means, beyond (out of) measure, X mightily, more, X natural, of (up-)on (X part), out (of every), over against, (+ your) X own, + particularly, so, through(-oughout, -oughout every), thus, (un-)to(-gether, -ward), X uttermost, where(-by), with"
+      },
+      {
+        "greek": "τὸν",
+        "translit": "Ton",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἄρχοντα",
+        "translit": "Archonta",
+        "strongs": "G758",
+        "gloss": "the prince",
+        "definition": "a first (in rank or power)",
+        "kjv_usage": "chief (ruler), magistrate, prince, ruler"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἐξουσίας",
+        "translit": "Exousias",
+        "strongs": "G1849",
+        "gloss": "of the power",
+        "definition": "privilege, i.e., (subjectively) force, capacity, competency, freedom, or (objectively) mastery (concretely, magistrate, superhuman, potentate, token of control), delegated influence",
+        "kjv_usage": "authority, jurisdiction, liberty, power, right, strength"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἀέρος",
+        "translit": "Aeros",
+        "strongs": "G109",
+        "gloss": "of the air",
+        "definition": "\"air\" (as naturally circumambient)",
+        "kjv_usage": "air"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "πνεύματος",
+        "translit": "Pneumatos",
+        "strongs": "G4151",
+        "gloss": "the spirit",
+        "definition": "a current of air, i.e., breath (blast) or a breeze; by analogy or figuratively, a spirit, i.e., (human) the rational soul, (by implication) vital principle, mental disposition, etc., or (superhuman) an angel, demon, or (divine) god, christ's spirit, the holy spirit",
+        "kjv_usage": "ghost, life, spirit(-ual, -ually), mind"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "νῦν",
+        "translit": "Nun",
+        "strongs": "G3568",
+        "gloss": "that now",
+        "definition": "\"now\" (as adverb of date, a transition or emphasis); also as noun or adjective present or immediate",
+        "kjv_usage": "henceforth, + hereafter, of late, soon, present, this (time)"
+      },
+      {
+        "greek": "ἐνεργοῦντος",
+        "translit": "Energountos",
+        "strongs": "G1754",
+        "gloss": "worketh",
+        "definition": "to be active, efficient",
+        "kjv_usage": "do, (be) effectual (fervent), be mighty in, shew forth self, work (effectually in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "Wherein",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "Wherein",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "τοῖς",
+        "translit": "Tois",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "υἱοῖς",
+        "translit": "Uiois",
+        "strongs": "G5207",
+        "gloss": "the children",
+        "definition": "a \"son\" (sometimes of animals), used very widely of immediate, remote or figuratively, kinship",
+        "kjv_usage": "child, foal, son"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἀπειθείας·",
+        "translit": "Apeitheias",
+        "strongs": "G543",
+        "gloss": "of disobedience",
+        "definition": "disbelief (obstinate and rebellious)",
+        "kjv_usage": "disobedience, unbelief"
+      }
+    ],
+    "3": [
+      {
+        "greek": "οἷς",
+        "translit": "Ois",
+        "strongs": "G3739",
+        "gloss": "whom",
+        "definition": "the relatively (sometimes demonstrative) pronoun, who, which, what, that",
+        "kjv_usage": "one, (an-, the) other, some, that, what, which, who(-m, -se), etc"
+      },
+      {
+        "greek": "ἡμεῖς",
+        "translit": "Hēmeis",
+        "strongs": "G2249",
+        "gloss": "we",
+        "definition": "we (only used when emphatic)",
+        "kjv_usage": "us, we (ourselves)"
+      },
+      {
+        "greek": "πάντες",
+        "translit": "Pantes",
+        "strongs": "G3956",
+        "gloss": "all",
+        "definition": "all, any, every, the whole",
+        "kjv_usage": "all (manner of, means), alway(-s), any (one), X daily, + ever, every (one, way), as many as, + no(-thing), X thoroughly, whatsoever, whole, whosoever"
+      },
+      {
+        "greek": "ἀνεστράφημέν",
+        "translit": "Anestraphēmen",
+        "strongs": "G390",
+        "gloss": "had our conversation",
+        "definition": "to overturn; also to return; by implication, to busy oneself, i.e., remain, live",
+        "kjv_usage": "abide, behave self, have conversation, live, overthrow, pass, return, be used"
+      },
+      {
+        "greek": "ποτε",
+        "translit": "Pote",
+        "strongs": "G4218",
+        "gloss": "in times past",
+        "definition": "indefinite adverb, at some time, ever",
+        "kjv_usage": "afore-(any) (some-)time(-s), at length (the last), (+ n-)ever, in the old time, in time past, once, when"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "Among",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "Among",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ταῖς",
+        "translit": "Tais",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἐπιθυμίαις",
+        "translit": "Epithumiais",
+        "strongs": "G1939",
+        "gloss": "the lusts",
+        "definition": "a longing (especially for what is forbidden)",
+        "kjv_usage": "concupiscence, desire, lust (after)"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἡμῶν",
+        "translit": "Hēmōn",
+        "strongs": "G2257",
+        "gloss": "of our",
+        "definition": "of (or from) us",
+        "kjv_usage": "our (company), us, we"
+      },
+      {
+        "greek": "ποιοῦντες",
+        "translit": "Poiountes",
+        "strongs": "G4160",
+        "gloss": "fulfilling",
+        "definition": "to make or do (in a very wide application, more or less direct)",
+        "kjv_usage": "abide, + agree, appoint, X avenge, + band together, be, bear, + bewray, bring (forth), cast out, cause, commit, + content, continue, deal, + without any delay, (would) do(-ing), execute, exercise, fulfil, gain, give, have, hold, X journeying, keep, + lay wait, + lighten the ship, make, X mean, + none of these things move me, observe, ordain, perform, provide, + have purged, purpose, put, + raising up, X secure, shew, X shoot out, spend, take, tarry, + transgress the law, work, yield"
+      },
+      {
+        "greek": "τὰ",
+        "translit": "Ta",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "θελήματα",
+        "translit": "Thelēmata",
+        "strongs": "G2307",
+        "gloss": "the desires",
+        "definition": "a determination (properly, the thing), i.e., (actively) choice (specially, purpose, decree; abstractly, volition) or (passively) inclination",
+        "kjv_usage": "desire, pleasure, will"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "σαρκὸς",
+        "translit": "Sarkos",
+        "strongs": "G4561",
+        "gloss": "flesh",
+        "definition": "flesh (as stripped of the skin), i.e., (strictly) the meat of an animal (as food), or (by extension) the body (as opposed to the soul (or spirit), or as the symbol of what is external, or as the means of kindred), or (by implication) human nature (with its frailties (physically or morally) and passions), or (specially), a human being (as such)",
+        "kjv_usage": "carnal(-ly), + carnally minded, flesh(-ly)"
+      },
+      {
+        "greek": "σαρκὸς",
+        "translit": "Sarkos",
+        "strongs": "G4561",
+        "gloss": "flesh",
+        "definition": "flesh (as stripped of the skin), i.e., (strictly) the meat of an animal (as food), or (by extension) the body (as opposed to the soul (or spirit), or as the symbol of what is external, or as the means of kindred), or (by implication) human nature (with its frailties (physically or morally) and passions), or (specially), a human being (as such)",
+        "kjv_usage": "carnal(-ly), + carnally minded, flesh(-ly)"
+      },
+      {
+        "greek": "τῶν",
+        "translit": "Tōn",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "διανοιῶν",
+        "translit": "Dianoiōn",
+        "strongs": "G1271",
+        "gloss": "of the mind",
+        "definition": "deep thought, properly, the faculty (mind or its disposition), by implication, its exercise",
+        "kjv_usage": "imagination, mind, understanding"
+      },
+      {
+        "greek": "ἤμεν",
+        "translit": "Ēmen",
+        "strongs": "G1510",
+        "gloss": "",
+        "definition": "i exist (used only when emphatic)",
+        "kjv_usage": "am, have been, X it is I, was"
+      },
+      {
+        "greek": "τέκνα",
+        "translit": "Tekna",
+        "strongs": "G5043",
+        "gloss": "the children",
+        "definition": "a child (as produced)",
+        "kjv_usage": "child, daughter, son"
+      },
+      {
+        "greek": "φύσει",
+        "translit": "Phusei",
+        "strongs": "G5449",
+        "gloss": "by nature",
+        "definition": "growth (by germination or expansion), i.e., (by implication) natural production (lineal descent); by extension, a genus or sort; figuratively, native disposition, constitution or usage",
+        "kjv_usage": "(man-)kind, nature(-al)"
+      },
+      {
+        "greek": "ὀργῆς",
+        "translit": "Orgēs",
+        "strongs": "G3709",
+        "gloss": "of wrath",
+        "definition": "properly, desire (as a reaching forth or excitement of the mind), i.e., (by analogy), violent passion (ire, or (justifiable) abhorrence); by implication punishment",
+        "kjv_usage": "anger, indignation, vengeance, wrath"
+      },
+      {
+        "greek": "ὡς",
+        "translit": "Hōs",
+        "strongs": "G5613",
+        "gloss": "as",
+        "definition": "which how, i.e., in that manner (very variously used, as follows)",
+        "kjv_usage": "about, after (that), (according) as (it had been, it were), as soon (as), even as (like), for, how (greatly), like (as, unto), since, so (that), that, to wit, unto, when(-soever), while, X with all speed"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "also",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "also",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "also",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "also",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "οἱ",
+        "translit": "Oi",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "λοιποί·",
+        "translit": "Loipoi",
+        "strongs": "G3062",
+        "gloss": "others",
+        "definition": "remaining ones",
+        "kjv_usage": "other, which remain, remnant, residue, rest"
+      }
+    ],
+    "4": [
+      {
+        "greek": "ὁ",
+        "translit": "Ho",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "δὲ",
+        "translit": "De",
+        "strongs": "G1161",
+        "gloss": "But",
+        "definition": "but, and, etc",
+        "kjv_usage": "also, and, but, moreover, now"
+      },
+      {
+        "greek": "θεὸς",
+        "translit": "Theos",
+        "strongs": "G2316",
+        "gloss": "God",
+        "definition": "a deity, especially (with g3588) the supreme divinity; figuratively, a magistrate; exceedingly (by hebraism)",
+        "kjv_usage": "God, god(-ly, -ward), "
+      },
+      {
+        "greek": "πλούσιος",
+        "translit": "Plousios",
+        "strongs": "G4145",
+        "gloss": "rich",
+        "definition": "wealthy; figuratively, abounding with",
+        "kjv_usage": "rich"
+      },
+      {
+        "greek": "ὢν",
+        "translit": "Ōn",
+        "strongs": "G5607",
+        "gloss": "who is",
+        "definition": "being",
+        "kjv_usage": "be, come, have"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐλέει",
+        "translit": "Eleei",
+        "strongs": "G1656",
+        "gloss": "mercy",
+        "definition": "compassion (human or divine, especially active)",
+        "kjv_usage": "(+ tender) mercy"
+      },
+      {
+        "greek": "διὰ",
+        "translit": "Dia",
+        "strongs": "G1223",
+        "gloss": "for",
+        "definition": "through (in very wide applications, local, causal, or occasional)",
+        "kjv_usage": "after, always, among, at, to avoid, because of (that), briefly, by, for (cause)...fore, from, in, by occasion of, of, by reason of, for sake, that, thereby, therefore, X though, through(-out), to, wherefore, with(-in)"
+      },
+      {
+        "greek": "τὴν",
+        "translit": "Tēn",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "πολλὴν",
+        "translit": "Pollēn",
+        "strongs": "G4183",
+        "gloss": "great",
+        "definition": "(singular) much (in any respect) or (plural) many; neuter (singular) as adverbial, largely; neuter (plural) as adverb or noun often, mostly, largely",
+        "kjv_usage": "abundant, + altogether, common, + far (passed, spent), (+ be of a) great (age, deal, -ly, while), long, many, much, oft(-entimes), plenteous, sore, straitly"
+      },
+      {
+        "greek": "ἀγάπην",
+        "translit": "Agapēn",
+        "strongs": "G26",
+        "gloss": "love",
+        "definition": "love, i.e., affection or benevolence; specially (plural) a love-feast",
+        "kjv_usage": "(feast of) charity(-ably), dear, love"
+      },
+      {
+        "greek": "αὐτοῦ",
+        "translit": "Autou",
+        "strongs": "G846",
+        "gloss": "",
+        "definition": "the reflexive pronoun self, used (alone or in the comparative g1438) of the third person, and (with the proper personal pronoun) of the other persons",
+        "kjv_usage": "her, it(-self), one, the other, (mine) own, said, (the) (self-)same, (him-, my-, thy- )self, (your-)selves, she, that, their(-s), them(-selves), there(-at, -by, -in, -into, -of, -on, -with), they, (these) things, this (man), those, together, very, which"
+      },
+      {
+        "greek": "ἣν",
+        "translit": "Hēn",
+        "strongs": "G3739",
+        "gloss": "wherewith",
+        "definition": "the relatively (sometimes demonstrative) pronoun, who, which, what, that",
+        "kjv_usage": "one, (an-, the) other, some, that, what, which, who(-m, -se), etc"
+      },
+      {
+        "greek": "ἠγάπησεν",
+        "translit": "Ēgapēsen",
+        "strongs": "G25",
+        "gloss": "he loved",
+        "definition": "to love (in a social or moral sense)",
+        "kjv_usage": "(be-)love(-ed)"
+      },
+      {
+        "greek": "ἡμᾶς",
+        "translit": "Hēmas",
+        "strongs": "G2248",
+        "gloss": "us",
+        "definition": "us",
+        "kjv_usage": "our, us, we"
+      }
+    ],
+    "5": [
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "Even",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "ὄντας",
+        "translit": "Ontas",
+        "strongs": "G5607",
+        "gloss": "were",
+        "definition": "being",
+        "kjv_usage": "be, come, have"
+      },
+      {
+        "greek": "ἡμᾶς",
+        "translit": "Hēmas",
+        "strongs": "G2248",
+        "gloss": "when we",
+        "definition": "us",
+        "kjv_usage": "our, us, we"
+      },
+      {
+        "greek": "νεκροὺς",
+        "translit": "Nekrous",
+        "strongs": "G3498",
+        "gloss": "dead",
+        "definition": "dead (literally or figuratively; also as noun)",
+        "kjv_usage": "dead"
+      },
+      {
+        "greek": "τοῖς",
+        "translit": "Tois",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "παραπτώμασιν",
+        "translit": "Paraptōmasin",
+        "strongs": "G3900",
+        "gloss": "in sins",
+        "definition": "a side-slip (lapse or deviation), i.e., (unintentional) error or (wilful) transgression",
+        "kjv_usage": "fall, fault, offence, sin, trespass"
+      },
+      {
+        "greek": "συνεζωοποίησεν",
+        "translit": "Sunezōopoiēsen",
+        "strongs": "G4806",
+        "gloss": "hath quickened us together with",
+        "definition": "to reanimate conjointly with (figuratively)",
+        "kjv_usage": "quicken together with"
+      },
+      {
+        "greek": "τῷ",
+        "translit": "Tō",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "Χριστῷ",
+        "translit": "Christō",
+        "strongs": "G5547",
+        "gloss": "Christ",
+        "definition": "anointed, i.e., the messiah, an epithet of jesus",
+        "kjv_usage": "Christ"
+      },
+      {
+        "greek": "χάριτί",
+        "translit": "Chariti",
+        "strongs": "G5485",
+        "gloss": "(by grace",
+        "definition": "graciousness (as gratifying), of manner or act (abstract or concrete; literal, figurative or spiritual; especially the divine influence upon the heart, and its reflection in the life; including gratitude)",
+        "kjv_usage": "acceptable, benefit, favour, gift, grace(-ious), joy, liberality, pleasure, thank(-s, -worthy)"
+      },
+      {
+        "greek": "ἐστε",
+        "translit": "Este",
+        "strongs": "G2075",
+        "gloss": "ye are",
+        "definition": "ye are",
+        "kjv_usage": "be, have been, belong"
+      },
+      {
+        "greek": "σεσῳσμένοι",
+        "translit": "Sesōsmenoi",
+        "strongs": "G4982",
+        "gloss": "saved",
+        "definition": "to save, i.e., deliver or protect (literally or figuratively)",
+        "kjv_usage": "heal, preserve, save (self), do well, be (make) whole"
+      }
+    ],
+    "6": [
+      {
+        "greek": "συνήγειρεν",
+        "translit": "Sunēgeiren",
+        "strongs": "G4891",
+        "gloss": "hath raised us up together",
+        "definition": "to rouse (from death) in company with, i.e., (figuratively) to revivify (spirtually) in resemblance to",
+        "kjv_usage": "raise up together, rise with"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "And",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "And",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "συνεκάθισεν",
+        "translit": "Sunekathisen",
+        "strongs": "G4776",
+        "gloss": "made us sit together",
+        "definition": "to give (or take) a seat in company with",
+        "kjv_usage": "(make) sit (down) together"
+      },
+      {
+        "greek": "τοῖς",
+        "translit": "Tois",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἐπουρανίοις",
+        "translit": "Epouraniois",
+        "strongs": "G2032",
+        "gloss": "heavenly",
+        "definition": "above the sky",
+        "kjv_usage": "celestial, (in) heaven(-ly), high"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "Χριστῷ",
+        "translit": "Christō",
+        "strongs": "G5547",
+        "gloss": "Christ",
+        "definition": "anointed, i.e., the messiah, an epithet of jesus",
+        "kjv_usage": "Christ"
+      },
+      {
+        "greek": "Ἰησοῦ",
+        "translit": "Iēsou",
+        "strongs": "G2424",
+        "gloss": "Jesus",
+        "definition": "jesus (i.e., jehoshua), the name of our lord and two (three) other israelites",
+        "kjv_usage": "Jesus"
+      }
+    ],
+    "7": [
+      {
+        "greek": "ἵνα",
+        "translit": "Hina",
+        "strongs": "G2443",
+        "gloss": "That",
+        "definition": "in order that (denoting the purpose or the result)",
+        "kjv_usage": "albeit, because, to the intent (that), lest, so as, (so) that, (for) to"
+      },
+      {
+        "greek": "ἐνδείξηται",
+        "translit": "Endeixētai",
+        "strongs": "G1731",
+        "gloss": "he might shew",
+        "definition": "to indicate (by word or act)",
+        "kjv_usage": "do, show (forth)"
+      },
+      {
+        "greek": "τοῖς",
+        "translit": "Tois",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "αἰῶσιν",
+        "translit": "Aiōsin",
+        "strongs": "G165",
+        "gloss": "the ages",
+        "definition": "properly, an age; by extension, perpetuity (also past); by implication, the world; specially (jewish) a messianic period (present or future)",
+        "kjv_usage": "age, course, eternal, (for) ever(-more), (n-)ever, (beginning of the , while the) world (began, without end)"
+      },
+      {
+        "greek": "τοῖς",
+        "translit": "Tois",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἐπερχομένοις",
+        "translit": "Eperchomenois",
+        "strongs": "G1904",
+        "gloss": "to come",
+        "definition": "to supervene, i.e., arrive, occur, impend, attack, (figuratively) influence",
+        "kjv_usage": "come (in, upon)"
+      },
+      {
+        "greek": "τὸν",
+        "translit": "Ton",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ὑπερβάλλοντα",
+        "translit": "Huperballonta",
+        "strongs": "G5235",
+        "gloss": "the exceeding",
+        "definition": "to throw beyod the usual mark, i.e., (figuratively) to surpass (only active participle supereminent)",
+        "kjv_usage": "exceeding, excel, pass"
+      },
+      {
+        "greek": "πλοῦτον",
+        "translit": "Plouton",
+        "strongs": "G4149",
+        "gloss": "riches",
+        "definition": "wealth (as fulness), i.e., (literally) money, possessions, or (figuratively) abundance, richness, (specially), valuable bestowment",
+        "kjv_usage": "riches"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "χάριτος",
+        "translit": "Charitos",
+        "strongs": "G5485",
+        "gloss": "grace",
+        "definition": "graciousness (as gratifying), of manner or act (abstract or concrete; literal, figurative or spiritual; especially the divine influence upon the heart, and its reflection in the life; including gratitude)",
+        "kjv_usage": "acceptable, benefit, favour, gift, grace(-ious), joy, liberality, pleasure, thank(-s, -worthy)"
+      },
+      {
+        "greek": "αὐτοῦ",
+        "translit": "Autou",
+        "strongs": "G846",
+        "gloss": "",
+        "definition": "the reflexive pronoun self, used (alone or in the comparative g1438) of the third person, and (with the proper personal pronoun) of the other persons",
+        "kjv_usage": "her, it(-self), one, the other, (mine) own, said, (the) (self-)same, (him-, my-, thy- )self, (your-)selves, she, that, their(-s), them(-selves), there(-at, -by, -in, -into, -of, -on, -with), they, (these) things, this (man), those, together, very, which"
+      },
+      {
+        "greek": "χρηστότητι",
+        "translit": "Chrēstotēti",
+        "strongs": "G5544",
+        "gloss": "his kindness",
+        "definition": "usefulness, i.e., morally, excellence (in character or demeanor)",
+        "kjv_usage": "gentleness, good(-ness), kindness"
+      },
+      {
+        "greek": "ἐφ'",
+        "translit": "Eph",
+        "strongs": "G1909",
+        "gloss": "toward",
+        "definition": "properly, meaning superimposition (of time, place, order, etc.), as a relation of distribution (with the genitive case), i.e., over, upon, etc.; of rest (with the dative case) at, on, etc.; of direction (with the accusative case) towards, upon, etc",
+        "kjv_usage": "about (the times), above, after, against, among, as long as (touching), at, beside, X have charge of, (be-, where-)fore, in (a place, as much as, the time of, -to), (because) of, (up-)on (behalf of), over, (by, for) the space of, through(-out), (un-)to(-ward), with"
+      },
+      {
+        "greek": "ἡμᾶς",
+        "translit": "Hēmas",
+        "strongs": "G2248",
+        "gloss": "us",
+        "definition": "us",
+        "kjv_usage": "our, us, we"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "Χριστῷ",
+        "translit": "Christō",
+        "strongs": "G5547",
+        "gloss": "Christ",
+        "definition": "anointed, i.e., the messiah, an epithet of jesus",
+        "kjv_usage": "Christ"
+      },
+      {
+        "greek": "Ἰησοῦ",
+        "translit": "Iēsou",
+        "strongs": "G2424",
+        "gloss": "Jesus",
+        "definition": "jesus (i.e., jehoshua), the name of our lord and two (three) other israelites",
+        "kjv_usage": "Jesus"
+      }
+    ],
+    "8": [
+      {
+        "greek": "τῇ",
+        "translit": "Tē",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "γὰρ",
+        "translit": "Gar",
+        "strongs": "G1063",
+        "gloss": "For",
+        "definition": "properly, assigning a reason (used in argument, explanation or intensification; often with other particles)",
+        "kjv_usage": "and, as, because (that), but, even, for, indeed, no doubt, seeing, then, therefore, verily, what, why, yet"
+      },
+      {
+        "greek": "χάριτί",
+        "translit": "Chariti",
+        "strongs": "G5485",
+        "gloss": "by grace",
+        "definition": "graciousness (as gratifying), of manner or act (abstract or concrete; literal, figurative or spiritual; especially the divine influence upon the heart, and its reflection in the life; including gratitude)",
+        "kjv_usage": "acceptable, benefit, favour, gift, grace(-ious), joy, liberality, pleasure, thank(-s, -worthy)"
+      },
+      {
+        "greek": "ἐστε",
+        "translit": "Este",
+        "strongs": "G2075",
+        "gloss": "are ye",
+        "definition": "ye are",
+        "kjv_usage": "be, have been, belong"
+      },
+      {
+        "greek": "σεσῳσμένοι",
+        "translit": "Sesōsmenoi",
+        "strongs": "G4982",
+        "gloss": "saved",
+        "definition": "to save, i.e., deliver or protect (literally or figuratively)",
+        "kjv_usage": "heal, preserve, save (self), do well, be (make) whole"
+      },
+      {
+        "greek": "διὰ",
+        "translit": "Dia",
+        "strongs": "G1223",
+        "gloss": "through",
+        "definition": "through (in very wide applications, local, causal, or occasional)",
+        "kjv_usage": "after, always, among, at, to avoid, because of (that), briefly, by, for (cause)...fore, from, in, by occasion of, of, by reason of, for sake, that, thereby, therefore, X though, through(-out), to, wherefore, with(-in)"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "πίστεως·",
+        "translit": "Pisteōs",
+        "strongs": "G4102",
+        "gloss": "faith",
+        "definition": "persuasion, i.e., credence; moral conviction (of religious truth, or the truthfulness of god or a religious teacher), especially reliance upon christ for salvation; abstractly, constancy in such profession; by extension, the system of religious (gospel) truth itself",
+        "kjv_usage": "assurance, belief, believe, faith, fidelity"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "and",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "τοῦτο",
+        "translit": "Touto",
+        "strongs": "G5124",
+        "gloss": "that",
+        "definition": "that thing",
+        "kjv_usage": "here(-unto), it, partly, self(-same), so, that (intent), the same, there(-fore, -unto), this, thus, where(-fore)"
+      },
+      {
+        "greek": "οὐκ",
+        "translit": "Ouk",
+        "strongs": "G3756",
+        "gloss": "not",
+        "definition": "the absolute negative (compare g3361) adverb; no or not",
+        "kjv_usage": "+ long, nay, neither, never, no (X man), none, (can-)not, + nothing, + special, un(-worthy), when, + without, + yet but"
+      },
+      {
+        "greek": "ἐξ",
+        "translit": "Ex",
+        "strongs": "G1537",
+        "gloss": "of",
+        "definition": "a primary preposition denoting origin (the point whence action or motion proceeds), from, out (of place, time, or cause literal or figurative; direct or remote)",
+        "kjv_usage": "after, among, X are, at, betwixt(-yond), by (the means of), exceedingly, (+ abundantly above), for(-th), from (among, forth, up), + grudgingly, + heartily, X heavenly, X hereby, + very highly, in, ...ly, (because, by reason) of, off (from), on, out among (from, of), over, since, X thenceforth, through, X unto, X vehemently, with(-out)"
+      },
+      {
+        "greek": "ὑμῶν",
+        "translit": "Humōn",
+        "strongs": "G5216",
+        "gloss": "yourselves",
+        "definition": "of (from or concerning) you",
+        "kjv_usage": "ye, you, your (own, -selves)"
+      },
+      {
+        "greek": "θεοῦ",
+        "translit": "Theou",
+        "strongs": "G2316",
+        "gloss": "of God",
+        "definition": "a deity, especially (with g3588) the supreme divinity; figuratively, a magistrate; exceedingly (by hebraism)",
+        "kjv_usage": "God, god(-ly, -ward), "
+      },
+      {
+        "greek": "τὸ",
+        "translit": "To",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "δῶρον·",
+        "translit": "Dōron",
+        "strongs": "G1435",
+        "gloss": "it is the gift",
+        "definition": "a present; specially, a sacrifice",
+        "kjv_usage": "gift, offering"
+      }
+    ],
+    "9": [
+      {
+        "greek": "οὐκ",
+        "translit": "Ouk",
+        "strongs": "G3756",
+        "gloss": "Not",
+        "definition": "the absolute negative (compare g3361) adverb; no or not",
+        "kjv_usage": "+ long, nay, neither, never, no (X man), none, (can-)not, + nothing, + special, un(-worthy), when, + without, + yet but"
+      },
+      {
+        "greek": "ἐξ",
+        "translit": "Ex",
+        "strongs": "G1537",
+        "gloss": "of",
+        "definition": "a primary preposition denoting origin (the point whence action or motion proceeds), from, out (of place, time, or cause literal or figurative; direct or remote)",
+        "kjv_usage": "after, among, X are, at, betwixt(-yond), by (the means of), exceedingly, (+ abundantly above), for(-th), from (among, forth, up), + grudgingly, + heartily, X heavenly, X hereby, + very highly, in, ...ly, (because, by reason) of, off (from), on, out among (from, of), over, since, X thenceforth, through, X unto, X vehemently, with(-out)"
+      },
+      {
+        "greek": "ἔργων",
+        "translit": "Ergōn",
+        "strongs": "G2041",
+        "gloss": "works",
+        "definition": "toil (as an effort or occupation); by implication, an act",
+        "kjv_usage": "deed, doing, labour, work"
+      },
+      {
+        "greek": "ἵνα",
+        "translit": "Hina",
+        "strongs": "G2443",
+        "gloss": "",
+        "definition": "in order that (denoting the purpose or the result)",
+        "kjv_usage": "albeit, because, to the intent (that), lest, so as, (so) that, (for) to"
+      },
+      {
+        "greek": "μή",
+        "translit": "Mē",
+        "strongs": "G3361",
+        "gloss": "",
+        "definition": "(adverb) not, (conjunction) lest; also (as an interrogative implying a negative answer (whereas g3756 expects an affirmative one)) whether",
+        "kjv_usage": "any but (that), X forbear, + God forbid, + lack, lest, neither, never, no (X wise in), none, nor, (can-)not, nothing, that not, un(-taken), without"
+      },
+      {
+        "greek": "τις",
+        "translit": "Tis",
+        "strongs": "G5100",
+        "gloss": "any man",
+        "definition": "some or any person or object",
+        "kjv_usage": "a (kind of), any (man, thing, thing at all), certain (thing), divers, he (every) man, one (X thing), ought, + partly, some(-body, -thing, -what) (man), (+ that no-)thing, what(-soever), X wherewith, whom(-soever), whose(-soever)"
+      },
+      {
+        "greek": "καυχήσηται",
+        "translit": "Kauchēsētai",
+        "strongs": "G2744",
+        "gloss": "should boast",
+        "definition": "to vaunt (in a good or a bad sense)",
+        "kjv_usage": "(make) boast, glory, joy, rejoice"
+      }
+    ],
+    "10": [
+      {
+        "greek": "γάρ",
+        "translit": "Gar",
+        "strongs": "G1063",
+        "gloss": "For",
+        "definition": "properly, assigning a reason (used in argument, explanation or intensification; often with other particles)",
+        "kjv_usage": "and, as, because (that), but, even, for, indeed, no doubt, seeing, then, therefore, verily, what, why, yet"
+      },
+      {
+        "greek": "ἐσμεν",
+        "translit": "Esmen",
+        "strongs": "G2070",
+        "gloss": "we are",
+        "definition": "we are",
+        "kjv_usage": "are, be, have our being, X have hope, + (the gospel) was (preached unto) us"
+      },
+      {
+        "greek": "ποίημα",
+        "translit": "Poiēma",
+        "strongs": "G4161",
+        "gloss": "his workmanship",
+        "definition": "a product, i.e., fabric (literally or figuratively)",
+        "kjv_usage": "thing that is made, workmanship"
+      },
+      {
+        "greek": "κτισθέντες",
+        "translit": "Ktisthentes",
+        "strongs": "G2936",
+        "gloss": "created",
+        "definition": "to fabricate, i.e., found (form originally)",
+        "kjv_usage": "create, Creator, make"
+      },
+      {
+        "greek": "Χριστῷ",
+        "translit": "Christō",
+        "strongs": "G5547",
+        "gloss": "Christ",
+        "definition": "anointed, i.e., the messiah, an epithet of jesus",
+        "kjv_usage": "Christ"
+      },
+      {
+        "greek": "Ἰησοῦ",
+        "translit": "Iēsou",
+        "strongs": "G2424",
+        "gloss": "Jesus",
+        "definition": "jesus (i.e., jehoshua), the name of our lord and two (three) other israelites",
+        "kjv_usage": "Jesus"
+      },
+      {
+        "greek": "ἐπὶ",
+        "translit": "Epi",
+        "strongs": "G1909",
+        "gloss": "unto",
+        "definition": "properly, meaning superimposition (of time, place, order, etc.), as a relation of distribution (with the genitive case), i.e., over, upon, etc.; of rest (with the dative case) at, on, etc.; of direction (with the accusative case) towards, upon, etc",
+        "kjv_usage": "about (the times), above, after, against, among, as long as (touching), at, beside, X have charge of, (be-, where-)fore, in (a place, as much as, the time of, -to), (because) of, (up-)on (behalf of), over, (by, for) the space of, through(-out), (un-)to(-ward), with"
+      },
+      {
+        "greek": "ἔργοις",
+        "translit": "Ergois",
+        "strongs": "G2041",
+        "gloss": "works",
+        "definition": "toil (as an effort or occupation); by implication, an act",
+        "kjv_usage": "deed, doing, labour, work"
+      },
+      {
+        "greek": "ἀγαθοῖς",
+        "translit": "Agathois",
+        "strongs": "G18",
+        "gloss": "good",
+        "definition": "\"good\" (in any sense, often as noun)",
+        "kjv_usage": "benefit, good(-s) (things), well"
+      },
+      {
+        "greek": "οἷς",
+        "translit": "Ois",
+        "strongs": "G3739",
+        "gloss": "which",
+        "definition": "the relatively (sometimes demonstrative) pronoun, who, which, what, that",
+        "kjv_usage": "one, (an-, the) other, some, that, what, which, who(-m, -se), etc"
+      },
+      {
+        "greek": "προητοίμασεν",
+        "translit": "Proētoimasen",
+        "strongs": "G4282",
+        "gloss": "hath before ordained",
+        "definition": "to fit up in advance (literally or figuratively)",
+        "kjv_usage": "ordain before, prepare afore"
+      },
+      {
+        "greek": "ὁ",
+        "translit": "Ho",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "θεὸς",
+        "translit": "Theos",
+        "strongs": "G2316",
+        "gloss": "God",
+        "definition": "a deity, especially (with g3588) the supreme divinity; figuratively, a magistrate; exceedingly (by hebraism)",
+        "kjv_usage": "God, god(-ly, -ward), "
+      },
+      {
+        "greek": "ἵνα",
+        "translit": "Hina",
+        "strongs": "G2443",
+        "gloss": "that",
+        "definition": "in order that (denoting the purpose or the result)",
+        "kjv_usage": "albeit, because, to the intent (that), lest, so as, (so) that, (for) to"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "αὐτοῖς",
+        "translit": "Autois",
+        "strongs": "G846",
+        "gloss": "them",
+        "definition": "the reflexive pronoun self, used (alone or in the comparative g1438) of the third person, and (with the proper personal pronoun) of the other persons",
+        "kjv_usage": "her, it(-self), one, the other, (mine) own, said, (the) (self-)same, (him-, my-, thy- )self, (your-)selves, she, that, their(-s), them(-selves), there(-at, -by, -in, -into, -of, -on, -with), they, (these) things, this (man), those, together, very, which"
+      },
+      {
+        "greek": "αὐτοῖς",
+        "translit": "Autois",
+        "strongs": "G846",
+        "gloss": "them",
+        "definition": "the reflexive pronoun self, used (alone or in the comparative g1438) of the third person, and (with the proper personal pronoun) of the other persons",
+        "kjv_usage": "her, it(-self), one, the other, (mine) own, said, (the) (self-)same, (him-, my-, thy- )self, (your-)selves, she, that, their(-s), them(-selves), there(-at, -by, -in, -into, -of, -on, -with), they, (these) things, this (man), those, together, very, which"
+      },
+      {
+        "greek": "περιπατήσωμεν",
+        "translit": "Peripatēsōmen",
+        "strongs": "G4043",
+        "gloss": "we should walk",
+        "definition": "to tread all around, i.e., walk at large (especially as proof of ability); figuratively, to live, deport oneself, follow (as a companion or votary)",
+        "kjv_usage": "go, be occupied with, walk (about)"
+      }
+    ],
+    "11": [
+      {
+        "greek": "Διὸ",
+        "translit": "Dio",
+        "strongs": "G1352",
+        "gloss": "Wherefore",
+        "definition": "through which thing, i.e., consequently",
+        "kjv_usage": "for which cause, therefore, wherefore"
+      },
+      {
+        "greek": "μνημονεύετε",
+        "translit": "Mnēmoneuete",
+        "strongs": "G3421",
+        "gloss": "remember",
+        "definition": "to exercise memory, i.e., recollect; by implication, to punish; also to rehearse",
+        "kjv_usage": "make mention; be mindful, remember"
+      },
+      {
+        "greek": "ὅτι",
+        "translit": "Hoti",
+        "strongs": "G3754",
+        "gloss": "that",
+        "definition": "demonstrative, that (sometimes redundant); causative, because",
+        "kjv_usage": "as concerning that, as though, because (that), for (that), how (that), (in) that, though, why"
+      },
+      {
+        "greek": "ὑμεῖς",
+        "translit": "Humeis",
+        "strongs": "G5210",
+        "gloss": "ye",
+        "definition": "you (as subjective of verb)",
+        "kjv_usage": "ye (yourselves), you"
+      },
+      {
+        "greek": "ποτὲ",
+        "translit": "Pote",
+        "strongs": "G4218",
+        "gloss": "being in time past",
+        "definition": "indefinite adverb, at some time, ever",
+        "kjv_usage": "afore-(any) (some-)time(-s), at length (the last), (+ n-)ever, in the old time, in time past, once, when"
+      },
+      {
+        "greek": "ἔθνη",
+        "translit": "Ethnē",
+        "strongs": "G1484",
+        "gloss": "Gentiles",
+        "definition": "a race (as of the same habit), i.e., a tribe; specially, a foreign (non-jewish) one (usually, by implication, pagan)",
+        "kjv_usage": "Gentile, heathen, nation, people"
+      },
+      {
+        "greek": "ἀκροβυστία",
+        "translit": "Akrobustia",
+        "strongs": "G203",
+        "gloss": "Uncircumcision",
+        "definition": "the prepuce; by implication, an uncircumcised (i.e., gentile, figuratively, unregenerate) state or person",
+        "kjv_usage": "not circumcised, uncircumcised (with G2192), uncircumcision"
+      },
+      {
+        "greek": "ὑπὸ",
+        "translit": "Hupo",
+        "strongs": "G5259",
+        "gloss": "by",
+        "definition": "under, i.e., (with the genitive case) of place (beneath), or with verbs (the agency or means, through); (with the accusative case) of place (whither (underneath) or where (below) or time (when (at))",
+        "kjv_usage": "among, by, from, in, of, under, with"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "that which",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "that which",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "that which",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "λεγομένης",
+        "translit": "Legomenēs",
+        "strongs": "G3004",
+        "gloss": "are called",
+        "definition": "properly, to \"lay\" forth, i.e., (figuratively) relate (in words (usually of systematic or set discourse; whereas g2036 and g5346 generally refer to an individual expression or speech respectively; while g4483 is properly to break silence merely, and g2980 means an extended or random harangue)); by implication, to mean",
+        "kjv_usage": "ask, bid, boast, call, describe, give out, name, put forth, say(-ing) (on), shew, speak, tell, utter"
+      },
+      {
+        "greek": "λεγομένης",
+        "translit": "Legomenēs",
+        "strongs": "G3004",
+        "gloss": "are called",
+        "definition": "properly, to \"lay\" forth, i.e., (figuratively) relate (in words (usually of systematic or set discourse; whereas g2036 and g5346 generally refer to an individual expression or speech respectively; while g4483 is properly to break silence merely, and g2980 means an extended or random harangue)); by implication, to mean",
+        "kjv_usage": "ask, bid, boast, call, describe, give out, name, put forth, say(-ing) (on), shew, speak, tell, utter"
+      },
+      {
+        "greek": "περιτομῆς",
+        "translit": "Peritomēs",
+        "strongs": "G4061",
+        "gloss": "the Circumcision",
+        "definition": "circumcision (the rite, the condition or the people, literally or figuratively)",
+        "kjv_usage": "X circumcised, circumcision"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "σαρκὶ",
+        "translit": "Sarki",
+        "strongs": "G4561",
+        "gloss": "the flesh",
+        "definition": "flesh (as stripped of the skin), i.e., (strictly) the meat of an animal (as food), or (by extension) the body (as opposed to the soul (or spirit), or as the symbol of what is external, or as the means of kindred), or (by implication) human nature (with its frailties (physically or morally) and passions), or (specially), a human being (as such)",
+        "kjv_usage": "carnal(-ly), + carnally minded, flesh(-ly)"
+      },
+      {
+        "greek": "σαρκὶ",
+        "translit": "Sarki",
+        "strongs": "G4561",
+        "gloss": "the flesh",
+        "definition": "flesh (as stripped of the skin), i.e., (strictly) the meat of an animal (as food), or (by extension) the body (as opposed to the soul (or spirit), or as the symbol of what is external, or as the means of kindred), or (by implication) human nature (with its frailties (physically or morally) and passions), or (specially), a human being (as such)",
+        "kjv_usage": "carnal(-ly), + carnally minded, flesh(-ly)"
+      },
+      {
+        "greek": "χειροποιήτου",
+        "translit": "Cheiropoiētou",
+        "strongs": "G5499",
+        "gloss": "made by hands",
+        "definition": "manufactured, i.e., of human construction",
+        "kjv_usage": "made by (make with) hands"
+      }
+    ],
+    "12": [
+      {
+        "greek": "ὅτι",
+        "translit": "Hoti",
+        "strongs": "G3754",
+        "gloss": "That",
+        "definition": "demonstrative, that (sometimes redundant); causative, because",
+        "kjv_usage": "as concerning that, as though, because (that), for (that), how (that), (in) that, though, why"
+      },
+      {
+        "greek": "ἦτε",
+        "translit": "Ēte",
+        "strongs": "G2258",
+        "gloss": "ye were",
+        "definition": "i (thou, etc.) was (wast or were)",
+        "kjv_usage": "+ agree, be, X have (+ charge of), hold, use, was(-t), were"
+      },
+      {
+        "greek": "τῷ",
+        "translit": "Tō",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "καιρῷ",
+        "translit": "Kairō",
+        "strongs": "G2540",
+        "gloss": "time",
+        "definition": "an occasion, i.e., set or proper time",
+        "kjv_usage": "X always, opportunity, (convenient, due) season, (due, short, while) time, a while"
+      },
+      {
+        "greek": "ἐκείνῳ",
+        "translit": "Ekeinō",
+        "strongs": "G1565",
+        "gloss": "that",
+        "definition": "that one (or (neuter) thing); often intensified by the article prefixed",
+        "kjv_usage": "he, it, the other (same), selfsame, that (same, very), X their, X them, they, this, those"
+      },
+      {
+        "greek": "χωρὶς",
+        "translit": "Chōris",
+        "strongs": "G5565",
+        "gloss": "without",
+        "definition": "at a space, i.e., separately or apart from (often as preposition)",
+        "kjv_usage": "beside, by itself, without"
+      },
+      {
+        "greek": "Χριστοῦ",
+        "translit": "Christou",
+        "strongs": "G5547",
+        "gloss": "Christ",
+        "definition": "anointed, i.e., the messiah, an epithet of jesus",
+        "kjv_usage": "Christ"
+      },
+      {
+        "greek": "ἀπηλλοτριωμένοι",
+        "translit": "Apēllotriōmenoi",
+        "strongs": "G526",
+        "gloss": "being aliens",
+        "definition": "to estrange away, i.e., (passively and figuratively) to be non-participant",
+        "kjv_usage": "alienate, be alien"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "πολιτείας",
+        "translit": "Politeias",
+        "strongs": "G4174",
+        "gloss": "from the commonwealth",
+        "definition": "citizenship; concretely, a community",
+        "kjv_usage": "commonwealth, freedom"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "Ἰσραὴλ",
+        "translit": "Israēl",
+        "strongs": "G2474",
+        "gloss": "of Israel",
+        "definition": "israel (i.e., jisrael), the adopted name of jacob, including his descendants (literally or figuratively)",
+        "kjv_usage": "Israel"
+      },
+      {
+        "greek": "ξένοι",
+        "translit": "Xenoi",
+        "strongs": "G3581",
+        "gloss": "strangers",
+        "definition": "foreign (literally, alien, or figuratively, novel); by implication, a guest or (vice-versa) entertainer",
+        "kjv_usage": "host, strange(-r)"
+      },
+      {
+        "greek": "τῶν",
+        "translit": "Tōn",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "διαθηκῶν",
+        "translit": "Diathēkōn",
+        "strongs": "G1242",
+        "gloss": "from the covenants",
+        "definition": "properly, a disposition, i.e., (specially) a contract (especially a devisory will)",
+        "kjv_usage": "covenant, testament"
+      },
+      {
+        "greek": "τῆς",
+        "translit": "Tēs",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἐπαγγελίας",
+        "translit": "Epaggelias",
+        "strongs": "G1860",
+        "gloss": "of promise",
+        "definition": "an announcement (for information, assent or pledge; especially a divine assurance of good)",
+        "kjv_usage": "message, promise"
+      },
+      {
+        "greek": "ἐλπίδα",
+        "translit": "Elpida",
+        "strongs": "G1680",
+        "gloss": "hope",
+        "definition": "expectation (abstractly or concretely) or confidence",
+        "kjv_usage": "faith, hope"
+      },
+      {
+        "greek": "μὴ",
+        "translit": "Mē",
+        "strongs": "G3361",
+        "gloss": "no",
+        "definition": "(adverb) not, (conjunction) lest; also (as an interrogative implying a negative answer (whereas g3756 expects an affirmative one)) whether",
+        "kjv_usage": "any but (that), X forbear, + God forbid, + lack, lest, neither, never, no (X wise in), none, nor, (can-)not, nothing, that not, un(-taken), without"
+      },
+      {
+        "greek": "ἔχοντες",
+        "translit": "Echontes",
+        "strongs": "G2192",
+        "gloss": "having",
+        "definition": "to hold (used in very various applications, literally or figuratively, direct or remote; such as possession; ability, contiuity, relation, or condition)",
+        "kjv_usage": "be (able, X hold, possessed with), accompany, + begin to amend, can(+ -not), X conceive, count, diseased, do + eat, + enjoy, + fear, following, have, hold, keep, + lack, + go to law, lie, + must needs, + of necessity, + need, next, + recover, + reign, + rest, + return, X sick, take for, + tremble, + uncircumcised, use"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "and",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "and",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "ἄθεοι",
+        "translit": "Atheoi",
+        "strongs": "G112",
+        "gloss": "without God",
+        "definition": "godless",
+        "kjv_usage": "without God"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "at",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "at",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "τῷ",
+        "translit": "Tō",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "κόσμῳ",
+        "translit": "Kosmō",
+        "strongs": "G2889",
+        "gloss": "the world",
+        "definition": "orderly arrangement, i.e., decoration; by implication, the world (including its inhabitants, literally or figuratively (morally))",
+        "kjv_usage": "adorning, world"
+      }
+    ],
+    "13": [
+      {
+        "greek": "νυνὶ",
+        "translit": "Nuni",
+        "strongs": "G3570",
+        "gloss": "now",
+        "definition": "just now",
+        "kjv_usage": "now"
+      },
+      {
+        "greek": "δὲ",
+        "translit": "De",
+        "strongs": "G1161",
+        "gloss": "But",
+        "definition": "but, and, etc",
+        "kjv_usage": "also, and, but, moreover, now"
+      },
+      {
+        "greek": "Ἰησοῦ",
+        "translit": "Iēsou",
+        "strongs": "G2424",
+        "gloss": "Jesus",
+        "definition": "jesus (i.e., jehoshua), the name of our lord and two (three) other israelites",
+        "kjv_usage": "Jesus"
+      },
+      {
+        "greek": "ὑμεῖς",
+        "translit": "Humeis",
+        "strongs": "G5210",
+        "gloss": "ye",
+        "definition": "you (as subjective of verb)",
+        "kjv_usage": "ye (yourselves), you"
+      },
+      {
+        "greek": "ποτε",
+        "translit": "Pote",
+        "strongs": "G4218",
+        "gloss": "sometimes",
+        "definition": "indefinite adverb, at some time, ever",
+        "kjv_usage": "afore-(any) (some-)time(-s), at length (the last), (+ n-)ever, in the old time, in time past, once, when"
+      },
+      {
+        "greek": "ὄντες",
+        "translit": "Ontes",
+        "strongs": "G5607",
+        "gloss": "were",
+        "definition": "being",
+        "kjv_usage": "be, come, have"
+      },
+      {
+        "greek": "μακρὰν",
+        "translit": "Makran",
+        "strongs": "G3112",
+        "gloss": "far off",
+        "definition": "at a distance (literally or figuratively)",
+        "kjv_usage": "(a-)far (off), good (great) way off"
+      },
+      {
+        "greek": "ἐγγὺς",
+        "translit": "Eggus",
+        "strongs": "G1451",
+        "gloss": "nigh",
+        "definition": "near (literally or figuratively, of place or time)",
+        "kjv_usage": "from , at hand, near, nigh (at hand, unto), ready"
+      },
+      {
+        "greek": "ἐγενήθητε",
+        "translit": "Egenēthēte",
+        "strongs": "G1096",
+        "gloss": "are made",
+        "definition": "to cause to be (\"gen\"-erate), i.e., (reflexively) to become (come into being), used with great latitude (literal, figurative, intensive, etc.)",
+        "kjv_usage": "arise, be assembled, be(-come, -fall, -have self), be brought (to pass), (be) come (to pass), continue, be divided, draw, be ended, fall, be finished, follow, be found, be fulfilled, + God forbid, grow, happen, have, be kept, be made, be married, be ordained to be, partake, pass, be performed, be published, require, seem, be showed, X soon as it was, sound, be taken, be turned, use, wax, will, would, be wrought"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "by",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "by",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "αἵματι",
+        "translit": "Aimati",
+        "strongs": "G129",
+        "gloss": "the blood",
+        "definition": "blood, literally (of men or animals), figuratively (the juice of grapes) or specially (the atoning blood of christ); by implication, bloodshed, also kindred",
+        "kjv_usage": "blood"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "who",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "who",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "who",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "Χριστοῦ",
+        "translit": "Christou",
+        "strongs": "G5547",
+        "gloss": "Christ",
+        "definition": "anointed, i.e., the messiah, an epithet of jesus",
+        "kjv_usage": "Christ"
+      },
+      {
+        "greek": "Χριστοῦ",
+        "translit": "Christou",
+        "strongs": "G5547",
+        "gloss": "Christ",
+        "definition": "anointed, i.e., the messiah, an epithet of jesus",
+        "kjv_usage": "Christ"
+      }
+    ],
+    "14": [
+      {
+        "greek": "Αὐτὸς",
+        "translit": "Autos",
+        "strongs": "G846",
+        "gloss": "",
+        "definition": "the reflexive pronoun self, used (alone or in the comparative g1438) of the third person, and (with the proper personal pronoun) of the other persons",
+        "kjv_usage": "her, it(-self), one, the other, (mine) own, said, (the) (self-)same, (him-, my-, thy- )self, (your-)selves, she, that, their(-s), them(-selves), there(-at, -by, -in, -into, -of, -on, -with), they, (these) things, this (man), those, together, very, which"
+      },
+      {
+        "greek": "γάρ",
+        "translit": "Gar",
+        "strongs": "G1063",
+        "gloss": "For",
+        "definition": "properly, assigning a reason (used in argument, explanation or intensification; often with other particles)",
+        "kjv_usage": "and, as, because (that), but, even, for, indeed, no doubt, seeing, then, therefore, verily, what, why, yet"
+      },
+      {
+        "greek": "ἐστιν",
+        "translit": "Estin",
+        "strongs": "G2076",
+        "gloss": "he is",
+        "definition": "he (she or it) is; also (with neuter plural) they are",
+        "kjv_usage": "are, be(-long), call, X can(-not), come, consisteth, X dure for a while, + follow, X have, (that) is (to say), make, meaneth, X must needs, + profit, + remaineth, + wrestle"
+      },
+      {
+        "greek": "εἰρήνη",
+        "translit": "Eirēnē",
+        "strongs": "G1515",
+        "gloss": "peace",
+        "definition": "peace (literally or figuratively); by implication, prosperity",
+        "kjv_usage": "one, peace, quietness, rest, + set at one again"
+      },
+      {
+        "greek": "ἡμῶν",
+        "translit": "Hēmōn",
+        "strongs": "G2257",
+        "gloss": "our",
+        "definition": "of (or from) us",
+        "kjv_usage": "our (company), us, we"
+      },
+      {
+        "greek": "ποιήσας",
+        "translit": "Poiēsas",
+        "strongs": "G4160",
+        "gloss": "hath made",
+        "definition": "to make or do (in a very wide application, more or less direct)",
+        "kjv_usage": "abide, + agree, appoint, X avenge, + band together, be, bear, + bewray, bring (forth), cast out, cause, commit, + content, continue, deal, + without any delay, (would) do(-ing), execute, exercise, fulfil, gain, give, have, hold, X journeying, keep, + lay wait, + lighten the ship, make, X mean, + none of these things move me, observe, ordain, perform, provide, + have purged, purpose, put, + raising up, X secure, shew, X shoot out, spend, take, tarry, + transgress the law, work, yield"
+      },
+      {
+        "greek": "ἀμφότερα",
+        "translit": "Amphotera",
+        "strongs": "G297",
+        "gloss": "both",
+        "definition": "(in plural) both",
+        "kjv_usage": "both"
+      },
+      {
+        "greek": "ἓν",
+        "translit": "Hen",
+        "strongs": "G1520",
+        "gloss": "one",
+        "definition": "one",
+        "kjv_usage": "a(-n, -ny) (certain), + abundantly, man, one (another), only, other, some"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "and",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "μεσότοιχον",
+        "translit": "Mesotoichon",
+        "strongs": "G3320",
+        "gloss": "the middle wall",
+        "definition": "a partition (figuratively)",
+        "kjv_usage": "middle wall"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "who",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "who",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "who",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "who",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "who",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "φραγμοῦ",
+        "translit": "Phragmou",
+        "strongs": "G5418",
+        "gloss": "of partition",
+        "definition": "a fence, or inclosing barrier (literally or figuratively)",
+        "kjv_usage": "hedge (+ round about), partition"
+      },
+      {
+        "greek": "λύσας",
+        "translit": "Lusas",
+        "strongs": "G3089",
+        "gloss": "hath broken down",
+        "definition": "to \"loosen\" (literally or figuratively)",
+        "kjv_usage": "break (up), destroy, dissolve, (un-)loose, melt, put off"
+      }
+    ],
+    "15": [
+      {
+        "greek": "τήν",
+        "translit": "Tēn",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἔχθραν",
+        "translit": "Echthran",
+        "strongs": "G2189",
+        "gloss": "the enmity",
+        "definition": "hostility; by implication, a reason for opposition",
+        "kjv_usage": "enmity, hatred"
+      },
+      {
+        "greek": "τῇ",
+        "translit": "Tē",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "σαρκί",
+        "translit": "Sarki",
+        "strongs": "G4561",
+        "gloss": "flesh",
+        "definition": "flesh (as stripped of the skin), i.e., (strictly) the meat of an animal (as food), or (by extension) the body (as opposed to the soul (or spirit), or as the symbol of what is external, or as the means of kindred), or (by implication) human nature (with its frailties (physically or morally) and passions), or (specially), a human being (as such)",
+        "kjv_usage": "carnal(-ly), + carnally minded, flesh(-ly)"
+      },
+      {
+        "greek": "αὐτοῦ",
+        "translit": "Autou",
+        "strongs": "G846",
+        "gloss": "",
+        "definition": "the reflexive pronoun self, used (alone or in the comparative g1438) of the third person, and (with the proper personal pronoun) of the other persons",
+        "kjv_usage": "her, it(-self), one, the other, (mine) own, said, (the) (self-)same, (him-, my-, thy- )self, (your-)selves, she, that, their(-s), them(-selves), there(-at, -by, -in, -into, -of, -on, -with), they, (these) things, this (man), those, together, very, which"
+      },
+      {
+        "greek": "τὸν",
+        "translit": "Ton",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "νόμον",
+        "translit": "Nomon",
+        "strongs": "G3551",
+        "gloss": "even the law",
+        "definition": "law (through the idea of prescriptive usage), genitive case (regulation), specially, (of moses (including the volume); also of the gospel), or figuratively (a principle)",
+        "kjv_usage": "law"
+      },
+      {
+        "greek": "τῶν",
+        "translit": "Tōn",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἐντολῶν",
+        "translit": "Entolōn",
+        "strongs": "G1785",
+        "gloss": "of commandments",
+        "definition": "injunction, i.e., an authoritative prescription",
+        "kjv_usage": "commandment, precept"
+      },
+      {
+        "greek": "δόγμασιν",
+        "translit": "Dogmasin",
+        "strongs": "G1378",
+        "gloss": "ordinances",
+        "definition": "a law (civil, ceremonial or ecclesiastical)",
+        "kjv_usage": "decree, ordinance"
+      },
+      {
+        "greek": "καταργήσας",
+        "translit": "Katargēsas",
+        "strongs": "G2673",
+        "gloss": "Having abolished",
+        "definition": "to be (render) entirely idle (useless), literally or figuratively",
+        "kjv_usage": "abolish, cease, cumber, deliver, destroy, do away, become (make) of no (none, without) effect, fail, loose, bring (come) to nought, put away (down), vanish away, make void"
+      },
+      {
+        "greek": "ἵνα",
+        "translit": "Hina",
+        "strongs": "G2443",
+        "gloss": "for to",
+        "definition": "in order that (denoting the purpose or the result)",
+        "kjv_usage": "albeit, because, to the intent (that), lest, so as, (so) that, (for) to"
+      },
+      {
+        "greek": "τοὺς",
+        "translit": "Tous",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "δύο",
+        "translit": "Duo",
+        "strongs": "G1417",
+        "gloss": "of twain",
+        "definition": "\"two\"",
+        "kjv_usage": "both, twain, two"
+      },
+      {
+        "greek": "κτίσῃ",
+        "translit": "Ktisē",
+        "strongs": "G2936",
+        "gloss": "make",
+        "definition": "to fabricate, i.e., found (form originally)",
+        "kjv_usage": "create, Creator, make"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "contained in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "contained in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "contained in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἑαὐτῷ",
+        "translit": "Heautō",
+        "strongs": "G1438",
+        "gloss": "himself",
+        "definition": "(him- her-, it-, them-, my-, thy-, our-, your-)self (selves), etc",
+        "kjv_usage": "alone, her (own, -self), (he) himself, his (own), itself, one (to) another, our (thine) own(-selves), + that she had, their (own, own selves), (of) them(-selves), they, thyself, you, your(-selves) (own, own conceits, own selves)"
+      },
+      {
+        "greek": "εἰς",
+        "translit": "Eis",
+        "strongs": "G1519",
+        "gloss": "one",
+        "definition": "to or into (indicating the point reached or entered), of place, time, or (figuratively) purpose (result, etc.); also in adverbial phrases",
+        "kjv_usage": "abundantly, against, among, as, at, (back-)ward, before, by, concerning, + continual, + far more exceeding, for (intent, purpose), fore, + forth, in(-so much that, -to) (among, at, unto), to the intent that, + of one mind, + never, of, (up-)on, + perish, + set at one again, (so) that, therefore(-unto), throughout, til, to (be, the end, -ward), (here-)until(-to), ...ward, (where-)fore, with"
+      },
+      {
+        "greek": "ἕνα",
+        "translit": "Hena",
+        "strongs": "G1520",
+        "gloss": "",
+        "definition": "one",
+        "kjv_usage": "a(-n, -ny) (certain), + abundantly, man, one (another), only, other, some"
+      },
+      {
+        "greek": "καινὸν",
+        "translit": "Kainon",
+        "strongs": "G2537",
+        "gloss": "new",
+        "definition": "new (especially in freshness; while g3501 is properly so with respect to age",
+        "kjv_usage": "new"
+      },
+      {
+        "greek": "ἄνθρωπον",
+        "translit": "Anthrōpon",
+        "strongs": "G444",
+        "gloss": "man",
+        "definition": "man-faced, i.e., a human being",
+        "kjv_usage": "certain, man"
+      },
+      {
+        "greek": "ποιῶν",
+        "translit": "Poiōn",
+        "strongs": "G4160",
+        "gloss": "so making",
+        "definition": "to make or do (in a very wide application, more or less direct)",
+        "kjv_usage": "abide, + agree, appoint, X avenge, + band together, be, bear, + bewray, bring (forth), cast out, cause, commit, + content, continue, deal, + without any delay, (would) do(-ing), execute, exercise, fulfil, gain, give, have, hold, X journeying, keep, + lay wait, + lighten the ship, make, X mean, + none of these things move me, observe, ordain, perform, provide, + have purged, purpose, put, + raising up, X secure, shew, X shoot out, spend, take, tarry, + transgress the law, work, yield"
+      },
+      {
+        "greek": "εἰρήνην",
+        "translit": "Eirēnēn",
+        "strongs": "G1515",
+        "gloss": "peace",
+        "definition": "peace (literally or figuratively); by implication, prosperity",
+        "kjv_usage": "one, peace, quietness, rest, + set at one again"
+      }
+    ],
+    "16": [
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "And",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "ἀποκαταλλάξῃ",
+        "translit": "Apokatallaxē",
+        "strongs": "G604",
+        "gloss": "that he might reconcile",
+        "definition": "to reconcile fully",
+        "kjv_usage": "reconcile"
+      },
+      {
+        "greek": "τοὺς",
+        "translit": "Tous",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἀμφοτέρους",
+        "translit": "Amphoterous",
+        "strongs": "G297",
+        "gloss": "both",
+        "definition": "(in plural) both",
+        "kjv_usage": "both"
+      },
+      {
+        "greek": "ἑνὶ",
+        "translit": "Heni",
+        "strongs": "G1520",
+        "gloss": "one",
+        "definition": "one",
+        "kjv_usage": "a(-n, -ny) (certain), + abundantly, man, one (another), only, other, some"
+      },
+      {
+        "greek": "σώματι",
+        "translit": "Sōmati",
+        "strongs": "G4983",
+        "gloss": "body",
+        "definition": "the body (as a sound whole), used in a very wide application, literally or figuratively",
+        "kjv_usage": "bodily, body, slave"
+      },
+      {
+        "greek": "τῷ",
+        "translit": "Tō",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "θεῷ",
+        "translit": "Theō",
+        "strongs": "G2316",
+        "gloss": "unto God",
+        "definition": "a deity, especially (with g3588) the supreme divinity; figuratively, a magistrate; exceedingly (by hebraism)",
+        "kjv_usage": "God, god(-ly, -ward), "
+      },
+      {
+        "greek": "διὰ",
+        "translit": "Dia",
+        "strongs": "G1223",
+        "gloss": "by",
+        "definition": "through (in very wide applications, local, causal, or occasional)",
+        "kjv_usage": "after, always, among, at, to avoid, because of (that), briefly, by, for (cause)...fore, from, in, by occasion of, of, by reason of, for sake, that, thereby, therefore, X though, through(-out), to, wherefore, with(-in)"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "σταυροῦ",
+        "translit": "Staurou",
+        "strongs": "G4716",
+        "gloss": "the cross",
+        "definition": "a stake or post (as set upright), i.e., (specially), a pole or cross (as an instrument of capital punishment); figuratively, exposure to death, i.e., self-denial; by implication, the atonement of christ",
+        "kjv_usage": "cross"
+      },
+      {
+        "greek": "ἀποκτείνας",
+        "translit": "Apokteinas",
+        "strongs": "G615",
+        "gloss": "having slain",
+        "definition": "to kill outright; figuratively, to destroy",
+        "kjv_usage": "put to death, kill, slay"
+      },
+      {
+        "greek": "τὴν",
+        "translit": "Tēn",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἔχθραν",
+        "translit": "Echthran",
+        "strongs": "G2189",
+        "gloss": "the enmity",
+        "definition": "hostility; by implication, a reason for opposition",
+        "kjv_usage": "enmity, hatred"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "in",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "αὐτῷ",
+        "translit": "Autō",
+        "strongs": "G846",
+        "gloss": "",
+        "definition": "the reflexive pronoun self, used (alone or in the comparative g1438) of the third person, and (with the proper personal pronoun) of the other persons",
+        "kjv_usage": "her, it(-self), one, the other, (mine) own, said, (the) (self-)same, (him-, my-, thy- )self, (your-)selves, she, that, their(-s), them(-selves), there(-at, -by, -in, -into, -of, -on, -with), they, (these) things, this (man), those, together, very, which"
+      }
+    ],
+    "17": [
+      {
+        "greek": "ἐλθὼν",
+        "translit": "Elthōn",
+        "strongs": "G2064",
+        "gloss": "came",
+        "definition": "to come or go (in a great variety of applications, literally and figuratively)",
+        "kjv_usage": "accompany, appear, bring, come, enter, fall out, go, grow, X light, X next, pass, resort, be set"
+      },
+      {
+        "greek": "εὐηγγελίσατο",
+        "translit": "Euēggelisato",
+        "strongs": "G2097",
+        "gloss": "and preached",
+        "definition": "to announce good news (\"evangelize\") especially the gospel",
+        "kjv_usage": "declare, bring (declare, show) glad (good) tidings, preach (the gospel)"
+      },
+      {
+        "greek": "εἰρήνην",
+        "translit": "Eirēnēn",
+        "strongs": "G1515",
+        "gloss": "peace",
+        "definition": "peace (literally or figuratively); by implication, prosperity",
+        "kjv_usage": "one, peace, quietness, rest, + set at one again"
+      },
+      {
+        "greek": "ὑμῖν",
+        "translit": "Humin",
+        "strongs": "G5213",
+        "gloss": "to you",
+        "definition": "to (with or by) you",
+        "kjv_usage": "ye, you, your(-selves)"
+      },
+      {
+        "greek": "μακρὰν",
+        "translit": "Makran",
+        "strongs": "G3112",
+        "gloss": "were afar off",
+        "definition": "at a distance (literally or figuratively)",
+        "kjv_usage": "(a-)far (off), good (great) way off"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "And",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "And",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "τοῖς",
+        "translit": "Tois",
+        "strongs": "G3588",
+        "gloss": "which",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "τοῖς",
+        "translit": "Tois",
+        "strongs": "G3588",
+        "gloss": "which",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἐγγύς·",
+        "translit": "Eggus",
+        "strongs": "G1451",
+        "gloss": "to them that were nigh",
+        "definition": "near (literally or figuratively, of place or time)",
+        "kjv_usage": "from , at hand, near, nigh (at hand, unto), ready"
+      }
+    ],
+    "18": [
+      {
+        "greek": "ὅτι",
+        "translit": "Hoti",
+        "strongs": "G3754",
+        "gloss": "For",
+        "definition": "demonstrative, that (sometimes redundant); causative, because",
+        "kjv_usage": "as concerning that, as though, because (that), for (that), how (that), (in) that, though, why"
+      },
+      {
+        "greek": "δι'",
+        "translit": "Di",
+        "strongs": "G1223",
+        "gloss": "through",
+        "definition": "through (in very wide applications, local, causal, or occasional)",
+        "kjv_usage": "after, always, among, at, to avoid, because of (that), briefly, by, for (cause)...fore, from, in, by occasion of, of, by reason of, for sake, that, thereby, therefore, X though, through(-out), to, wherefore, with(-in)"
+      },
+      {
+        "greek": "αὐτοῦ",
+        "translit": "Autou",
+        "strongs": "G846",
+        "gloss": "",
+        "definition": "the reflexive pronoun self, used (alone or in the comparative g1438) of the third person, and (with the proper personal pronoun) of the other persons",
+        "kjv_usage": "her, it(-self), one, the other, (mine) own, said, (the) (self-)same, (him-, my-, thy- )self, (your-)selves, she, that, their(-s), them(-selves), there(-at, -by, -in, -into, -of, -on, -with), they, (these) things, this (man), those, together, very, which"
+      },
+      {
+        "greek": "ἔχομεν",
+        "translit": "Echomen",
+        "strongs": "G2192",
+        "gloss": "have",
+        "definition": "to hold (used in very various applications, literally or figuratively, direct or remote; such as possession; ability, contiuity, relation, or condition)",
+        "kjv_usage": "be (able, X hold, possessed with), accompany, + begin to amend, can(+ -not), X conceive, count, diseased, do + eat, + enjoy, + fear, following, have, hold, keep, + lack, + go to law, lie, + must needs, + of necessity, + need, next, + recover, + reign, + rest, + return, X sick, take for, + tremble, + uncircumcised, use"
+      },
+      {
+        "greek": "τὴν",
+        "translit": "Tēn",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "προσαγωγὴν",
+        "translit": "Prosagōgēn",
+        "strongs": "G4318",
+        "gloss": "access",
+        "definition": "admission",
+        "kjv_usage": "access"
+      },
+      {
+        "greek": "οἱ",
+        "translit": "Oi",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἀμφότεροι",
+        "translit": "Amphoteroi",
+        "strongs": "G297",
+        "gloss": "both",
+        "definition": "(in plural) both",
+        "kjv_usage": "both"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "by",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἑνὶ",
+        "translit": "Heni",
+        "strongs": "G1520",
+        "gloss": "one",
+        "definition": "one",
+        "kjv_usage": "a(-n, -ny) (certain), + abundantly, man, one (another), only, other, some"
+      },
+      {
+        "greek": "πνεύματι",
+        "translit": "Pneumati",
+        "strongs": "G4151",
+        "gloss": "Spirit",
+        "definition": "a current of air, i.e., breath (blast) or a breeze; by analogy or figuratively, a spirit, i.e., (human) the rational soul, (by implication) vital principle, mental disposition, etc., or (superhuman) an angel, demon, or (divine) god, christ's spirit, the holy spirit",
+        "kjv_usage": "ghost, life, spirit(-ual, -ually), mind"
+      },
+      {
+        "greek": "πρὸς",
+        "translit": "Pros",
+        "strongs": "G4314",
+        "gloss": "unto",
+        "definition": "a preposition of direction; forward to, i.e., toward (with the genitive case, the side of, i.e., pertaining to; with the dative case, by the side of, i.e., near to; usually with the accusative case, the place, time, occasion, or respect, which is the destination of the relation, i.e., whither or for which it is predicated)",
+        "kjv_usage": "about, according to , against, among, at, because of, before, between, (where-)by, for, X at thy house, in, for intent, nigh unto, of, which pertain to, that, to (the end that), X together, to (you) -ward, unto, with(-in)"
+      },
+      {
+        "greek": "τὸν",
+        "translit": "Ton",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "πατέρα",
+        "translit": "Patera",
+        "strongs": "G3962",
+        "gloss": "the Father",
+        "definition": "a \"father\" (literally or figuratively, near or more remote)",
+        "kjv_usage": "father, parent"
+      }
+    ],
+    "19": [
+      {
+        "greek": "ἄρα",
+        "translit": "Ara",
+        "strongs": "G686",
+        "gloss": "therefore",
+        "definition": "a particle denoting an inference more or less decisive (as follows)",
+        "kjv_usage": "haply, (what) manner (of man), no doubt, perhaps, so be, then, therefore, truly, wherefore"
+      },
+      {
+        "greek": "οὖν",
+        "translit": "Oun",
+        "strongs": "G3767",
+        "gloss": "Now",
+        "definition": "(adverbially) certainly, or (conjunctionally) accordingly",
+        "kjv_usage": "and (so, truly), but, now (then), so (likewise then), then, therefore, verily, wherefore"
+      },
+      {
+        "greek": "οὐκέτι",
+        "translit": "Ouketi",
+        "strongs": "G3765",
+        "gloss": "no more",
+        "definition": "not yet, no longer",
+        "kjv_usage": "after that (not), (not) any more, henceforth (hereafter) not, no longer (more), not as yet (now), now no more (not), yet (not)"
+      },
+      {
+        "greek": "ἐστὲ",
+        "translit": "Este",
+        "strongs": "G2075",
+        "gloss": "ye are",
+        "definition": "ye are",
+        "kjv_usage": "be, have been, belong"
+      },
+      {
+        "greek": "ξένοι",
+        "translit": "Xenoi",
+        "strongs": "G3581",
+        "gloss": "strangers",
+        "definition": "foreign (literally, alien, or figuratively, novel); by implication, a guest or (vice-versa) entertainer",
+        "kjv_usage": "host, strange(-r)"
+      },
+      {
+        "greek": "πάροικοι",
+        "translit": "Paroikoi",
+        "strongs": "G3941",
+        "gloss": "foreigners",
+        "definition": "having a home near, i.e., (as noun) a by-dweller (alien resident)",
+        "kjv_usage": "foreigner, sojourn, stranger"
+      },
+      {
+        "greek": "ἀλλὰ",
+        "translit": "Alla",
+        "strongs": "G235",
+        "gloss": "but",
+        "definition": "properly, other things, i.e., (adverbially) contrariwise (in many relations)",
+        "kjv_usage": "and, but (even), howbeit, indeed, nay, nevertheless, no, notwithstanding, save, therefore, yea, yet"
+      },
+      {
+        "greek": "συμπολῖται",
+        "translit": "Sumpolitai",
+        "strongs": "G4847",
+        "gloss": "fellowcitizens",
+        "definition": "a native of the same town, i.e., (figuratively) co-religionist (fellow-christian)",
+        "kjv_usage": "fellow- citizen"
+      },
+      {
+        "greek": "τῶν",
+        "translit": "Tōn",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἁγίων",
+        "translit": "Hagiōn",
+        "strongs": "G40",
+        "gloss": "with the saints",
+        "definition": "sacred (physically, pure, morally blameless or religious, ceremonially, consecrated)",
+        "kjv_usage": "(most) holy (one, thing), saint"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "and",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "and",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "οἰκεῖοι",
+        "translit": "Oikeioi",
+        "strongs": "G3609",
+        "gloss": "of the household",
+        "definition": "domestic, i.e., (as noun), a relative, adherent",
+        "kjv_usage": "(those) of the (his own) house(-hold)"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "θεοῦ",
+        "translit": "Theou",
+        "strongs": "G2316",
+        "gloss": "of God",
+        "definition": "a deity, especially (with g3588) the supreme divinity; figuratively, a magistrate; exceedingly (by hebraism)",
+        "kjv_usage": "God, god(-ly, -ward), "
+      }
+    ],
+    "20": [
+      {
+        "greek": "ἐποικοδομηθέντες",
+        "translit": "Epoikodomēthentes",
+        "strongs": "G2026",
+        "gloss": "And are built",
+        "definition": "to build upon, i.e., (figuratively) to rear up",
+        "kjv_usage": "build thereon (thereupon, on, upon)"
+      },
+      {
+        "greek": "ἐπὶ",
+        "translit": "Epi",
+        "strongs": "G1909",
+        "gloss": "upon",
+        "definition": "properly, meaning superimposition (of time, place, order, etc.), as a relation of distribution (with the genitive case), i.e., over, upon, etc.; of rest (with the dative case) at, on, etc.; of direction (with the accusative case) towards, upon, etc",
+        "kjv_usage": "about (the times), above, after, against, among, as long as (touching), at, beside, X have charge of, (be-, where-)fore, in (a place, as much as, the time of, -to), (because) of, (up-)on (behalf of), over, (by, for) the space of, through(-out), (un-)to(-ward), with"
+      },
+      {
+        "greek": "τῷ",
+        "translit": "Tō",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "θεμελίῳ",
+        "translit": "Themeliō",
+        "strongs": "G2310",
+        "gloss": "the foundation",
+        "definition": "something put down, i.e., a substruction (of a building, etc.), (literally or figuratively)",
+        "kjv_usage": "foundation"
+      },
+      {
+        "greek": "τῶν",
+        "translit": "Tōn",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "ἀποστόλων",
+        "translit": "Apostolōn",
+        "strongs": "G652",
+        "gloss": "of the apostles",
+        "definition": "a delegate; specially, an ambassador of the gospel; officially a commissioner of christ (\"apostle\") (with miraculous powers)",
+        "kjv_usage": "apostle, messenger, he that is sent"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "and",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "προφητῶν",
+        "translit": "Prophētōn",
+        "strongs": "G4396",
+        "gloss": "prophets",
+        "definition": "a foreteller (\"prophet\"); by analogy, an inspired speaker; by extension, a poet",
+        "kjv_usage": "prophet"
+      },
+      {
+        "greek": "ὄντος",
+        "translit": "Ontos",
+        "strongs": "G5607",
+        "gloss": "being",
+        "definition": "being",
+        "kjv_usage": "be, come, have"
+      },
+      {
+        "greek": "ἀκρογωνιαίου",
+        "translit": "Akrogōniaiou",
+        "strongs": "G204",
+        "gloss": "the chief corner",
+        "definition": "belonging to the extreme corner",
+        "kjv_usage": "chief corner"
+      },
+      {
+        "greek": "αὐτοῦ",
+        "translit": "Autou",
+        "strongs": "G846",
+        "gloss": "himself",
+        "definition": "the reflexive pronoun self, used (alone or in the comparative g1438) of the third person, and (with the proper personal pronoun) of the other persons",
+        "kjv_usage": "her, it(-self), one, the other, (mine) own, said, (the) (self-)same, (him-, my-, thy- )self, (your-)selves, she, that, their(-s), them(-selves), there(-at, -by, -in, -into, -of, -on, -with), they, (these) things, this (man), those, together, very, which"
+      },
+      {
+        "greek": "Ἰησοῦ",
+        "translit": "Iēsou",
+        "strongs": "G2424",
+        "gloss": "Jesus",
+        "definition": "jesus (i.e., jehoshua), the name of our lord and two (three) other israelites",
+        "kjv_usage": "Jesus"
+      },
+      {
+        "greek": "Χριστοῦ",
+        "translit": "Christou",
+        "strongs": "G5547",
+        "gloss": "Christ",
+        "definition": "anointed, i.e., the messiah, an epithet of jesus",
+        "kjv_usage": "Christ"
+      }
+    ],
+    "21": [
+      {
+        "greek": "ᾧ",
+        "translit": "Hō",
+        "strongs": "G3739",
+        "gloss": "whom",
+        "definition": "the relatively (sometimes demonstrative) pronoun, who, which, what, that",
+        "kjv_usage": "one, (an-, the) other, some, that, what, which, who(-m, -se), etc"
+      },
+      {
+        "greek": "πᾶσα",
+        "translit": "Pasa",
+        "strongs": "G3956",
+        "gloss": "all",
+        "definition": "all, any, every, the whole",
+        "kjv_usage": "all (manner of, means), alway(-s), any (one), X daily, + ever, every (one, way), as many as, + no(-thing), X thoroughly, whatsoever, whole, whosoever"
+      },
+      {
+        "greek": "ἥ",
+        "translit": "Hē",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "οἰκοδομὴ",
+        "translit": "Oikodomē",
+        "strongs": "G3619",
+        "gloss": "the building",
+        "definition": "architecture, i.e., (concretely) a structure; figuratively, confirmation",
+        "kjv_usage": "building, edify(-ication, -ing)"
+      },
+      {
+        "greek": "συναρμολογουμένη",
+        "translit": "Sunarmologoumenē",
+        "strongs": "G4883",
+        "gloss": "fitly framed together",
+        "definition": "to render close-jointed together, i.e., organize compactly",
+        "kjv_usage": "be fitly framed (joined) together"
+      },
+      {
+        "greek": "αὔξει",
+        "translit": "Auxei",
+        "strongs": "G837",
+        "gloss": "groweth",
+        "definition": "to grow (\"wax\"), i.e., enlarge (literal or figurative, active or passive)",
+        "kjv_usage": "grow (up), (give the) increase"
+      },
+      {
+        "greek": "εἰς",
+        "translit": "Eis",
+        "strongs": "G1519",
+        "gloss": "unto",
+        "definition": "to or into (indicating the point reached or entered), of place, time, or (figuratively) purpose (result, etc.); also in adverbial phrases",
+        "kjv_usage": "abundantly, against, among, as, at, (back-)ward, before, by, concerning, + continual, + far more exceeding, for (intent, purpose), fore, + forth, in(-so much that, -to) (among, at, unto), to the intent that, + of one mind, + never, of, (up-)on, + perish, + set at one again, (so) that, therefore(-unto), throughout, til, to (be, the end, -ward), (here-)until(-to), ...ward, (where-)fore, with"
+      },
+      {
+        "greek": "ναὸν",
+        "translit": "Naon",
+        "strongs": "G3485",
+        "gloss": "temple",
+        "definition": "a fane, shrine, temple",
+        "kjv_usage": "shrine, temple"
+      },
+      {
+        "greek": "ἅγιον",
+        "translit": "Hagion",
+        "strongs": "G40",
+        "gloss": "an holy",
+        "definition": "sacred (physically, pure, morally blameless or religious, ceremonially, consecrated)",
+        "kjv_usage": "(most) holy (one, thing), saint"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "In",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "In",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "κυρίῳ",
+        "translit": "Kuriō",
+        "strongs": "G2962",
+        "gloss": "the Lord",
+        "definition": "supreme in authority, i.e., (as noun) controller; by implication, master (as a respectful title)",
+        "kjv_usage": "God, Lord, master, Sir"
+      }
+    ],
+    "22": [
+      {
+        "greek": "ᾧ",
+        "translit": "Hō",
+        "strongs": "G3739",
+        "gloss": "whom",
+        "definition": "the relatively (sometimes demonstrative) pronoun, who, which, what, that",
+        "kjv_usage": "one, (an-, the) other, some, that, what, which, who(-m, -se), etc"
+      },
+      {
+        "greek": "καὶ",
+        "translit": "Kai",
+        "strongs": "G2532",
+        "gloss": "also",
+        "definition": "and, also, even, so then, too, etc.; often used in connection (or composition) with other particles or small words",
+        "kjv_usage": "and, also, both, but, even, for, if, or, so, that, then, therefore, when, yet"
+      },
+      {
+        "greek": "ὑμεῖς",
+        "translit": "Humeis",
+        "strongs": "G5210",
+        "gloss": "ye",
+        "definition": "you (as subjective of verb)",
+        "kjv_usage": "ye (yourselves), you"
+      },
+      {
+        "greek": "συνοικοδομεῖσθε",
+        "translit": "Sunoikodomeisthe",
+        "strongs": "G4925",
+        "gloss": "are builded together",
+        "definition": "to construct, i.e., (passively) to compose (in company with other christians, figuratively)",
+        "kjv_usage": "build together"
+      },
+      {
+        "greek": "εἰς",
+        "translit": "Eis",
+        "strongs": "G1519",
+        "gloss": "for",
+        "definition": "to or into (indicating the point reached or entered), of place, time, or (figuratively) purpose (result, etc.); also in adverbial phrases",
+        "kjv_usage": "abundantly, against, among, as, at, (back-)ward, before, by, concerning, + continual, + far more exceeding, for (intent, purpose), fore, + forth, in(-so much that, -to) (among, at, unto), to the intent that, + of one mind, + never, of, (up-)on, + perish, + set at one again, (so) that, therefore(-unto), throughout, til, to (be, the end, -ward), (here-)until(-to), ...ward, (where-)fore, with"
+      },
+      {
+        "greek": "κατοικητήριον",
+        "translit": "Katoikētērion",
+        "strongs": "G2732",
+        "gloss": "an habitation",
+        "definition": "a dwelling-place",
+        "kjv_usage": "habitation"
+      },
+      {
+        "greek": "τοῦ",
+        "translit": "Tou",
+        "strongs": "G3588",
+        "gloss": "",
+        "definition": "the (sometimes to be supplied, at others omitted, in english idiom)",
+        "kjv_usage": "the, this, that, one, he, she, it, etc"
+      },
+      {
+        "greek": "θεοῦ",
+        "translit": "Theou",
+        "strongs": "G2316",
+        "gloss": "of God",
+        "definition": "a deity, especially (with g3588) the supreme divinity; figuratively, a magistrate; exceedingly (by hebraism)",
+        "kjv_usage": "God, god(-ly, -ward), "
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "In",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "ἐν",
+        "translit": "En",
+        "strongs": "G1722",
+        "gloss": "In",
+        "definition": "\"in,\" at, (up-)on, by, etc",
+        "kjv_usage": "about, after, against, + almost, X altogether, among, X as, at, before, between, (here-)by (+ all means), for(...sake of), + give self wholly to, (here-)in(-to, -wardly), X mightily, (because) of, (up-)on, open(-ly), X outwardly, one, X quickly, X shortly, speedily, X that, X there(-in, -on), through(-out), (un-)to(-ward), under, when, where(-with), while, with(-in)"
+      },
+      {
+        "greek": "πνεύματι",
+        "translit": "Pneumati",
+        "strongs": "G4151",
+        "gloss": "the Spirit",
+        "definition": "a current of air, i.e., breath (blast) or a breeze; by analogy or figuratively, a spirit, i.e., (human) the rational soul, (by implication) vital principle, mental disposition, etc., or (superhuman) an angel, demon, or (divine) god, christ's spirit, the holy spirit",
+        "kjv_usage": "ghost, life, spirit(-ual, -ually), mind"
+      }
+    ]
+  }
+}

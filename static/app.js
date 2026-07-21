@@ -458,6 +458,61 @@ document.getElementById("compare-close-btn").addEventListener("click", () => {
 document.getElementById("jump-to-verse-btn").addEventListener("click", () => scrollToSelectedVerse(true));
 document.getElementById("show-in-chapter-btn").addEventListener("click", () => scrollToSelectedVerse(true));
 
+// --- Original Greek sheet: real Strong's-tagged word data (see
+// data/README.md), bundled locally for this one demo chapter -- not a live
+// API call, and not AI-generated (a wrong Strong's number or
+// transliteration would be an easy, embarrassing thing to get caught
+// fabricating).
+async function openGreekSheet() {
+  document.getElementById("greek-sheet").classList.remove("hidden");
+  document.getElementById("greek-sheet-title").textContent = `Original Greek — Verse ${selectedVerseNumber}`;
+  const list = document.getElementById("greek-word-list");
+  list.innerHTML = `<p class="picker-row-subtitle">Loading…</p>`;
+
+  const res = await fetch(`/api/original-language?verse=${encodeURIComponent(selectedVerseNumber)}`);
+  const data = await res.json();
+  renderGreekWords(list, data.words);
+}
+
+function renderGreekWords(container, words) {
+  container.innerHTML = "";
+  for (const w of words) {
+    const row = document.createElement("div");
+    row.className = "greek-word-row";
+
+    const head = document.createElement("div");
+    head.className = "greek-word-head";
+    head.innerHTML = `
+      <span class="greek-script">${w.greek}</span>
+      <span class="greek-translit">${w.translit}</span>
+      <span class="greek-strongs">${w.strongs}</span>
+    `;
+    row.appendChild(head);
+
+    if (w.gloss) {
+      const gloss = document.createElement("div");
+      gloss.className = "greek-gloss";
+      gloss.textContent = `"${w.gloss}" in this verse`;
+      row.appendChild(gloss);
+    }
+
+    const definition = document.createElement("p");
+    definition.className = "greek-definition";
+    definition.textContent = w.definition;
+    row.appendChild(definition);
+
+    container.appendChild(row);
+  }
+}
+
+function closeGreekSheet() {
+  document.getElementById("greek-sheet").classList.add("hidden");
+}
+
+document.getElementById("greek-btn").addEventListener("click", openGreekSheet);
+document.getElementById("close-greek-sheet-btn").addEventListener("click", closeGreekSheet);
+document.querySelector("#greek-sheet .sheet-backdrop").addEventListener("click", closeGreekSheet);
+
 // --- Primary-language picker (top pane): a modal sheet, since the top pane
 // itself has no room to spare for a persistent picker. Picking a new
 // primary swaps whatever was previously primary into the compare pane --

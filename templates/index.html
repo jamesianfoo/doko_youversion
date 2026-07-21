@@ -55,6 +55,7 @@
         <div id="compare-result" class="hidden">
           <div class="compare-result-header">
             <div id="compare-version-title"></div>
+            <button id="greek-btn">𝕬 Original Greek</button>
             <button id="show-in-chapter-btn">📍 Show in chapter</button>
           </div>
           <div id="compare-text"></div>
@@ -115,6 +116,19 @@
 
       <div id="primary-language-list" class="picker-list"></div>
       <div id="primary-version-list" class="picker-list hidden"></div>
+    </div>
+  </div>
+
+  <div id="greek-sheet" class="bottom-sheet hidden">
+    <div class="sheet-backdrop"></div>
+    <div class="sheet-card">
+      <div class="sheet-handle"></div>
+      <button class="sheet-close-btn" id="close-greek-sheet-btn">×</button>
+      <div class="sheet-title-row">
+        <h2 id="greek-sheet-title">Original Greek</h2>
+      </div>
+      <p class="greek-sheet-note">Real Strong's-tagged Greek text, in its own word order -- not aligned word-for-word to whichever translation is showing above.</p>
+      <div id="greek-word-list"></div>
     </div>
   </div>
 
