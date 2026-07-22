@@ -520,8 +520,32 @@ ruby rt {
 }
 
 #greek-insight.loading {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   color: var(--ink-dim);
   font-style: italic;
+  padding: 0.3rem 0;
+}
+
+/* Gloo takes a few seconds here, so the wait needs to read as "working"
+   rather than as a line of text that just sits there. */
+.spinner svg {
+  display: block;
+  color: var(--accent);
+  animation: spinner-rotate 0.9s linear infinite;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner svg {
+    animation-duration: 2.4s;
+  }
 }
 
 #greek-insight ruby rt {

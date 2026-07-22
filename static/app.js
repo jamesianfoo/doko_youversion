@@ -529,7 +529,15 @@ async function loadGreekInsight(verseNumber) {
   }
 
   el.classList.add("loading");
-  el.textContent = "Reading the Greek…";
+  el.innerHTML = `
+    <span class="spinner" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="15" height="15">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-dasharray="38 18" />
+      </svg>
+    </span>
+    <span>More context coming up…</span>
+  `;
 
   const res = await fetch("/api/greek-insight", {
     method: "POST",
