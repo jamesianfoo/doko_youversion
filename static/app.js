@@ -17,6 +17,8 @@ let currentReference = "";
 let selectedVerseNumber = null;
 let currentCompareVersionId = null;
 let currentCompareLanguageTag = null;
+let currentCompareText = "";
+let currentCompareRef = "";
 
 const SPEECH_LANG_MAP = { zh: "zh-CN", en: "en-US", ja: "ja-JP", es: "es-ES", fr: "fr-FR" };
 // Matches app.py's DEMO_CHAPTER (book/chapter) -- used only to build a
@@ -451,6 +453,10 @@ async function showComparePassage(versionId, verseNumber) {
 
   document.getElementById("compare-version-title").textContent = `${data.version.abbreviation} — ${data.version.title}`;
   currentCompareLanguageTag = data.version.language_tag;
+  // The Greek insight is written about the English text sitting directly
+  // above it, so keep a handle on exactly what's displayed there.
+  currentCompareText = data.text;
+  currentCompareRef = data.reference;
   updateGreekVisibility();
 
   const textEl = document.getElementById("compare-text");
@@ -494,7 +500,9 @@ document.getElementById("show-in-chapter-btn").addEventListener("click", () => s
 // particular translation's phrasing anyway (see the in-sheet note), so
 // surfacing it under every language added confusion without adding value.
 let greekSectionExpanded = false;
+let greekWordsExpanded = false;
 const greekWordsCache = {};
+const greekInsightCache = {};
 
 function updateGreekVisibility() {
   const isEnglish = currentCompareLanguageTag === "en";
@@ -503,7 +511,53 @@ function updateGreekVisibility() {
     greekSectionExpanded = false;
     document.getElementById("greek-section").classList.add("hidden");
     document.getElementById("greek-toggle-btn").classList.remove("expanded");
+    document.getElementById("bottom-pane").classList.remove("greek-open");
   }
+}
+
+// The insight is what this section leads with -- Gloo writes it, but every
+// Greek word it cites comes from the bundled Strong's data the server loads
+// itself (see /api/greek-insight), never from the model's own memory.
+async function loadGreekInsight(verseNumber) {
+  const el = document.getElementById("greek-insight");
+  const cacheKey = `${verseNumber}_${currentPrimaryLanguageTag}`;
+
+  const cached = greekInsightCache[cacheKey];
+  if (cached) {
+    renderGreekInsight(el, cached);
+    return;
+  }
+
+  el.classList.add("loading");
+  el.textContent = "Reading the Greek…";
+
+  const res = await fetch("/api/greek-insight", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      verse_number: verseNumber,
+      verse_text: currentCompareText,
+      verse_ref: currentCompareRef,
+      language_tag: currentPrimaryLanguageTag,
+    }),
+  });
+  const data = await res.json();
+
+  // Guard against a slow response landing after the reader has already moved
+  // to another verse -- otherwise verse 8's insight can overwrite verse 9's.
+  if (verseNumber !== selectedVerseNumber) return;
+
+  greekInsightCache[cacheKey] = data;
+  renderGreekInsight(el, data);
+}
+
+function renderGreekInsight(el, data) {
+  el.classList.remove("loading");
+  if (!data.insight) {
+    el.textContent = "No Greek data for this verse.";
+    return;
+  }
+  renderRubyText(el, data.insight_chars);
 }
 
 async function loadGreekWords(verseNumber) {
@@ -523,13 +577,27 @@ function toggleGreekSection() {
   greekSectionExpanded = !greekSectionExpanded;
   document.getElementById("greek-section").classList.toggle("hidden", !greekSectionExpanded);
   document.getElementById("greek-toggle-btn").classList.toggle("expanded", greekSectionExpanded);
+  document.getElementById("bottom-pane").classList.toggle("greek-open", greekSectionExpanded);
   if (greekSectionExpanded) {
+    refreshGreekSectionIfExpanded(selectedVerseNumber);
+  }
+}
+
+function toggleGreekWords() {
+  greekWordsExpanded = !greekWordsExpanded;
+  document.getElementById("greek-word-list").classList.toggle("hidden", !greekWordsExpanded);
+  document.getElementById("greek-words-toggle-btn").classList.toggle("expanded", greekWordsExpanded);
+  if (greekWordsExpanded) {
     loadGreekWords(selectedVerseNumber);
   }
 }
 
 function refreshGreekSectionIfExpanded(verseNumber) {
-  if (greekSectionExpanded) {
+  if (!greekSectionExpanded) return;
+  loadGreekInsight(verseNumber);
+  // Only the word list needs its own check -- it has a second, independent
+  // toggle underneath the insight.
+  if (greekWordsExpanded) {
     loadGreekWords(verseNumber);
   }
 }
@@ -566,6 +634,7 @@ function renderGreekWords(container, words) {
 }
 
 document.getElementById("greek-toggle-btn").addEventListener("click", toggleGreekSection);
+document.getElementById("greek-words-toggle-btn").addEventListener("click", toggleGreekWords);
 
 // --- Primary-language picker (top pane): a modal sheet, since the top pane
 // itself has no room to spare for a persistent picker. Picking a new

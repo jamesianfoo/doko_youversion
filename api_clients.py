@@ -344,3 +344,95 @@ def explain_word(word, verse_text, language_tag=None, level="native"):
                 if block.get("type") == "output_text":
                     return block["text"]
     return "(no explanation returned)"
+
+
+def _format_greek_words(greek_words):
+    """Compact, prompt-friendly rendering of the real lexicon rows we pass to
+    Gloo as grounding. Definitions are long in the source data, so they're
+    truncated -- the opening clause carries the sense we care about.
+    """
+    lines = []
+    for w in greek_words:
+        definition = w.get("definition", "")
+        if len(definition) > 200:
+            definition = definition[:200].rsplit(" ", 1)[0] + "..."
+        gloss = f' = "{w["gloss"]}"' if w.get("gloss") else ""
+        # The source data keeps the verse's own punctuation attached to the
+        # word (e.g. "δῶρον·" with an ano teleia). That's faithful for the
+        # word list, but reads oddly quoted mid-sentence in prose, so the
+        # prompt gets the bare word.
+        greek = w["greek"].rstrip("·;,.:")
+        lines.append(f'{greek} ({w["translit"]}){gloss} -- {definition}')
+    return "\n".join(lines)
+
+
+def explain_verse_with_greek(verse_text, verse_ref, greek_words, language_tag=None):
+    """Ask Gloo to write a short pastoral insight about the verse that *weaves
+    the Greek in*, rather than presenting the word list as an end in itself.
+
+    A bare lexicon dump is a reference tool: it tells you nothing about why the
+    verse matters or how to live it. The original-language detail earns its
+    place when it illuminates meaning -- so Gloo writes the insight, but every
+    Greek fact in it comes from `greek_words` (our real, bundled Strong's data,
+    loaded server-side), and the prompt forbids recalling any Greek from model
+    memory. That keeps the split this project has held throughout: AI for
+    explanation, real data for anything factual.
+    """
+    language_name = _LANGUAGE_NAMES.get(language_tag)
+    response_clause = (
+        f"Write entirely in {language_name}." if language_name
+        else "Write in the same language as the verse."
+    )
+
+    token = _get_gloo_token()
+    resp = requests.post(
+        GLOO_RESPONSES_URL,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {token}",
+        },
+        json={
+            "model": "gloo-openai-gpt-5-mini",
+            "instructions": (
+                "You are a gentle Scripture companion. Write ONE short insight "
+                "(3 or 4 sentences) about a single phrase in the verse, in "
+                "exactly this shape:\n"
+                "1. Open by quoting one short phrase from the verse in quotation marks.\n"
+                "2. Say plainly what that phrase means.\n"
+                "3. Illuminate it with ONE Greek word from the provided list -- "
+                "what its original sense carries that the translation alone does "
+                "not. Cite it as the Greek script followed by the transliteration "
+                "in parentheses, e.g. ποίημα (Poiēma).\n"
+                "4. End with why this matters for how someone actually lives.\n\n"
+                "CRITICAL RULE: you may only reference Greek words that appear "
+                "in the provided list, spelled and transliterated exactly as "
+                "given. Never invent, guess, or recall a Greek word, "
+                "transliteration, or Strong's number from your own memory. If a "
+                "word is not in the list, do not mention it. Do not put Strong's "
+                "numbers in your prose.\n\n"
+                "Warm, direct, and concrete. No headings, no bullet points, no "
+                f"preamble, no sign-off. {response_clause}"
+            ),
+            "input": [
+                {
+                    "role": "user",
+                    "content": (
+                        f"{verse_ref}\n\n"
+                        f'Verse: "{verse_text}"\n\n'
+                        "The real Greek words behind this verse, in the original "
+                        "word order (these are the ONLY Greek words you may use):\n"
+                        f"{_format_greek_words(greek_words)}"
+                    ),
+                }
+            ],
+        },
+        timeout=30,
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    for item in data.get("output", []):
+        if item.get("type") == "message":
+            for block in item.get("content", []):
+                if block.get("type") == "output_text":
+                    return block["text"]
+    return "(no insight returned)"

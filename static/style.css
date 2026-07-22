@@ -277,6 +277,14 @@ ruby rt {
   border-top: none;
 }
 
+/* The Greek insight is several sentences rather than a single compare verse,
+   so claim closer to half the frame while it's open -- otherwise it reads
+   through a ~180px slot and the part meant to land gets scrolled past. The
+   chapter above stays visible, just shorter. */
+#bottom-pane.greek-open {
+  flex-grow: 62;
+}
+
 /* Bottom nav (decorative, matches the real app's chrome) */
 #bottom-nav {
   flex-shrink: 0;
@@ -491,10 +499,57 @@ ruby rt {
   padding-top: 0.5rem;
 }
 
+/* Now a closing footnote rather than a preamble -- it's background
+   information, so it shouldn't stand between the reader and the insight. */
 .greek-section-note {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--ink-dim);
-  margin: 0 0 1rem;
+  margin: 1.2rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--divider);
+  line-height: 1.5;
+}
+
+/* The insight leads the section: this is the part meant to land, so it gets
+   body-text weight rather than the smaller reference styling below it. */
+#greek-insight {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0 0 0.4rem;
+}
+
+#greek-insight.loading {
+  color: var(--ink-dim);
+  font-style: italic;
+}
+
+#greek-insight ruby rt {
+  font-size: 0.5rem;
+}
+
+/* Word-by-word is now opt-in underneath the insight -- the lexicon rows are
+   supporting evidence, not the headline. */
+#greek-words-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--ink-dim);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+#greek-words-toggle-btn:hover {
+  color: var(--accent);
+}
+
+#greek-words-toggle-btn.expanded .greek-toggle-chevron {
+  transform: rotate(180deg);
 }
 
 /* Bottom sheet (word explanation only -- the compare picker lives in the

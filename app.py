@@ -13,6 +13,7 @@ from api_clients import (
     COMPARE_LANGUAGES,
     ENGLISH_VERSION_ID,
     annotate_reading,
+    explain_verse_with_greek,
     explain_word,
     get_chapter,
     get_passage,
@@ -126,6 +127,31 @@ def api_original_language():
     # see data/README.md. Not a live API call, and not AI-generated.
     verse_number = request.args.get("verse", type=int) or DEMO_CHAPTER["tappable_verse_number"]
     return jsonify({"verse_number": verse_number, "words": get_verse_words(verse_number)})
+
+
+@app.route("/api/greek-insight", methods=["POST"])
+def api_greek_insight():
+    """The Greek words in context: Gloo writes the insight, but the Greek
+    itself is loaded here from our own bundled Strong's data -- never taken
+    from the request body, so the client can't feed the model invented Greek,
+    and never recalled from the model's memory (see explain_verse_with_greek).
+    """
+    body = request.get_json(force=True)
+    verse_number = body.get("verse_number") or DEMO_CHAPTER["tappable_verse_number"]
+    verse_text = body["verse_text"]
+    verse_ref = body.get("verse_ref", f"{DEMO_CHAPTER['book']} {DEMO_CHAPTER['chapter']}:{verse_number}")
+    language_tag = body.get("language_tag")
+
+    greek_words = get_verse_words(verse_number)
+    if not greek_words:
+        return jsonify({"verse_number": verse_number, "insight": None})
+
+    insight = explain_verse_with_greek(verse_text, verse_ref, greek_words, language_tag)
+    return jsonify({
+        "verse_number": verse_number,
+        "insight": insight,
+        "insight_chars": annotate_reading(insight, language_tag),
+    })
 
 
 @app.route("/api/explain", methods=["POST"])
