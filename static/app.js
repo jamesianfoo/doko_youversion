@@ -476,11 +476,73 @@ async function showComparePassage(versionId, verseNumber) {
   refreshGreekSectionIfExpanded(data.verse_number);
 }
 
+// --- Drag-to-resize the compare pane. The 65/35 split is a sensible default,
+// but a long Greek insight wants more room and re-reading the chapter wants
+// less, so let the reader decide. Dragging writes an inline flex-basis, which
+// beats both the default flex-grow and the .greek-open auto-grow -- an explicit
+// choice should stick until the pane is closed.
+(function initComparePaneResize() {
+  const pane = document.getElementById("bottom-pane");
+  const handle = document.getElementById("compare-drag-handle");
+  let startY = 0;
+  let startHeight = 0;
+  let dragging = false;
+
+  function bounds() {
+    const frame = document.getElementById("phone-frame");
+    const nav = document.getElementById("bottom-nav");
+    const available = frame.clientHeight - (nav ? nav.offsetHeight : 0);
+    // Always leave the compare header reachable, and always leave a couple of
+    // lines of chapter visible -- collapsing either end entirely is a trap.
+    return { min: 110, max: Math.round(available * 0.85) };
+  }
+
+  handle.addEventListener("pointerdown", (e) => {
+    dragging = true;
+    startY = e.clientY;
+    startHeight = pane.getBoundingClientRect().height;
+    pane.classList.add("dragging");
+    handle.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+
+  handle.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const { min, max } = bounds();
+    // Dragging up means a smaller clientY, so invert to grow the pane.
+    const next = Math.min(max, Math.max(min, startHeight + (startY - e.clientY)));
+    pane.style.flex = `0 0 ${next}px`;
+  });
+
+  function endDrag(e) {
+    if (!dragging) return;
+    dragging = false;
+    pane.classList.remove("dragging");
+    try {
+      handle.releasePointerCapture(e.pointerId);
+    } catch (err) {
+      /* pointer already released */
+    }
+  }
+
+  handle.addEventListener("pointerup", endDrag);
+  handle.addEventListener("pointercancel", endDrag);
+
+  // Escape hatch: double-click hands control back to the automatic sizing.
+  handle.addEventListener("dblclick", () => {
+    pane.style.flex = "";
+  });
+})();
+
 document.getElementById("more-btn").addEventListener("click", openLanguagePicker);
 document.getElementById("compare-back-btn").addEventListener("click", () => showCompareState("language"));
 document.getElementById("compare-change-btn").addEventListener("click", openLanguagePicker);
 document.getElementById("compare-close-btn").addEventListener("click", () => {
-  document.getElementById("bottom-pane").classList.add("collapsed");
+  const pane = document.getElementById("bottom-pane");
+  // Drop any manual size first -- an inline flex-basis would otherwise win
+  // over .collapsed and leave the pane stubbornly open.
+  pane.style.flex = "";
+  pane.classList.add("collapsed");
 });
 document.getElementById("jump-to-verse-btn").addEventListener("click", () => scrollToSelectedVerse(true));
 document.getElementById("show-in-chapter-btn").addEventListener("click", () => scrollToSelectedVerse(true));

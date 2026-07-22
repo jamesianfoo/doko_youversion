@@ -280,9 +280,41 @@ ruby rt {
 /* The Greek insight is several sentences rather than a single compare verse,
    so claim closer to half the frame while it's open -- otherwise it reads
    through a ~180px slot and the part meant to land gets scrolled past. The
-   chapter above stays visible, just shorter. */
+   chapter above stays visible, just shorter. A manual drag sets an inline
+   flex-basis, which overrides this automatically -- once the reader has
+   chosen a size, we stop second-guessing it. */
 #bottom-pane.greek-open {
   flex-grow: 62;
+}
+
+/* Full-width grab strip so it's an easy target on a phone, with a visible
+   grip so the pane reads as resizable rather than fixed. */
+#compare-drag-handle {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0 0.3rem;
+  cursor: ns-resize;
+  /* Stops the browser claiming the gesture as a scroll mid-drag. */
+  touch-action: none;
+}
+
+#compare-drag-handle .drag-grip {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--divider);
+  transition: background 0.15s ease;
+}
+
+#compare-drag-handle:hover .drag-grip,
+#bottom-pane.dragging .drag-grip {
+  background: var(--accent);
+}
+
+/* Nothing to resize when the pane is put away. */
+#bottom-pane.collapsed #compare-drag-handle {
+  display: none;
 }
 
 /* Bottom nav (decorative, matches the real app's chrome) */
