@@ -48,6 +48,15 @@ every Greek word the model cites is matched against the real lexicon file.
   Strong's data
 - **Memory** — words you have looked up before resurface with Find and Definition
 
+## Demo scope
+
+This build is deliberately scoped to **Ephesians 2** so the whole loop could be
+real rather than broad and mocked. The chapter is set in one place
+(`DEMO_CHAPTER` in `app.py`) and everything else — version listing, comparison,
+word explanation, the reading aid — is language- and chapter-agnostic and works
+against any licensed version the API returns. The bundled Greek data covers
+Ephesians 2 only; see the sourcing note below for extending it.
+
 ## Running it
 
 ```bash
@@ -118,3 +127,9 @@ an Old Testament chapter.
 - Explanations via [Gloo AI Studio](https://www.gloo.com)
 - Pinyin via [`pypinyin`](https://github.com/mozillazg/python-pinyin), furigana via
   [`pykakasi`](https://github.com/miurahr/pykakasi)
+
+## License
+
+MIT — see [LICENSE](LICENSE). Scripture text is not bundled; it is fetched at
+runtime from the YouVersion Platform API and remains under its publishers'
+copyright.
