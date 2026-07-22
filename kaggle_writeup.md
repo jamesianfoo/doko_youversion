@@ -1,16 +1,11 @@
 # Dōkō (同行) — Walking Together Through Scripture and Language
 
-**Scripture in New Frontiers Submission**
-
-*[Cover image placeholder: a hand tapping a Chinese character on a phone screen, pinyin appearing beneath it]*
-
 My church has a growing Chinese community. I decided to learn Mandarin to connect with them, and I opened YouVersion — an app I've used since launch and one of the primary tools in my walk with Jesus — expecting it to help.
 
 It didn't. There's no pronunciation guide for Chinese characters. Comparing translations means leaving the passage entirely. This isn't a niche complaint — a rival Chinese Bible app has had users requesting pinyin since 2018 and still hasn't shipped it. If a category leader hasn't solved this in years, the gap is real, not imagined.
 
 Dōkō (同行 — "walking together") closes it. Not another Bible app — a companion that sits inside the passage and helps someone grow in faith and language at the same time, one word at a time. The name is the same character in Chinese (Tóngxíng), Japanese (Dōkō), and Korean (Donghaeng): a companion on the road. Chinese and Japanese both work today; the architecture is language-agnostic.
 
-## The line this project holds
 
 The obvious shortcut in a hackathon like this is to let an LLM translate or paraphrase Scripture. Dōkō never does — not once.
 
